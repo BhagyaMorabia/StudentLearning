@@ -1,0 +1,27 @@
+
+> student@0.1.0 dev
+> next dev --port 3000
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.157.1:3000
+- Environments: .env.local
+✓ Ready in 742ms
+
+ GET /learn/physics-11/gravitation 200 in 1582ms (next.js: 948ms, application-code: 634ms)
+ GET /learn/physics-11/gravitation 200 in 282ms (next.js: 19ms, application-code: 263ms)
+ GET /learn/physics-11/gravitation 200 in 298ms (next.js: 18ms, application-code: 280ms)
+ POST /api/teach-interactive 200 in 1226ms (next.js: 345ms, application-code: 880ms)
+ POST /api/teach-interactive 200 in 1422ms (next.js: 323ms, application-code: 1098ms)
+ POST /api/teach-interactive 200 in 1176ms (next.js: 4ms, application-code: 1173ms)
+ POST /api/teach-subtopic 200 in 2.9s (next.js: 41ms, application-code: 2.8s)
+ GET /quiz/gravitation 200 in 777ms (next.js: 736ms, application-code: 41ms)
+ POST /api/ai-tutor 200 in 789ms (next.js: 43ms, application-code: 746ms)
+ POST /api/ai-tutor 200 in 870ms (next.js: 4ms, application-code: 866ms)
+ GET /dashboard 200 in 77ms (next.js: 47ms, application-code: 30ms)
+ GET /learn/math-11/heights-distances 200 in 48ms (next.js: 14ms, application-code: 34ms)
+ GET /learn/physics-11/gravitation 200 in 45ms (next.js: 12ms, application-code: 33ms)
+ POST /api/teach-interactive 200 in 978ms (next.js: 20ms, application-code: 958ms)
+ POST /api/teach-interactive 200 in 986ms (next.js: 5ms, application-code: 981ms)
+ GET / 200 in 68ms (next.js: 42ms, application-code: 26ms)
+ GET / 200 in 167ms (next.js: 8ms, application-code: 159ms)

@@ -1,0 +1,1235 @@
+
+
+--- PAGE 0 ---
+
+li MEGACOSM
+Synchronized Study of XIl Boards + JEE Main & Advanced
+nt (¢Jsca8 {4 x iN 0 ne 5
+oe ; Lo ww 3
+Sec 4) g i TAS IN g
+<a of hem K" iy \ k
+Class XI & XII
+Heights & Distances
+
+
+--- PAGE 1 ---
+
+SIMPLE APP. IN FINDING HEIGHT & DISTANCE od
+
+Angle of Elevation and Depression 1
+
+Directions 512
+
+Some Properties Related to Circle 3
+
+Some Important Theorems 3
+
+Exercise 1 4
+
+Solved Problems 22D)
+
+Subjective BD)
+
+Objective ATL
+
+Chapter Practice Problems coll
+
+1 Subjective £211
+
+Objective dil
+
+Assignments 213)
+
+Part-A cok
+
+Part-B ald
+
+Answers to CPP and Assignment Problems 1:18
+’ $ of iad
+i ian
+I x
+
+
+--- PAGE 2 ---
+
+SIMPLE APPLICATIONS IN FINDING HEIGHTS AND DISTANCES
+1. Angle of Elevation and Depression
+Suppose O and P are points such that P is at a higher level P
+than O. Let OM be the horizontal through O, meeting the N a
+vertical through P in M. Then £MOP is the angle of elevation
+of P as seen from O. Draw PN parallel to MO, so that PN is
+the horizontal through P. Then angle ZNPO is the angle of
+depression of O as seen from P. Unless stated specifically, it
+Is assumed that the height of the observer is neglected,
+and that the angles of elevation are measured from the 0<: & ‘M
+ground.
+lllustration 1: Find the height of the chimney when itis found that on walking towards it 50 meters in the
+horizontal line through its base, the angle of elevation of its top changes from 30° to 60°.
+Solution: Let PQ be the chimney. A and B are the points 50 meters AQ
+apart. Let h be the height of the chimney. pd
+= BP = h cot60° = h3, AP = h cot30° = hy3 rs
+h(3-1 ra
+=50=AP-BP=hy3. N31) A
+NE) <n Ae
+= h =25V3 meters. FALAVA
+A 50m B P
+llustration 2: A man on the top of a cliff 100 meter high, observes the angles of depression of two
+points on the opposite sides of the cliff as 30° and 60° respectively. Find the distance
+between the two points.
+Solution: Let PQ be the cliff = PQ = 100 meters A
+AP = 100 cot30° = 100V3 7
+BP = 100 cot60° = 10013 ,
+1 Sop0° on 80,
+roa = 10502 [1 va. EN
+240 meters.
+3
+Illustration 3: A boat is being rowed away from a cliff 150 meter high. At the top of the cliff the angle of
+depression of the boat changes from 60° to 45° in 2 minutes. Find the speed of the boat.
+website : www.megacosmcognitions.com
+
+
+--- PAGE 3 ---
+
+Solution: Let PQ be the cliff => PQ = 150 meters. 10
+Let the two position of the boat be A and B AF
+AP = h cot60 = 15013 pd
+BP = 150 cotd5° = 150 oT
+—AB=150- 120 _150 43.4) age Aer
+EY CR
+P
+1.150
+The speed of the boat is — .—— (V3 - 1) x 60 metres per hour.
+2's
+4500
+= —— (V3 - 1) meters per hour.
+Ne (3-1) pe
+2. Directions
+Sometimes it is important to understand the position of 9° West of North _
+
+. | | orth - East
+various points with reference to the four directions in East, 0 *
+West, North and South. The direction of a line bisecting 45°
+the angle between East and North, the bearing of the Ld E
+points in this direction is said to be North-East.
+
+The direction 6° west of north means that it is inclined to S
+the North at an angle of 6°, measured from the North
+towards West. :
+It is important to draw the base diagram in all questions involving directions.
+Illustration 4: A man standing 30m South of a tower of height h walks 60m to the East and finds the
+
+angle of elevation of the top of the tower to 30°. Find h.
+Solution: Let the lines East — West and North - South meet at the foot of the tower T. Let the man
+
+be standing at P, 30 m South of the tower. The man walks 60m to Q parallel to the line
+
+WE. The angle of elevation of the tower of Q is 30°.
+
+Hence TQ = h cot30° = V3 h.
+
+From the APQT, QT? = PT? + PQ?
+
+= 3h? = (30)? + (60)? = 4500
+
+=h=10+15
+
+3-D View
+Base Diagram
+N
+T
+N w E
+w
+P Q
+s 3 N
+em ———————— a Vihar, New Delhi -110017, Email : enquiry@megacosmcognitions. com
+
+
+--- PAGE 4 ---
+
+3. .
+Some Properties Related to Circle
+(i) Angles in the same segment of a circle are equal Rr
+18. ZAPB = ZAQB = ZARB (i.e. fig. 1).
+A B
+Fig
+(ii) Angles in the alternate segments of a circle are equal
+(ie.fig2.1& fig.2.2). "
+A
+J
+_ 8 2
+= chs T
+Foz2 Fig.2.1
+(iii) If the line joining two points A and B subtends the
+greatest angle o at a point P then the circle thfough A, A
+Band P, will (i.e. fig. 3) touch the straight line XX’ at the
+point P. 8
+Vi
+X P x
+Fig
+(iv) The angle subtended by any chord at the centre is P
+twice the angle subtended by the same on any point on /\
+the circumference of the circle.
+La \
+N°
+Fig.4
+4. Some Important Theorems
+(i) Appolonius theorem:
+A
+If AD is the median of the triangle ABC,
+then ABZ + AC? = 2(AD? + BD?)
+B D c
+'Megacosm Cognitions Pvt. Ltd., 57, Kalu Saral, Sarvapriya Vihar, New Delhi 110017, Email : enquiry@megacosmeognitions.com
+website : www.megacosmcognifions.com
+
+
+--- PAGE 5 ---
+
+(ii) m-n theorem: A
+
+If in a triangle ABC, D is a point on the line BC such that Ay:
+
+BD:DC =m:n and ZADC = 6, ZBAD = a, B
+
+£DAC =p, then
+
+(a) (m + n)cotd = m cota - n cot 9
+
+(b) (m + n)cotd = n cotB — m cotC B m D r C
+
+Illustration 5: A train travelling on one of two intersecting railway lines, subtends at a certain station on
+
+the other line, an angle o. when the front of the carriage reaches the junction, ang an
+angle B when the end of the carriage reaches it. Prove that the two lines are inclined to
+each other at an angle 6 determined by 2cot 6 = cota. - cotp.
+
+. 1
+
+Solution: l1and Iz are two intersecting lines pr
+
+In AABC, !
+by m-n theorem, we have ] !
+(x +x) cot = x cota. - xcotp i
+= 2cot8 = cota - cotp Zo .
+
+1. At a point on a level plane a vertical tower subtends an angle o and a pole of height h meters at
+the top of the tower subtends an angle B. Show that the height of the tower is h sina. cosecB
+cos(a + B).
+
+2. From the bottom of a pole of height h, the angle of elevation of the top of the tower is o.. The pole
+subtends an angle pat the top of the tower. Prove that the height of the tower is h sina. cosecf
+cos(a — B).
+
+3. A statue 8 meters high standing on the top of a tower 64 meters high, on the bank of a river,
+subtends at a point A on the opposite bank, directly facing the tower, the same angle as
+subtended at the same point A by man of height 2 meters standing at the base of the tower.
+Prove that the breadth of the river is 16V6 meters.
+
+
+--- PAGE 6 ---
+
+SOLVED PROBLEMS
+Problem 1:
+. Jadder Tests against a wall at an angle « to the horizontal. Its foot is pulled away fro
+Wall through a distance a, so that it sides a distance b down the wall making an angle
+B with the horizontal. Show that a = b tan ue +B).
+Solution: .
+tion, Let Ibe the length of the ladder.
+3=0A-0B=1cos B- cos, b=0P-0Q=Isina-Isinp
+P
++B ab F
+] id
+- a_cosp-cosa 20" 7 Sn _1Q
+b sina. -sinf 26in% Pos 2B ya
+2 2 7
+=  azbtan*P, ABA io
+2 a B
+Problem 2: Four ships A, B, C and D are at sea in the following relative positions : B is on the straight
+line segment AC, B is due north of D and D is due west of C. The distance between B
+and D is 2 km. ZBDA = 40°, ZBCD = 25°. What is the distance between A and D. (Sin
+25° = 0.423).
+Solution: «DBC = 65°
+= /DAB = 25° Aes B
+=AD=DC
+=2cot 25° 40
+_ 00825 _2x906 _1.812 _ 4.28 km. Ans. 2km
+sn25” | 423 423 \
+L_ 25°
+D c
+Problem 3: PQs a vertical tower, P is the foot, Q the top of the tower. A, B, C are three points in the
+horizontal plane through P. The angle of elevation of Q from A, B, C are equal and each
+is equal to 6. The sides of the triangle ABC are a, b, ¢ and the area of the triangle ABC is
+A. Show that the height of the tower is (abc tan 6)/4A.
+_ 7 Q
+Solution: Let h be the height of the tower PQ. a Jo 7
+Stane-t- NB 2
+AP BP CP LY i
+=AP = BP = CP = h cot 6 and that P is the / I
+circumcentre of the triangle ABC. If R is the radius \ |
+of the circumcricle, then / pA |
+(Pe . |
+J abc _ abc p= 2bctan ASP c
+4R  4AP 4hcotd 4A
+B
+Ce ————
+‘Megacosm Cognitions Pvt. Ltd. 57, Kalu Saral, Sarvapriya Vihar, New Delhi -110017, Email: enquiry@megacosmcognitions.com
+‘website : www.megacosmcognifions.com
+
+
+--- PAGE 7 ---
+
+dy
+IET— coe EET
+Problem 4: A man observes a tower AB of height h from a point P on the ground. He Moves
+distance d towards the foot of the tower and finds that the angle of elevation is doubleg,
+He further moves a distance x in the same direction and finds that the angle of
+elevation is three times that of at the point P. Prove that 36h?=35d2,
+Solution: Let the angle of elevation at P be a. A
+/BQA=20 =» /PAQ =a and AQ =d.
+sin(180° -3u) ging, 7
+Apply sine rule to AAQR ———— = —
+id d 34/4
+5 3_ sina _ sina _ 1
+4 sin30 3ging asin 3-4sina
+=9-12sin a=4= sin’ a= /, > cos? a=" Iy, 3 AA
+d Q3dR B
+Now from AAQB sin2a = : = 2sinacosa = 5 ? +
+h? 57 Hh 2
+4sin? acos? a = — = 4,—.— = — = 36h? = 35d
+=> o o pr = PRT => N
+Problem 5: A tower AB leans towards west making an angle a with the vertical. The angular
+elevation of B, the topmost point of the tower, is B as observed from a point C due east of
+A at a distance d from A. If the angular elevation of B from a point due east of C at a
+distance 2d from C is y, then prove that 2 tana=3 cotp - cot y.
+Solution: Let L be the foot of the perpendicular from B on B
+the ground. Let LA =k and BL = h. Itis given that
+AC =d and if Dis due east of C, then DC = 2d. D
+From ABLA, we have 1 tan (90 - a)=cot a h
+" h _
+= h =k cot a. From ABLC, Pree tanp 90-0. A aN a 5
+L k A d Co
+=k+d=hcotp (1)
+From ABLD, =h_ =tany =k+3d=hcoty (2)
+k+3d
+Multiply (1) by 3 and subtract (2) from it.
+= 2k =h([3 cot p - cot y] = k cot a [3cot p - coty]
+= 2 tana = 3cot ff - cot y.
+—_—m—m
+Megacosm Cognitions Pvi. Lid., 57, Kalu Sarai, Sarvapriya Vihar, New Delhi -110017, Email : enquiry@megacosmcognifions.com
+website : www.megacosmcognifions.com
+
+
+--- PAGE 8 ---
+
+I — co EESTI
+ints A,
+Problem 1: The angle of elevation of the top of the tower observed from each of the fess ro Ee
+B, C onthe ground, forming a triangle is the same angle a. If R is the circum-ra
+triangle ABC, then the height of the tower is
+(A) R sina (B) R cosa
+(C)R cota (D)R tana
+Solution: Since the tower makes equal angles at the vertices a weg”
+of the triangle, therefore foot of the tower is at the RF ~ |
+circumcentre. From AOAP, we have tana = oP
+OA
+=OP=0Atana = OP =R tana
+Hence (D) is the correct answer
+\ c
+Problem 2: A flag staf of 5 m height stands on a buicing 25 m high. At an observer a a height of 30
+9 gl
+m, the flag staff and the building subtend equal angles. The distance of the observer from
+the top of the flag staff is
+5/3 3
+A == ®) 52
+(C) 512 (D) None of these
+Solution: We have tang = 5 and tan2o = 30 Ox = 1c
+Xx x | 15m
+! |
+: tana = 30 | B
+Scota i
+= tan2o = tana |
+=3-3tan’a =1 |
+5 3 i 30m 25m
+stones [Zon=sooa=5 2m
+Hence (B) is the correct answer |
+i A
+Problem 3: ABC is a triangular park with AB = AC = 100 metres. A clock tower is situated at the mid-
+point of BC. The angles of elevation of the top of the tower at A and B are cot 3.2 and
+cosec™" 2.6 respectively. The height of the tower is
+(A) 16m : (B)25m
+(C)50 m (D) None of these
+Solution: Let OP be the clock-tower standing at the mid- [+ p
+point O of side BC of AABC. Let o. = ZPAO = cot! A 0-5
+3.2and p= ZPBO = cosec™' 2.6. Then cota = 3.2
+and
+cosech = 2.6 he ; 5X)
+= cotp = Jcosec’p-1 ;
+p
+=J26p -1=24 \)
+In triangles PAO and PBO, we have A 100m B
+AO = hcota =3.2 hand BO = hcotp =2.4 h
+Megacosm Cognitions Pv. Lid., 57, Kalu Sara, Sarvapriya Vihar, New Delhi -110017, Email : enquiry@megacosmcognitions.com
+website : www.megacosmcognifions.com
+
+
+--- PAGE 9 ---
+
+I, iA 1140 [Meco Comins i
+\2
+In AABO, AB? = OA? +0B? = 1007 = (3:20)"+ (2:4h)
+= 100? = 16h? = h? = 625
+Hence (B) is the correct answer.
+of 2
+Problem 4: A flag-staf of 6 meters high placed on the top of @ lower pda fametes
+along the ground. Then the angle (in degrees) of elevation 0
+(A) 60° (B) 30
+(C) 45° (D) None of these
+Solution: Let OA and AB be the shadows of the tower OP 2
+and the flag staff PQ respectively on the ground. 6m
+Suppose the sun makes an angle 0 with the Pp
+ground. Let OA = x. In triangles OAP and OBQ,
+we have
+tang = h
+ng = —
+Xx
+h+6
+and tang = ———
+x+243 823m A xm 0
+h_ h+6
+= = *0
+X x+23
+h
+= 2/3 =6x x=
+3
+=tand= V3 =0=60°
+Hence (A) is the correct answer
+Problem 5: The angle of elevation of the top of an incomplete vertical pillar at a horizontal distance of
+100 m from its base is 45°. If the angle of elevation of the top of the complete pillar at the
+same point is to be 60°, then the height of the incomplete pillar is to be increased by
+(A)50v2m (B) 100m
+©) 100(V3 -1)m (D) 100 (V3 +1)m
+Solution: Let BC be the incomplete and BD be the complete Q
+pillar. In A* ABC and ABD, we have
+it
+tand5° = BC nd tan60° = Lt) a
+AB AB c
+= BC =100 mt and BD = 100 V3
+= BC+CD=100V3
+= 100 + x = 100v3
+=x=100 (V3-1) mt 6
+Hence (C) is the correct answer A
+J
+A 100mt ©
+Problem 6: The top of a hill observed from the top and bottom of a building of height h is at angles of
+elevation p and q respectively. The height of the hill is
+hcot hcoty
+(A) cota (B) —P__
+cotq - cotp cotp -cotq
+© _htanp (D) none of these
+tanp -tanq
+_—
+Megacosm Cognitions Pvt. Ltd., 57, Kalu Sarai, Servapriya Vihar, New Delhi -110017, Email : enquiy8megacosmeogniions.com
+‘website : www.megacosmcognifions.com
+
+
+--- PAGE 10 ---
+
+Solution: Let AD be the building of height h and BP be the
+hill. Then
+h
+tang= 1X og tanp= X
+y y Xx
+=tang = hex
+. xcotp
+= xcotp = (h +x) cotq
+ya c
+= x= heotg 0) h
+cotp -cotq A /f B
+Shex=_hoota hoop
+cotp - cotq cotp -cotq
+Hence (B) is the correct answer
+Problem 7: A circular ring of radius 5 cm is suspended horizontally from a point 12 cm vertically
+above its centre by 6 strings attached to its circumference at equal intervals. The cosine
+of the angle between two consecutive ring is
+1 12 .
+(A) ~ B) 12
+2 ® 35
+313
+Cc) 22
+©) 338 (D) none of these
+Solution: On the circumference, two consecutive points, A, 0
+B attached by the strings, subtend an angle 60° at
+the centre of the string.
+=AB=5cm 12em
+Also OA = OB = 13 cm. If § is the angle between
+OA and OB, then c
+2 2
+13)" +(13)" -25 5
+cosg = (3) +13 28 J + J CL 60° I" ;
+2(13) 338 Som a
+Hence (C) is the correct answer re
+oh
+Problem 8: AB's a vertical pole. The end Ais on the level ground. C is the middle point of AB, P is a
+point on the level ground. The portion BC subtends an angle f at P. If AP = nAB, then the
+tan is equal to
+n n
+A) —— 8) —
+@ 2n% +1 n? +1
+© (D) None of these
+n+1
+Solution: Let ZAPC = a. Then
+fng=AC_AC_ AB 1
+AP nAB MAB
+In APB i
+_AB_AB 1
+ten (+ B)= 45 = 48 Tn E A
+Now, B=a+p-a
+_—
+Megacosm Cognifions Pvi. Lid., 57, Kalu Saral, Sarvapriya Vihar, New Delhi -110017, Email : enquiry@megacosmcognitions.com
+websile : www.megacosmcognitions.com
+
+
+--- PAGE 11 ---
+
+IEC — coo Ey,
+1.1
+tan(u +f) tana _ no Jon n
+0 ana plane 1,11 gt 4
++ if 2 ye n In’ +
+Hence (A) is the correct answer
+Problem 9: A tree is broken by wind, its upper part touches the ground at a point 10 metres from the
+foot of the tree and makes an angle of 45° with the ground. The entire length of the tree is
+(A) 15m B) 20m
+(©) 10(1+42) m © aftr 2
+Solution: Let AQ (= PQ) be the broken part of the tree OP. [4
+It is given that OA = 10 mt and ZOAQ = 45°, In
+A0AQ, tan 45° = OQ a
+OA
+=0Q=10m
+Also, AQ? = OA? + 0Q?
+=AQ= 100100 =10y2
+Hence, OP = 0Q +PQ = 0Q +AQ
+=10+10V2= 10 (V2 + 1) mts /)
+A 10mt [¢]
+Hence (C) is the correct answer
+Problem 10: An aeroplane flying at a height of 300 metres above the ground passes vertically above
+another plane at an instant when the angles of elevation of the two planes from the same point on the
+ground are 60° and 45° respectively. The height of the lower plane from the ground (in metres) is
+100
+(A) 10043 B) —
+® %
+. © 50 (©) 1500(v3 +1)
+Solution: Let P and Q be the positions of two planes. It is P
+given that OP = 300 mts. From triangle OAP, we
+have OA = 0Q. From AAQ, we have
+oP 300
+tan60° = — 3-22
+an60 R= V3 0a Q
+300
+=0Q= “= =100V3 mts
+V3
+Hence (A) is the correct answer 607
+7
+A [¢)
+Megacosm Cognitions Pvt. Ltd. 57, Kalu Saral, Sarvaprlya Vihar, New Delhi -110017, Email: enquiry@megacosmcognitions.com
+website : ‘Www.megacosmcognitions.com
+
+
+--- PAGE 12 ---
+
+CHAPTER PRACTICE PROBLEMS
+1. is ati id-poi .
+ABC is a fanguar park ith AB = AC = 100m. A clock ower is stated a the mid-point of Lp
+fe © angle of elevation of the top of the tower at A and B are cot! 3.2 and cosec™ &
+spectively. Find the height of the tower.
+
+2. . .
+he ks of elevation of the top of the tower observed from each of the three point A, B, C on the
+H und forming a triangle is the same angle a. If R is the circumradius of the triangle ABC, then
+ind the height of the tower i
+
+3. Aman finds that at a point due South of a vertical tower the angle of elevation of the tower is 7/3.
+re then walks due West 10v8 m on the horizontal plane and finds the angle of elevation of the
+ower to be n/6. Find the original distance of the man from the tower.
+
+4 A two metre long object is fired vertically upwards from the mid point of two locations A and B, gm
+apart. The speed of the object after t second is given by * ~2t+1m/s. Leta and p be the
+angle subtended by the object at A and B, respectively after one and two seconds. Find the value
+of cos(a - B)
+
+5. ABC is a triangular part with AB = AC = 100m. A television tower stands at the mid point of BC.
+The angles of elevation of the top of the tower at A, B, C are 45°, 60°, 60° respectively. Find the
+height of the tower
+
+6. The angle of elevation of the top of a hill from a point is a. After walking b metres towards the top
+up a slope inclined at an angle B to the horizon, the angle of elevation of the top becomes y.
+
+Then, the height of the hill is
+bsinasin(y - ina sin(y -
+® i o sin(y -B) ®) bsinasin(y a)
+sin(y - a) sin(y -B)
+bsin(y - in(y -
+(©) 22rtr-B) 0) S-B_
+sin(y - a) bsinasin(y - a)
+
+7. The base of a cliff is circular. From the extremites of a diameter of the base, angles of elevation
+of the top of the cliff are 30° and 60°. If the height of the cliff be 500m, then the diameter of the
+base of the cliff is
+
+2000 1000
+(A) —=m (B) —=m
+'& EE"
+2000
+©) 2m (D) 1000y3m
+V2
+
+8. A round balloon of radius r subtends an angle o at the eye of the observer, while the angle of
+elevation of its center is B. The height of the centre of balloon is
+(A) rcos eco nb (B) rsnacosect
+
+La [
+©) rein cos ech (D) rcos ec sinp
+_
+‘Megacosm Cognition Pvi. Lid., 57, Kalu Saral, Sarvapriya Vihar, New Delhi -110017, Email : enquiry@megacosmcognitions.com
+‘website : www.megacosmcognifions.com
+
+
+--- PAGE 13 ---
+
+B
+
+(Tore 0 BETTY
+
+9. A house of height 100m subtends a right angle at the window of an opposite house. If the height
+of the window be 64m, then the distance between the two houses is
+(A) 48m (B) 36m
+(C) 54m (D) 72m
+
+10. A tower subtends an angle at a point A in the plane of its base and the angle of depression of
+the foot of the tower at a point b feet just above Ais B. Then, the height of the tower is
+(A) btan a cot (B) beota tan p
+(C) b cot a cot p (D) btan a tan p
+
+11. ABCD is a rectangular field. A vertical lamp post of height 12m stands at the corner A. If the
+angle of elevation of its top from B is 60° and from C is 45°, then the area of the field is
+(A) 48Y2sqm (B) 48\3sqm
+(C)48sq m (D) 12¥2sqm
+
+12. A tower of x metres high, has a flagstaff at its top. The tower and the flagstaff subtend equal
+angles at a point distant y metres from the foot of the tower. Then the length of the flagstaff (in
+metres), is
+
+a) J -¥) xy? +X°)
+(wave B® 2
+(x +y%) (v*-x%)
+2 2 2 2
+X(x* + x2 -
+(© Wy) 0 =x)
+(x*-y%) (x“+y%)
+
+13. An aeroplane flying with uniform speed horizontally one kilometre above the ground is observed
+at an elevation of 60°. After 10s, if the elevation is observed to be 30°, then the speed of the
+plane (in km/h) is
+
+240
+A) “= B) 2003
+(A) Na (8)
+120
+(C) 24043 p) 120
+[>] Ni
+
+14. A tower subtends angles a, 2a and 3a respectively at points A, B and C, all lying on a horizontal
+line through the foot of the tower, then oe is equal to
+(a) Sin3a (8) 1+ 200820
+
+sin2a
+()2cos 2a (0) Sn
+sina
+
+15. The angle of elevation of the cloud at a point 2500 m high from the lake is 15° and the angle of
+
+depression of its reflection to the lake is 45°. Then the height of cloud from the foot of lake is
+(A) 250043m (B) 2500m
+(C) 500V3m (D) none of these
+—_— ee
+‘Megacosm Cognitions Pvi. Ltd., 57, Kalu Saral, Sarvapriya Vihar, New Delhi 110017, Emall : enquiry@megacosmcognitions.com
+‘website : www.megacosmcognitions.com
+
+
+--- PAGE 14 ---
+
+ASSIGNMENTS
+PART-A
+
+1. The angle of elevation of a stationary cloud from a point 2500 cm above a lake is 15° and the
+angle of depression of its reflection in the lake is 45°. What is height of the cloud above the lake
+level.
+
+2. A person standing on the bank of a river observers that the angle subtended by a tree on the
+opposite bank is 60°. When he retires 40 feet from the bank, he finds the angle to be 30°. Find
+the height of the tree and the breadth of the river.
+
+3. Aman on a cliff observes a boat at an angle of depression 30° which is sailing towards the shore
+to the point immediately beneath him. Three minutes later the angle of depression of the boat is
+found to be 60°. Assuming that the boat sails at a uniform speed, determine how much more time
+it will take to reach the shore.
+
+4. The angular depressions of the top and the foot of a chimney as seen from the top of a second
+chimney which is 150 meters high and standing on the same level as the first are 6 and ¢
+respectively. Find the distance between their tops, when tanf = £ np = s
+
+5. A vertical tower 50ft high stands on a sloping ground. The foot of the tower is at the same level as
+the middle point of a vertical flag pole. From the top of the tower the angle of depression of the
+top and the bottom of the pole are 15° and 45°, respectively. Find the length of the pole.
+
+6. An observer at an anti - air craft post A identifies an enemy aircraft due East of his post at an
+angle of elevation of 60°. At the same instant a detection post D 4kms south of A reports the
+aircraft at an elevation of 30°. Calculate the altitude at which the plane is flying.
+
+7. The angle of elevation of the top of a tower at a point A on the ground is 30°. On walking 20
+meters toward the tower, the angle of elevation is 60°. Find the height of the tower and its
+distance from A.
+
+8. Aman observes when he has climbed up 1/3rd of the length of a ladder placed against a wall, the
+angular depression of an object on the floor is « and that after he has climbed the ladder fully, the
+depression is B. Find the inclination of the ladder to the floor.
+
+9. An aeroplane flying horizontally 1km above the ground is observed at an elevation of 60°. If after
+10 seconds the elevation is observed to be 30°, find the uniform speed per hour of the aeroplane.
+
+10. A man standing south of a lamp post observes his shadow on the horizontal plane to be 24 feet.
+On walking Eastwards 300 feet, he finds his shadow as 30 feet. If his height is 6 feet, obtain the
+height of the lamp above the plane.
+
+11. A balloon moving in a straight line passes vertically above two points A and B on a horizontal
+plane 1000ft apart. When above A it has an altitude of 60° as seen from B, when above B, 30° as
+seen from A. Find the distance from A at which it wil strike the plane.
+
+Megacosm Cognitions Pv1. Ld. 57, Kalu Saral, Sarvapriya Vihar, New Delhi 110017, Emall : enquiry@megacosmcognitions.com
+website : www.megacosmcognlifions.com
+
+
+--- PAGE 15 ---
+
+yw
+PART-B
+Multiple Choice Questions (Single Option Correct)
+
+1 From a light-house L two ships P and Q are observed in directions south-west and 5° east of
+south respectively. At the same time Q is observed from point P in south-east direction. If LP = 4
+km, the distance between the ships is
+(A) 4km (B) 43 km
+(C) 5J3km (D) None of these
+
+2 A harbor lies in a direction 60° south of west from a fort, and at a distance 30 km from it, a ship
+sets out from the harbor at noon and sails due east at 10 km an hour. The ship will be 70 km from
+the fort at
+(A) 7PM (B) 8P.M.
+
+(C) 5PM. (D) 10P.M.
+3 From the top of a lighthouse 60 meters high with its base at the sea level, the angle of depression
+of a boat is 15°. The distance of the boat from the foot of the lighthouse is
+(A) Bot - 60 meters (B) $41 - 60 meters
+V3 +1 3-1
+NCES
+
+(C) —=— meters D) None of these
+Ba 0)
+
+4. An isosceles triangle of wood is placed in a vertical plane, vertex upwards, and faces the sun. If
+2a be the base of the triangle, h its height and 30° the altitude of sun, then the tangent of the
+angle at the apex of the shadow is
+® 2ahV3 ® 2ahV3
+
+h? - 3a? 3h? -a?
+2hV3
+© 3 0) —2—
+V3h? +a? 3h? +a?
+
+5. A flagstaff of length | is fixed on the top of a tower of height h. The angles of elevation of the top
+and bottom of the flagstaff at a point on the ground are 60° and 30° respectively. Then
+(A) 1=2h (B)2=h
+
+(©) 1=3h (D)3I=h
+6. A pole of height h stands at one corner of a park of the shape of an equilateral triangle. If a is the
+angle which the pole subtends at the mid-point of the opposite side, the length of each side of the
+park is
+V3 2
+(A) ——hcota (B) —=hcota
+2 V3
+3
+(C) Bane (D) 2 htana
+2 V3
+7 fo pote 2 be long Slade on the top of a tower 225 meters high. If 0 is the angle subtended
+y the pole at a point on the ground which is at a distance 2.25 k.m. from the foot of the tower,
+then tan is equal to
+1 1
+A) — —
+* 5% ® 5;
+1 1
+C) — is
+© 1 (D) 5
+Megacosm Cognitions Pt. Ltd., 57, Kalu Ee nee Vi hei DehL 000 in: enquiry8megacosmcognitions.com
+
+
+--- PAGE 16 ---
+
+a MAI
+5 eae E3051 Cogitons Pt Lid |
+Side of a
+the cenirg of it Sure supe
+of nds an o
+(A) a2 = 32 the square, fais the el 2.80 a the top of a tower h meters high standing at
+(C) 3a2 = 2h? 9th of each side of the square, then
+. (B) 3a = 2
+i A pe (D) 2a? = 3py2
+on wag, landing ON the groyng obs;
+9 a distance ainga certain ges the angle of elevation of the top of a tower to be 30°.
+before, He then Valls 3 4 s rection, he fings the elevation of the top to be same as
+a distance © i .
+elevation of the top 1, ° 32 alright angles to pig former direction, and finds that the
+as d 3
+® E oubled, The height of the tower is
+6
+(C) Fs
+0. The an,
+s 2Ngle of eleyatig,
+30 and 45°, fespecten gists of a tower from the top and bottom of 5 building of height a are
+tower ig + he tower ang the building stand at the same level, The height of the
+a(3+3
+w 2648)
+2 ©) a(V3+1)
+(©) ay3 a
+0) —
+V3-1
+1. If a flag st, A
+its Toot the pao he bd dll the points A, B, C and D on the horizontal plane through
+(A) Square or
+: . (B) Rectangle
+(C) Cyclic quadrilateral (D) None of these
+12. a pole of 50 meter high stands on a building 250 m high. To an observer at a height of 300 m, the
+id ding and the pole subtend equal angles. The distance of the observer from the top of the pole
+(A) 25/6 m (B) 50m
+(C) 253m (0) 25m
+13. A tower subtends an angle of 30° at a point on the same level as its root, and at a second point h
+m above the first, the depression of the foot of the tower is 60°. Then the height of the tower is
+(A) hm (B) 3hm
+(C) 3hm () (W3)m
+14. A person walking along a straight road observes that at two points 1 km apart, the angle of
+elevation of a pole in front of him are 30° and 75°. The height of the pole is
+I) 250(¥3 +m (®) 150(V3 -1)m
+(©) 225(12 -1)m (0) 225(+2 + 1)m
+: i i . He then walks
+3 man standing on a level plain observer the elevation of the top of a pole tobe a. ;
+* ee Sie to double the height of the pole and finds that the elevation is now 2a. Then a is
+equal to ®) 2
+(A) 6 (D) 712
+(C) n/3
+. mall enquiry@megacosmcognitions com
+
+
+--- PAGE 17 ---
+
+J
+16. The height of a house subtends a right angle at the opposite street light. The angle of elevation of
+light from the base of the house is 60°. If the width of the road be 6 meters, then the height of the
+house is
+(A) 83m (8) 8m
+(€)6m (0) 63m
+17. The angle of elevation of the top of a tower at a point A due south of the tower is a and at B due
+east of the tower is B. If AB = d, then height of the tower is
+a a2. d
+(A) dycot? a + cot? p B) ——=
+Jot? a+ cot? p
+(C) d cota (D) None of these
+18. The angle of elevation of a tower PQ at a point A due north of itis 30° and at another point B due
+east of Ais 18°. If AB = a. Then the height of the tower is
+(A) a(2+5) ®) (2-5)
+©) —— (D) None of these
+V2+25
+19. An electric pole stands at the vertex A of the equilateral triangular field and subtends an angle
+60° at either of the remaining vertices. If the altitude of the field is 50 meters, the height of the
+pole is
+(A) 100m (B) 100V3 m
+100
+C) —=m D) none of these
+Na (0)
+
+20. A pole on the ground leans 60° to the vertical. At a point a meters away from the base of the pole
+on the ground, the two halves of the pole subtend the same angle. If the pole and the point are in
+the same vertical plane, the length of the pole is
+(A) 3a (8) V3a
+©) a8 (D) none of these
+
+21. A 10 meters high tower is standing at the centre of an equilateral triangle and each side of the
+triangle subtends an angle of 60° at the top of the tower. Then the length of each side of the
+triangle is
+(A) 5m (8) 5/6m
+(©) 46 (D) 4m
+
+22." A tower subtends an angle a at a point A in the plane of its base and the angle of depression of
+
+the foot of the tower at a point b ft just above A is B. Then the height of the tower is
+
+(A) b tana tanp ®) bE
+cota
+
+tanp
+C) b—-sina D;
+©) Gna (D) b cota cotp
+‘Megacosm Cognitions Pv. Ltd, 57, Kalu Sara. Seapiva vo! fowpen That v7, El: enquiry@megacosmcognitions.com
+
+
+--- PAGE 18 ---
+
+1ITJEE-1920
+23. A tower .
+ra bigs angle , 26, 39 at three points A, B and C respectively lying on a horizontal line
+00t of the tower. Then AB/BC is equal to
+(A) 3-4sin% ® sin30
+© sin2o sin 26
+Sing ) I) sin 2
+cos
+24. A spheri n
+of pi indy) of radius 50 cm. subtends an angle of 60° at a man’s eye when the elevation
+- Then the height of the centre of the balloon is
+(A) 50y3 cm (8) 50
+(©) 40vZem © Sopa
+25. PQis a i .
+the bor Loge height a, AB is a tower of height h at a distance x from the post, and o and p are
+PAT rd levation of B, at P and Q respectively such that a > B. Then
+(C) h = xcos2a jo \ : orig
+—_—
+Megacosm Cognitions Pvi. Lid., 57, Kalu Sarai, Sarvapriya Vihar, New Delhi -110017, Email : enquiry@megacosmcognitions.com
+website : www.megacosmcognitions.com
+
+
+--- PAGE 19 ---
+
+= -
+Preein EERUSIUSE icon i 1
+1. 25m 2. ae a
+3 50m 4. 5
+5. 50\3m
+6 A 7A 8 D 9 A
+10. A 1. A 12. B 13. [4
+14. B 15. A
+PART-A
+1. H = 2500V3cm 2. h=20V3 ft, b=20ft .
+3. 1.5 minutes 4. 100m
+5. Li 6. Bkm
+7. 10V3m, 30m 8. cot! [2enboene]
+9. 2403 km/hour 10. 106ft
+1". 1500 ft
+PART-B
+Multiple Choice Questions (Single Option Correct)
+1. B 2. B 3. B 4. B
+5. A 6. B 7. B 8. [4
+9. A 10. A 11. [4 12. A
+13. D 4. A 15. D 16. A
+17. B 18. [4 19. A 20. B
+21. B 22. B 23. A 24. D
+25. A
+
+
+--- PAGE 20 ---
+
+’ — Lu Mi0Acoy)
+fs — " inscribed and the ci =
+3 For a regular polygon, let r and R be the radii of the inscribed ai Ircumscribeq Circe
+false statement among the following is h 20
+anf is a regular pol r I]
+(1) There is a regular polygon wilh = = 5 (2) There is a regular polygon with R= B
+3
+p
+or 3 an ©
+(3) There is a regular polygon with rR: 5 (4) There is a regular polygon with & :
+4. In a triangle ABC, let _C =2 If ris the inradius and R is the circumradius of the the ang, p
+ABC, then 2 (r + R) equals
+(1) b+c 2) a+b
+(3) a+b+c (4) cta [200
+n
+5 The sides of a triangle are sin, cosa and 1+ sina cosa for some 0 < a < 5 Then the greg,
+angle of the triangle is
+(1) 60° (2) 90
+(3) 120° (4) 150° (2004)
+6. If in a triangle ABC a cos’ §) +c cos’ 3) = 2 then the sides a, b and ¢
+(1) arein AP. (2) areinG.P.
+(3) areinH.P. (4) satisfya+b=c [2003)
+7. In a triangle ABC, medians AD and BE are drawn. If AD = 4, 2 DAB = : and Z ABE = 3 . then
+the area of the A ABC is
+8 16
+1) = 2) =
+1) 3 @ 3
+32 64
+3) — 4) ==
+3) 33 4) 3 [2003]
+8. In a triangle with sides a, b, c, ry > r; > r; (which are the ex-radii), then
+(1) a>b>c ( a<b<c
+(3) a>bandb<c (4) a<bandb>c [2002]
+Height & Distance
+MCQ-Single Correct
+1. PQR is a triangular park with PQ = PR = 200m. A T.V. tower stands at the mid-point of QR. If the
+angles of elevation of the top of the tower at P, Q and R are respectively 45°, 30° and 30°, then
+the height of the tower (in m) is :
+(1) 5042 2 100
+(3) 50 4) 10043 [2018]
+2. Let a vertical tower AB have its end A on the level ground. Let C be the mid-point of AB and P be
+a point on the ground such that AP = 2AB. If BPC = § , then tan § is equal to:
+6 1
+1) = 2) —
+1) 7 [v3] n i
+2 4 1
+3) < 4) 2 2017]
+©) 3 4) 3 [
+EE ———————————————————————————————————————————————————
+ARCHIVE-1920-JEE(Main)-MATHEMATICS
+
+
+--- PAGE 21 ---
+
+MEGACOM
+[5s - —_—
+is walking towards a vertical pil ’
+A el oh pl observes Mik I pillar in a straight path, at a uniform speed. At a certain point
+3A bot iE from A in the sai = angle of elevation of the top of the pillar is 30°. After walking
+for 1 1op of the pillar is 60° his rection, at a point B, he observes that the angle of elevation
+of the top - Then the time taken (in minutes) by him, from B to reach the pillar,
+is:
+[0] 1 @ 20
+[©] “) 6 [2016]
+|f the angles of elevation of the top of a tower from three coli i line
+n : fool Eh 4 ollinear points A, B and C, on a in
+3 esd i tof the tower, are 30°, 45° and 60° respectively, then the ratio, AB : BC, is °
+Mm 3 @ 1:43
+b ® 2:3 @ Va: [2015]
+i A bird is sitting on the top of a vertical pole 20 m high and its elevation from a poi
+5 o i : 5 point O on the
+5 ground is 45°. It fies off horizontally straight away from the point O. After one second, the
+: elevation of the bird from O is reduced to 30°. Then the speed (in m/s) of the bird is
+m 402-1) @ 403-12)
+@ 2042 @ 20-1) 12014]
+6 AB is a vertical pole with B at the ground level and A at the top. A man finds that the angle of
+elevation of the point A from a certain point C on the ground is 60°. He moves away from the pole
+along the line BC to a point D such that CD = 7 m. From D the angle of elevation of the point A is
+45°. Then the height of the pole is
+31 "3
+{) ———m (ALE
+] nm = Ne] @ 2 (V3+1)m
+3 31
+® 22(BE-Im w She 2008
+2 2 V3 +1 [ 1
+= 7. A tower stands at the centre of a circular park. A and B are two points on the boundary of the
+park such that AB (= a) subtends an angle of 60° at the foot of the tower, and the angle of
+& elevation of the top of the tower from A or Bis 30°. The height of the tower is
+& 2a
+a 1) = 2) 2a3
+BR
+CI @ als [2007]
+Bt V3
+Es A person standing on the bank of a river observes that the angle of elevation of the top of a tree
+2 on the opposite bank of the river is 60° and when he retires 40 meter away from the tree the
+3 angle of elevation becomes 30° . The breadth of the river is
+? (1) 20m @ 30m
+(3) 40m 4) 60m [2004]
+S. The upper Sn portion of a vertical pole subtends an angle tan” : at point in the horizontal
+plane through its foot and at a distance 40 m from the foot. A possible height of the vertical pole is
+(1) 20m (2) 40m
+(3) 60m 4) 8m [2003]
+———— ee ————
+
+
+--- PAGE 22 ---
+
+- = O
+00 EE ———
+Ansortion Reason I
+od 22 Se
+Logarithmic & Exponential Series
+MCQ Single Correct
+1 2 2 4 3 4 42
+6a
+TRIGONOMETRY
+Trigonometric Ratios and Identities
+MCQ Single Correct
+3 2 4 3.4 41
+5 4 6. 1 7.3 8. 2
+9 1 10. 4 1.2
+Trigonometric Equation
+MCQ Single Correct
+ro2 2.2 31 4. 3
+5 2
+Inverse Trigonometric Function
+MCQ Single Correct
+1. 4 2 4 31 4. 2
+5 3 6. 4 7.01
+Solution of the Triangles
+MCQ- Single Correct
+1. 4 2. 4 3 2 4. 2
+5 3 6. 1 7.3 8 1
+Height & Distance
+MCQ-Single Correct
+1. 2 2 3 3.3 4. 4
+5. 4 6. 2 7.3 8 1
+9. 2
+VECTORS & 3D GEOMETRY
+Vectors
+MCQ-Single Correct
+1. 2 2. 2 3 3 4. 4
+5 4 6. 2 7.1 8. 4
+9 2 10. 1 1M. 4 ) 12. 4
+13. 1 14. 4 15. 4 16. 4
+17. 4 18. 4 19. 2 20. 1
+21. 1 22. 2 23.3 24. 1
+25 2 26. 4 27. 4 28.1
+20.3 3.3 91.4 I
+ARCHIVE-1920-JEE(Main)-MATHEMATICS
+=
+
+
+--- PAGE 23 ---
+
+MEGACOSH!
+(fas ee n
+7 A the figure AD and BE are medians. A
+. pis centroid of the triangle A
+w Roh
+_ AP=2/3AD=8/3 fos
+h 60° = 8/3 0° E
+oan gp 90°
+8 LZ
+. p= —=
+. BPTI 5 | .
+! 1 8 16
+a of AABD = =x ADXBP = ox dx —==—=
+Are: 2 3 56°30
+16 32
+: ea of AABC =2x —==—=.
+no A 33 33
+1
+’ NT SS
+rn>n 3 ea Eb s-¢
+_g-a<s-b<s-c=-a<-b<-¢
+—a>b>C
+Height & Distance
+vca-single Correct
+1 2
+LetST=h (height of tower) Pp s
+pT=sT=h NE
+T 00 m
+ST _tan30° 200
+QT .
+ah eS
+Now PT + QT? = 200° Qs —F
+4h? = 200°
+h=100
+z ’ 1 B
+9+B) ==
+tan(0 +B) 0
+and tan © = i x
+4
+1 c
+—+tanp 4
+=> 4 3 .
+1- land 2
+—9tanp=2 P ™ A
+2
+t = — “
+= tan} °
+
+
+--- PAGE 24 ---
+
+4 TN
+&) Heoncos,
+M0 — &
+3.3 p
+tan60e=" = n= 3x
+Xx
+tan30°= = fh=x+y h
+X+y
+3x=x+y
+>2x=y A
+Time taken from A to B is 10 min 0 B
+So time taken from B to pillar is 5 min ee N—— A
+4. 4 c
+AB= 3x-x 7
+Xx
+BC=x- —
+V3
+AB_VBx-x_\3 »
+BC x 1°
+V3
+ped A A
+A B xc x 0
+Ta V3
+5. 4
+20 1 Pea
+tan30°= —— = — ad '
+20+x 3 20m=hi,
+20+x=2043 a
+x=20(3-1) Pa i
+= Speed is 20(v/3 -1) m/sec. 0 2m ha
+6. 2
+BD=AB=7+x A
+Also AB = x tan 60° = xy/3
+xB =T+x
+x=
+V3-1
+_7V3 a A
+AB= 5 (B+) : 5 = < - !
+7. 3
+AOAB is equilateral
++ OA=OB=AB=a
+Now tan30° = a <)
+a
+a
+Sh=—,
+” A
+pe"
+p—————————————— EER
+a
+
+
+--- PAGE 25 ---
+
+wear ot |
+(1) 2 211
+ga
+1an30° = 30+b h
+_ Jan=40+b NC)!
+" _ a A
+se =hD =h fb 2) 20 b
+b= 20m
+2
+9 _X
+sin@+9 = 30
+Cx /4
+sina= 130 ”
+_ x=40. ’
+Hence, (2) isthe correct answer 4
+x/
+AL
+40
+sem “VECTORS & 3D GEOMETRY
+vectors
+vca-single Correct
+1.2 5
+G=24a+hob
+G.a=A@-A+RAD
+0=24(4 +941) +7, (3-1)
+hy = Thy
+§.B=28-D+r0-D
+242 14(2) + TM)@)
+24 = 20 2M =-2
+22=14
+i=-2(2i +3j-K)+14(j+K)= _47+8j+16K
+if = 336
+2. 2
+6 +|a[ -2a-c=9
+= [¢f -28-¢=0
+and |éxp|-[¢[-sin30°=3
+1
+= 3x[¢|x = =
+“lex 5=3
+= 9-2
+nL E.6=2
