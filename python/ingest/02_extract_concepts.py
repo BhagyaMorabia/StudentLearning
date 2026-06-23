@@ -121,7 +121,7 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
         sys.exit(1)
 
     genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel("gemini-2.0-flash-lite")
+    model = genai.GenerativeModel("gemini-flash-latest")
 
     chunks = chunk_text(markdown_text)
     all_concepts = []
