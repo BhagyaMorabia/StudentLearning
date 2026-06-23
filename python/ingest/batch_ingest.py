@@ -58,8 +58,11 @@ def get_topic_id(subject, class_year, chapter_num):
     if result.returncode != 0:
         print(f"Error getting topic ID:\n{result.stderr}")
         return None
+    if not result.stdout:
+        print(f"Error: stdout was empty or None.")
+        return None
     # the script prints the UUID as the last line
-    lines = result.stdout.strip().split('\n')
+    lines = str(result.stdout).strip().split('\n')
     return lines[-1].strip()
 
 def run_pipeline(pdf_path: Path, topic_id: str) -> bool:
@@ -69,7 +72,7 @@ def run_pipeline(pdf_path: Path, topic_id: str) -> bool:
     print(f"{'='*60}")
 
     steps = [
-        ([sys.executable, "01_pdf_to_markdown.py", "--pdf", str(pdf_path)], "PDF → Markdown"),
+        ([sys.executable, "01_pdf_to_markdown.py", "--pdf", str(pdf_path)], "PDF -> Markdown"),
         ([sys.executable, "02_extract_concepts.py", "--file", f"{pdf_name}.md"], "Extract concepts"),
         ([sys.executable, "03_validate_math.py"], "Validate math"),
         ([sys.executable, "04_generate_embeddings.py"], "Generate embeddings"),

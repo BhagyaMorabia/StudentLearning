@@ -37,7 +37,7 @@ def convert_pdf(pdf_path: Path) -> Path:
         print(f"  ✓ Already converted: {output_path.name}")
         return output_path
 
-    print(f"  Converting: {pdf_path.name} → {output_path.name}")
+    print(f"  Converting: {pdf_path.name} -> {output_path.name}")
 
     try:
         from marker.convert import convert_single_pdf
