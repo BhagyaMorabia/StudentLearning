@@ -228,5 +228,170 @@
     "source": "lech102-min",
     "chunk": 10,
     "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 1,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 2,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 3,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 4,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 5,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 6,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 7,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 8,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 9,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech105-min",
+    "chunk": 10,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech106-min",
+    "chunk": 1,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech106-min",
+    "chunk": 2,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech106-min",
+    "chunk": 3,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech106-min",
+    "chunk": 4,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech106-min",
+    "chunk": 5,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech106-min",
+    "chunk": 6,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech106-min",
+    "chunk": 7,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 1,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 2,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 3,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 4,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 5,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 6,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 7,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 8,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 9,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 10,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 11,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 12,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 13,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lech107-min",
+    "chunk": 14,
+    "error": "Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}"
+  },
+  {
+    "source": "lemh101-min",
+    "chunk": 5,
+    "error": "Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.1-8b-instant` in organization `org_01kp3d6v6ffkbv7xypwcfcrawg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6083, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  },
+  {
+    "source": "lemh103-min",
+    "chunk": 6,
+    "error": "Error code: 400 - {'error': {'message': \"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': '{\\n  \"concepts\": [\\n      {\\n         \"name\": \"Symmetric Matrix\",\\n         \"description\": \"A square matrix that is equal to its transpose, i.e., A = A^T. Example: A = [[1, 2], [2, 1]] is a symmetric matrix.\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$A = A^T$$\",\\n               \"sympy_expr\": \"A = A.T\",\\n               \"description\": \"Definition of a symmetric matrix\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing symmetric matrix with skew-symmetric matrix\"\\n         ],\\n         \"prerequisites\": [\"Transpose of a Matrix\"],\\n         \"jee_frequency\": 2,\\n         \"estimated_minutes\": 10\\n      },\\n      {\\n         \"name\": \"Skew-Symmetric Matrix\",\\n         \"description\": \"A square matrix whose transpose is equal to its negative, i.e., A = -A^T. Example: A = [[0, 2], [-2, 0]] is a skew-symmetric matrix.\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$A = -A^T$$\",\\n               \"sympy_expr\": \"A = -A.T\",\\n               \"description\": \"Definition of a skew-symmetric matrix\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing skew-symmetric matrix with symmetric matrix\"\\n         ],\\n         \"prerequisites\": [\"Transpose of a Matrix\"],\\n         \"jee_frequency\": 2,\\n         \"estimated_minutes\": 10\\n      },\\n      {\\n         \"name\": \"Inverse of a Matrix\",\\n         \"description\": \"A matrix that, when multiplied by the original matrix, gives the identity matrix. Example: If A = [[1, 2], [3, 4]], then A^-1 = [[-2, 1], [1.5, -0.5]].\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$AA^{-1} = I$$\",\\n               \"sympy_expr\": \"A * A_inv = I\",\\n               \"description\": \"Definition of the inverse of a matrix\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing inverse matrix with transpose matrix\"\\n         ],\\n         \"prerequisites\": [\"Transpose of a Matrix\", \"Identity Matrix\"],\\n         \"jee_frequency\": 3,\\n         \"estimated_minutes\": 15\\n      },\\n      {\\n         \"name\": \"Transpose of a Matrix\",\\n         \"description\": \"A matrix obtained by interchanging the rows and columns of the original matrix. Example: If A = [[1, 2], [3, 4]], then A^T = [[1, 3], [2, 4]].\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$A^T = \\\\begin{bmatrix} a_{11} & a_{21} \\\\\\\\ a_{12} & a_{22} end{bmatrix}$$\",\\n               \"sympy_expr\": \"A.T = Matrix([[A[0, 0], A[1, 0]], [A[0, 1], A[1, 1]]])\",\\n               \"description\": \"Definition of the transpose of a matrix\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing transpose matrix with inverse matrix\"\\n         ],\\n         \"prerequisites\": [],\\n         \"jee_frequency\": 2,\\n         \"estimated_minutes\": 10\\n      },\\n      {\\n         \"name\": \"Identity Matrix\",\\n         \"description\": \"A square matrix with all elements equal to zero except for the main diagonal, which has all elements equal to one. Example: I = [[1, 0], [0, 1]].\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$I = \\\\begin{bmatrix} 1 & 0 \\\\\\\\ 0 & 1 end{bmatrix}$$\",\\n               \"sympy_expr\": \"I = Matrix([[1, 0], [0, 1]])\",\\n               \"description\": \"Definition of the identity matrix\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing identity matrix with zero matrix\"\\n         ],\\n         \"prerequisites\": [],\\n         \"jee_frequency\": 2,\\n         \"estimated_minutes\": 10\\n      },\\n      {\\n         \"name\": \"Zero Matrix\",\\n         \"description\": \"A matrix with all elements equal to zero. Example: O = [[0, 0], [0, 0]].\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$O = \\\\begin{bmatrix} 0 & 0 \\\\\\\\ 0 & 0 end{bmatrix}$$\",\\n               \"sympy_expr\": \"O = Matrix([[0, 0], [0, 0]])\",\\n               \"description\": \"Definition of the zero matrix\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing zero matrix with identity matrix\"\\n         ],\\n         \"prerequisites\": [],\\n         \"jee_frequency\": 2,\\n         \"estimated_minutes\": 10\\n      },\\n      {\\n         \"name\": \"Matrix Addition\",\\n         \"description\": \"The process of adding two or more matrices by adding corresponding elements. Example: If A = [[1, 2], [3, 4]] and B = [[5, 6], [7, 8]], then A + B = [[6, 8], [10, 12]].\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$A + B = \\\\begin{bmatrix} a_{11} + b_{11} & a_{12} + b_{12} \\\\\\\\ a_{21} + b_{21} & a_{22} + b_{22} end{bmatrix}$$\",\\n               \"sympy_expr\": \"A + B = Matrix([[A[0, 0] + B[0, 0], A[0, 1] + B[0, 1]], [A[1, 0] + B[1, 0], A[1, 1] + B[1, 1]]])\",\\n               \"description\": \"Definition of matrix addition\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing matrix addition with matrix multiplication\"\\n         ],\\n         \"prerequisites\": [\"Matrix Multiplication\"],\\n         \"jee_frequency\": 2,\\n         \"estimated_minutes\": 10\\n      },\\n      {\\n         \"name\": \"Matrix Multiplication\",\\n         \"description\": \"The process of multiplying two matrices by multiplying corresponding elements and summing the products. Example: If A = [[1, 2], [3, 4]] and B = [[5, 6], [7, 8]], then AB = [[19, 22], [43, 50]].\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$AB = \\\\begin{bmatrix} a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\\\\\\\ a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22} end{bmatrix}$$\",\\n               \"sympy_expr\": \"A * B = Matrix([[A[0, 0] * B[0, 0] + A[0, 1] * B[1, 0], A[0, 0] * B[0, 1] + A[0, 1] * B[1, 1]], [A[1, 0] * B[0, 0] + A[1, 1] * B[1, 0], A[1, 0] * B[0, 1] + A[1, 1] * B[1, 1]]])\",\\n               \"description\": \"Definition of matrix multiplication\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing matrix multiplication with matrix addition\"\\n         ],\\n         \"prerequisites\": [],\\n         \"jee_frequency\": 3,\\n         \"estimated_minutes\": 15\\n      },\\n      {\\n         \"name\": \"Matrix Inverse\",\\n         \"description\": \"A matrix that, when multiplied by the original matrix, gives the identity matrix. Example: If A = [[1, 2], [3, 4]], then A^-1 = [[-2, 1], [1.5, -0.5]].\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$AA^{-1} = I$$\",\\n               \"sympy_expr\": \"A * A_inv = I\",\\n               \"description\": \"Definition of the inverse of a matrix\"\\n            }\\n         ],\\n         \"common_mistakes\": [\\n            \"Confusing inverse matrix with transpose matrix\"\\n         ],\\n         \"prerequisites\": [\"Transpose of a Matrix\", \"Identity Matrix\"],\\n         \"jee_frequency\": 3,\\n         \"estimated_minutes\": 15\\n      },\\n      {\\n         \"name\": \"Matrix Determinant\",\\n         \"description\": \"A scalar value that can be calculated from the elements of a square matrix. Example: If A = [[1, 2], [3, 4]], then det(A) = -2.\",\\n         \"key_formulas\": [\\n            {\\n               \"latex\": \"$$det(A) = a_{11}a_{22} - a_{12}a_{21}'}}"
   }
 ]

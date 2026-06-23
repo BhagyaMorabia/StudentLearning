@@ -7,8 +7,8 @@ pymupdf4llm
 # Orchestration (minimal — just for chunking utilities)
 # llama-index-core==0.12.0  # Optional — we handle chunking manually
 
-# Concept extraction via Gemini Flash
-google-generativeai
+# Concept extraction via Groq (Llama 3 8B)
+groq
 
 # BGE-small embeddings (local, free, 768-dim)
 sentence-transformers

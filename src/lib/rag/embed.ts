@@ -1,7 +1,7 @@
 /**
- * embed.ts — Generate text embeddings using @xenova/transformers (BGE-small)
+ * embed.ts — Generate text embeddings using @xenova/transformers (BGE-base)
  *
- * BGE-small produces 768-dimensional vectors, matching the pgvector schema.
+ * BGE-base produces 768-dimensional vectors, matching the pgvector schema.
  * The model is downloaded once (~90MB) and cached in .cache/ on first use.
  * Subsequent calls are fast (model stays in memory during the process lifetime).
  *
@@ -26,7 +26,7 @@ async function getPipeline() {
   // Using 'feature-extraction' task with mean pooling + normalize
   pipeline = (await createPipeline(
     'feature-extraction',
-    'Xenova/bge-small-en-v1.5',
+    'Xenova/bge-base-en-v1.5',
     { quantized: true }, // Use ONNX quantized model — 4x smaller, still accurate
   )) as any;
 

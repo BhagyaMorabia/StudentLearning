@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-04_generate_embeddings.py — Generate 768-dim BGE-small embeddings for all concepts.
+04_generate_embeddings.py — Generate 768-dim BGE-base embeddings for all concepts.
 
-Uses sentence-transformers with BAAI/bge-small-en-v1.5 (same model as the
+Uses sentence-transformers with BAAI/bge-base-en-v1.5 (same model as the
 Next.js @xenova/transformers embedding — ensures query and document vectors
 are in the same embedding space).
 
@@ -48,8 +48,8 @@ def generate_embeddings(concepts: list[dict]) -> list[dict]:
         print("Run: pip install sentence-transformers")
         sys.exit(1)
 
-    print("  Loading BAAI/bge-small-en-v1.5 model...")
-    model = SentenceTransformer("BAAI/bge-small-en-v1.5")
+    print("  Loading BAAI/bge-base-en-v1.5 model...")
+    model = SentenceTransformer("BAAI/bge-base-en-v1.5")
 
     # Prepare texts with BGE retrieval prefix (matches @xenova query embedding)
     texts = [
@@ -87,8 +87,12 @@ def main():
             print(f"  ⚠ Unexpected format in {json_path.name}")
             continue
 
-        # Skip if embeddings already exist
-        if all("embedding" in c for c in concepts):
+        # Skip if embeddings already exist and are 768 dimensions
+        has_correct_embeddings = all(
+            "embedding" in c and isinstance(c["embedding"], list) and len(c["embedding"]) == 768
+            for c in concepts
+        )
+        if has_correct_embeddings:
             print(f"  [OK] Already has embeddings (delete to regenerate)")
             continue
 

@@ -9,8 +9,8 @@ Takes Markdown output from 01_pdf_to_markdown.py and extracts:
 - Common mistakes
 - JEE frequency
 
-Uses Gemini Flash (free tier: 15 RPM, 1M tokens/day) for extraction.
-Gemini is ONLY used here in the Python pipeline, NOT in the Next.js app.
+Uses Groq (llama3-8b-8192) for extraction.
+Groq is ONLY used here in the Python pipeline, NOT in the Next.js app.
 The Next.js app uses Claude exclusively.
 
 Input:  python/data/markdown_output/*.md
@@ -36,14 +36,14 @@ INPUT_DIR = Path(__file__).parent.parent / "data" / "markdown_output"
 OUTPUT_DIR = Path(__file__).parent.parent / "data" / "concepts_json"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    print("ERROR: GEMINI_API_KEY not set in .env")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    print("ERROR: GROQ_API_KEY not set in .env")
     sys.exit(1)
 
 EXTRACTION_PROMPT = """
 You are an expert JEE curriculum designer with 20 years of experience.
-Read the following textbook content and extract a JSON array of MicroConcepts.
+Read the following textbook content and extract a JSON object with a single key "concepts" containing an array of MicroConcepts.
 
 For EACH MicroConcept, output EXACTLY this structure:
 {
@@ -70,7 +70,7 @@ RULES:
 - latex must be valid LaTeX wrapped in $$...$$
 - prerequisites must reference OTHER concept names that WOULD appear in your extraction
 - jee_frequency: 1=rare, 2=occasional, 3=common, 4=frequent, 5=almost certain
-- Return ONLY a valid JSON array. No prose. No markdown code blocks. No explanation.
+- Return ONLY a valid JSON object containing the "concepts" array. No prose. No markdown code blocks. No explanation.
 
 CONTENT:
 {content}
@@ -113,15 +113,14 @@ def deduplicate_concepts(concepts: list[dict]) -> list[dict]:
 
 
 def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
-    """Extract concepts from markdown text using Gemini Flash."""
+    """Extract concepts from markdown text using Groq."""
     try:
-        import google.generativeai as genai
+        from groq import Groq
     except ImportError:
-        print("ERROR: google-generativeai not installed")
+        print("ERROR: groq not installed")
         sys.exit(1)
 
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel("gemini-flash-latest")
+    client = Groq(api_key=GROQ_API_KEY)
 
     chunks = chunk_text(markdown_text)
     all_concepts = []
@@ -134,10 +133,18 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
         base_delay = 5
         for attempt in range(max_retries):
             try:
-                response = model.generate_content(
-                    EXTRACTION_PROMPT.replace("{content}", chunk)
+                response = client.chat.completions.create(
+                    messages=[
+                        {
+                            "role": "user",
+                            "content": EXTRACTION_PROMPT.replace("{content}", chunk),
+                        }
+                    ],
+                    model="llama-3.1-8b-instant",
+                    response_format={"type": "json_object"},
+                    temperature=0.1,
                 )
-                raw = response.text.strip()
+                raw = response.choices[0].message.content.strip()
 
                 # Strip markdown code blocks if Gemini wraps in ```json
                 if raw.startswith("```"):
@@ -145,7 +152,8 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                     if raw.startswith("json"):
                         raw = raw[4:]
 
-                concepts = json.loads(raw)
+                data = json.loads(raw)
+                concepts = data.get("concepts", [])
                 if isinstance(concepts, list):
                     all_concepts.extend(concepts)
                     print(f"    [OK] Extracted {len(concepts)} concepts")
@@ -160,7 +168,7 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                     "source": source_name,
                     "chunk": i + 1,
                     "error": str(e),
-                    "raw": response.text[:500] if "response" in dir() else "no response",
+                    "raw": response.choices[0].message.content[:500] if "response" in dir() else "no response",
                 })
                 break # Don't retry on JSON errors, move to next chunk
             except Exception as e:
@@ -188,9 +196,9 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                 review_needed.append({"source": source_name, "chunk": i + 1, "error": error_str})
                 break
 
-        # Respect Gemini free tier: 15 RPM → sleep 5 seconds between calls just to be safe
+        # Respect Groq free tier: 30 RPM -> sleep 2 seconds
         if i < len(chunks) - 1:
-            time.sleep(5)
+            time.sleep(2)
 
     # Log review-needed items
     if review_needed:

@@ -56,7 +56,7 @@ def get_topic_id(subject, class_year, chapter_num):
     use_shell = os.name == 'nt'
     env = os.environ.copy()
     env["PYTHONUTF8"] = "1"
-    result = subprocess.run(cmd, cwd=NEXT_APP_DIR, capture_output=True, text=True, shell=use_shell, env=env)
+    result = subprocess.run(cmd, cwd=NEXT_APP_DIR, capture_output=True, text=True, encoding="utf-8", shell=use_shell, env=env)
     if result.returncode != 0:
         print(f"Error getting topic ID:\n{result.stderr}")
         return None

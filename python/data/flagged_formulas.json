@@ -1,0 +1,1856 @@
+[
+  {
+    "concept": "Electronic Configuration of Transition Elements",
+    "latex": "$$\\text{General electronic configuration: } (n-1)d^nx^2$$",
+    "sympy_expr": "general_config = (n-1)*d**n*x**2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Electronic Configurations of d-Block Elements",
+    "latex": "$$\\text{Electronic configuration of Sc: } 1s^2 2s^2 2p^6 3s^2 3p^6 3d^1 4s^2$$",
+    "sympy_expr": "sc_config = 1*s**2 + 2*s**2 + 2*p**6 + 3*s**2 + 3*p**6 + 3*d**1 + 4*s**2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Exchange Energy",
+    "latex": "$$E_{\\text{exchange}} = \\text{exchange energy}$$",
+    "sympy_expr": "E_exchange = exchange_energy",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Moment of a Divalent Ion",
+    "latex": "$$\\mu = n \\left( n + 2 \\right)$$",
+    "sympy_expr": "mu = n * (n + 2)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Formation of Coloured Ions",
+    "latex": "$$\\text{Frequency of light absorbed} = \\frac{hc}{\\lambda}$$",
+    "sympy_expr": "frequency_of_light_absorbed = h * c / lambda",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Properties of Substances",
+    "latex": "$$\\text{Magnetic moment} = \\mu_B \\sqrt{n(n+2)}$$",
+    "sympy_expr": "magnetic_moment = mu_B * sympy.sqrt(n * (n + 2))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Complex Compounds",
+    "latex": "$$\\text{Complex compound} = \\text{metal ion} + \\text{ligand}$$",
+    "sympy_expr": "complex_compound = metal_ion + ligand",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Disproportionation of an Oxidation State",
+    "latex": "$$3 \\text{Mn}^{\\text{VI}}\\text{O}_4^{2-} + 4 \\text{H}^+ \\rightarrow 2 \\text{Mn}^{\\text{VII}}\text{O}_4^{-} + \\text{Mn}^{\\text{IV}}\text{O}_2 + 2 \\text{H}_2\text{O}$$",
+    "sympy_expr": "3*Mn_VI_O4_2_+ 4*H_+ -> 2*Mn_VII_O4_- + Mn_IV_O2 + 2*H2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Chromate Ion (CrO42–)",
+    "latex": "$$\\text{CrO}_4^{2-} + 2 \\text{H}^+ \\rightarrow \\text{Cr}^{3+} + \\text{H}_2\text{O}$$",
+    "sympy_expr": "CrO4_2_+ 2*H_+ -> Cr_3_+ + H2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Dichromate Ion (Cr2O72–)",
+    "latex": "$$\\text{Cr}_2\text{O}_7^{2-} + 14 \\text{H}^+ + 6 \text{e}^- \\rightarrow 2 \\text{Cr}^{3+} + 7 \text{H}_2\text{O}$$",
+    "sympy_expr": "Cr2O7_2_+ 14*H_+ + 6*e_+ -> 2*Cr_3_+ + 7*H2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Potassium Dichromate (K2Cr2O7)",
+    "latex": "$$\\text{Na}_2\text{Cr}_2\text{O}_7 + 2 \text{KCl} \\rightarrow \text{K}_2\text{Cr}_2\text{O}_7 + 2 \text{NaCl}$$",
+    "sympy_expr": "Na2Cr2O7 + 2*KCl -> K2Cr2O7 + 2*NaCl",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Potassium Permanganate (KMnO4)",
+    "latex": "$$2 \text{Mn}^{2+} + 5 \text{S}_2\text{O}_8^{2-} + 8 \text{H}_2\text{O} \\rightarrow 2 \text{MnO}_4^- + 10 \text{SO}_4^{2-} + 16 \text{H}^+$$",
+    "sympy_expr": "2*Mn_2_+ + 5*S2O8_2_+ 8*H2O -> 2*MnO4_- + 10*SO4_2_+ 16*H_+",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Electronic Configuration of Lanthanoids",
+    "latex": "$$[Xe] 4f^0$$",
+    "sympy_expr": "[Xe] * 4f**0",
+    "error": "'list' object has no attribute 'replace'"
+  },
+  {
+    "concept": "Ionisation Enthalpies of Lanthanoids",
+    "latex": "$$\\Delta H_{1} = 600 \\text{ kJ mol}^{-1}$$",
+    "sympy_expr": "\\Delta H_1 = 600 * 1000 * J / mol",
+    "error": "('unexpected character after line continuation character', (1, 34))"
+  },
+  {
+    "concept": "Chemical Behaviour of Lanthanoids",
+    "latex": "$$E^\\circ = -2.2 \\text{ to } -2.4 \\text{ V}$$",
+    "sympy_expr": "E_circ = -2.2 * V to -2.4 * V",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Electronic Configuration of Actinoids",
+    "latex": "$$[Rn] 5f^0$$",
+    "sympy_expr": "[Rn] * 5f**0",
+    "error": "'list' object has no attribute 'replace'"
+  },
+  {
+    "concept": "Ionisation Enthalpies of Actinoids",
+    "latex": "$$\\Delta H_{1} = 600 \\text{ kJ mol}^{-1}$$",
+    "sympy_expr": "\\Delta H_1 = 600 * 1000 * J / mol",
+    "error": "('unexpected character after line continuation character', (1, 34))"
+  },
+  {
+    "concept": "Magnetic Moment of Ce3+ ion",
+    "latex": "$$\\mu = \\sqrt{n(n+2)}$$",
+    "sympy_expr": "\\mu = sympy.sqrt(n*(n+2))",
+    "error": "('unexpected character after line continuation character', (1, 26))"
+  },
+  {
+    "concept": "Magnetic Moment of Mn3+ ion",
+    "latex": "$$\\mu = \\sqrt{n(n+2)}$$",
+    "sympy_expr": "\\mu = sympy.sqrt(n*(n+2))",
+    "error": "('unexpected character after line continuation character', (1, 26))"
+  },
+  {
+    "concept": "Werner's Theory of Coordination Compounds",
+    "latex": "$$\\text{Primary valence} = \\text{number of negative ions}$$",
+    "sympy_expr": "primary_valence = number_of_negative_ions",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Werner's Theory of Coordination Compounds",
+    "latex": "$$\\text{Secondary valence} = \\text{coordination number}$$",
+    "sympy_expr": "secondary_valence = coordination_number",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Coordination Entity",
+    "latex": "$$\\text{Coordination entity} = \\text{central metal atom/ion} + \\text{fixed number of ions/molecules}$$",
+    "sympy_expr": "coordination_entity = central_metal_atom/ion + fixed_number_of_ions/molecules",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Coordination Number",
+    "latex": "$$\\text{Coordination number} = \\text{number of ions/molecules}$$",
+    "sympy_expr": "coordination_number = number_of_ions/molecules",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Isomerism in Coordination Compounds",
+    "latex": "$$\\text{Isomerism} = \\text{same molecular formula} + \\text{different arrangement of atoms}$$",
+    "sympy_expr": "isomerism = same_molecular_formula + different_arrangement_of_atoms",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Central Atom/Ion",
+    "latex": "$$\\text{Central atom/ion} = \\text{Lewis acid}$$",
+    "sympy_expr": "central_atom/ion = lewis_acid",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Ligand",
+    "latex": "$$\\text{Ligand} = \\text{Donor atom}$$",
+    "sympy_expr": "ligand = donor_atom",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Coordination Polyhedron",
+    "latex": "$$\\text{Coordination polyhedron} = \\text{Spatial arrangement of ligand atoms}$$",
+    "sympy_expr": "coordination_polyhedron = spatial_arrangement_of_ligand_atoms",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Homoleptic and Heteroleptic Complexes",
+    "latex": "$$\\text{Homoleptic complex} = \\text{Metal ion} + \\text{One kind of donor group}$$",
+    "sympy_expr": "homoleptic_complex = metal_ion + one_kind_of_donor_group",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Homoleptic and Heteroleptic Complexes",
+    "latex": "$$\\text{Heteroleptic complex} = \\text{Metal ion} + \\text{More than one kind of donor group}$$",
+    "sympy_expr": "heteroleptic_complex = metal_ion + more_than_one_kind_of_donor_group",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Nomenclature of Coordination Compounds",
+    "latex": "$$\\text{Nomenclature} = \\text{Prefixes and suffixes}$$",
+    "sympy_expr": "nomenclature = prefixes_and_suffixes",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Moment of Coordination Compounds",
+    "latex": "$$\\mu = \\sqrt{n(n+2)}$$",
+    "sympy_expr": "mu = sympy.sqrt(n*(n+2))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Crystal Field Splitting in Octahedral Coordination Entities",
+    "latex": "$$Delta_o = \frac{3}{5} Delta_o$$",
+    "sympy_expr": "Delta_o = (3/5)*Delta_o",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Crystal Field Splitting in Tetrahedral Coordination Entities",
+    "latex": "$$Delta_t = \frac{2}{5} Delta_t$$",
+    "sympy_expr": "Delta_t = (2/5)*Delta_t",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Crystal Field Splitting Energy (Δ)",
+    "latex": "$$\\Delta = \\frac{4}{9} \\Delta_0$$",
+    "sympy_expr": "Delta = (4/9) * Delta_0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Moment",
+    "latex": "$$\\mu = \\sqrt{n(n+2)}$$",
+    "sympy_expr": "mu = sympy.sqrt(n*(n+2))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Crystal Field Theory",
+    "latex": "$$\\Delta_{oct} = 10Dq$$",
+    "sympy_expr": "Delta_oct = 10*Dq",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Spectrochemical Series",
+    "latex": "$$CN^- > NO_2^- > en > NH_3 > H_2O > F^- > Cl^- > Br^- > I^-$$",
+    "sympy_expr": "CN^- > NO_2^- > en > NH_3 > H_2O > F^- > Cl^- > Br^- > I^-",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Chelate Effect",
+    "latex": "$$\\Delta G = -RT \\ln K$$",
+    "sympy_expr": "Delta_G = -R*T*sympy.ln(K)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Oxidation State",
+    "latex": "$$OS = +3$$",
+    "sympy_expr": "OS = +3",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Crystal Field Splitting Energy",
+    "latex": "$$\\Delta_{oct} = 10Dq$$",
+    "sympy_expr": "Delta_oct = 10*Dq",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Field",
+    "latex": "$$B = \\mu_0 n I$$",
+    "sympy_expr": "B = mu_0 * n * I",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Ampere's Law",
+    "latex": "$$\\oint B \\cdot dl = \\mu_0 I$$",
+    "sympy_expr": "sympy.integrate(B*dl, (dl, 0, 1)) = mu_0 * I",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Flux",
+    "latex": "$$\\Phi = BA$$",
+    "sympy_expr": "Phi = B*A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Polarity of Carbon-Halogen Bond",
+    "latex": "$$\\Delta\\chi = \\chi_\\text{C} - \\chi_\\text{X}$$",
+    "sympy_expr": "\\Delta\\chi = \\chi_C - \\chi_X",
+    "error": "('unexpected character after line continuation character', (1, 29))"
+  },
+  {
+    "concept": "Bond Length and Bond Enthalpy",
+    "latex": "$$B = \\frac{1}{2}kx^2$$",
+    "sympy_expr": "B = 0.5 * k * x**2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Preparation of Alkyl Halides from Alcohols",
+    "latex": "$$\\text{R-OH} + \\text{HX} \\rightarrow \\text{R-X} + \\text{H}_2\\text{O}$$",
+    "sympy_expr": "R-OH + HX -> R-X + H2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Preparation of Alkyl Halides from Hydrocarbons",
+    "latex": "$$\\text{R-H} + \\text{X}_2 \\rightarrow \\text{R-X} + \\text{H-X}$$",
+    "sympy_expr": "R-H + X2 -> R-X + H-X",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Preparation of Haloarenes",
+    "latex": "$$\\text{Ar-H} + \\text{X}_2 \\rightarrow \\text{Ar-X} + \\text{H-X}$$",
+    "sympy_expr": "Ar-H + X2 -> Ar-X + H-X",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Physical Properties of Alkyl Halides",
+    "latex": "$$\\text{BP} = \\frac{1}{2}kx^2$$",
+    "sympy_expr": "BP = 0.5 * k * x**2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Nucleophilic Substitution Reaction",
+    "latex": "$$\\text{R-X} + \\text{Nu}^- \\rightarrow \\text{R-Nu} + \\text{X}^-$$",
+    "sympy_expr": "R_X + Nu^- -> R_Nu + X^-",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "SN2 Mechanism",
+    "latex": "$$\\text{CH}_3\\text{Cl} + \\text{OH}^- \\rightarrow \\text{CH}_3\\text{OH} + \\text{Cl}^-$$",
+    "sympy_expr": "CH3Cl + OH^- -> CH3OH + Cl^-",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Ambident Nucleophile",
+    "latex": "$$\\text{C≡N} \\leftrightarrow \\text{:C=N}$$",
+    "sympy_expr": "C≡N <-> :C=N",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Wurtz Reaction",
+    "latex": "$$\\text{2R-X} + \\text{2Na} \\rightarrow \\text{R-R} + \\text{2NaX}$$",
+    "sympy_expr": "2 * R - X + 2 * Na -> R - R + 2 * Na * X",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Nucleophilic Substitution in Haloarenes",
+    "latex": "$$\\text{Ar-X} + \\text{Nu:} \\rightarrow \\text{Ar-Nu} + \\text{X:}$$",
+    "sympy_expr": "Ar - X + Nu -> Ar - Nu + X",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Electrophilic Substitution in Haloarenes",
+    "latex": "$$\\text{Ar-X} + \\text{E+:} \\rightarrow \\text{Ar-E} + \\text{X:}$$",
+    "sympy_expr": "Ar - X + E + -> Ar - E + X",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Electrophilic Aromatic Substitution",
+    "latex": "$$\\text{Electrophilic Aromatic Substitution: } \\text{ArH} + \\text{E}^+ \\rightarrow \\text{ArE} + \\text{H}^+$$",
+    "sympy_expr": "ArH + E**+ -> ArE + H**+",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Free Radical Halogenation",
+    "latex": "$$\\text{Free Radical Halogenation: } \\text{R-H} + \\text{X}_2 \\rightarrow \\text{R-X} + \\text{H-X}$$",
+    "sympy_expr": "R - H + X2 -> R - X + H - X",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Wurtz-Fittig Reaction",
+    "latex": "$$\\text{Wurtz-Fittig Reaction: } \\text{R-X} + \\text{Ar-X} + 2\\text{Na} \\rightarrow \\text{R-Ar} + 2\\text{NaX}$$",
+    "sympy_expr": "R - X + Ar - X + 2 * Na -> R - Ar + 2 * NaX",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Fittig Reaction",
+    "latex": "$$\\text{Fittig Reaction: } 2\\text{Ar-X} + 2\\text{Na} \\rightarrow \\text{Ar-Ar} + 2\\text{NaX}$$",
+    "sympy_expr": "2 * Ar - X + 2 * Na -> Ar - Ar + 2 * NaX",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Dipole Moment and Polarity of Carbon-Halogen Bond",
+    "latex": "$$\\\\mu = q \\\\times d$$",
+    "sympy_expr": "mu = q * d",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "SN1 and SN2 Reactions",
+    "latex": "$$k_{SN1} = k_a [A^-]$$",
+    "sympy_expr": "k_SN1 = k_a * A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "SN1 and SN2 Reactions",
+    "latex": "$$k_{SN2} = k_b [N]$$",
+    "sympy_expr": "k_SN2 = k_b * N",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Ambident Nucleophiles",
+    "latex": "$$CN^-$$",
+    "sympy_expr": "CN",
+    "error": "unsupported operand type(s) for *: 'Symbol' and 'function'"
+  },
+  {
+    "concept": "Dehydrohalogenation",
+    "latex": "$$CH_3CH_2CH_2Br + NaOEt \\rightarrow CH_3CH=CH_2 + NaBr + H_2O$$",
+    "sympy_expr": "CH3CH2CH2Br + NaOEt -> CH3CH=CH2 + NaBr + H2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Alkyl Halides and SN2 Reaction",
+    "latex": "$$CH_3CH_2Br + NaI \\rightarrow CH_3CH_2I + NaBr$$",
+    "sympy_expr": "CH3CH2Br + NaI -> CH3CH2I + NaBr",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Ambident Nucleophiles and SN2 Reaction",
+    "latex": "$$CN^- + CH_3CH_2Br \\rightarrow CH_3CH_2CN + NaBr$$",
+    "sympy_expr": "CN + CH3CH2Br -> CH3CH2CN + NaBr",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Dehydrohalogenation and SN2 Reaction",
+    "latex": "$$CH_3CH_2CH_2Br + NaOEt \\rightarrow CH_3CH=CH_2 + NaBr + H_2O$$",
+    "sympy_expr": "CH3CH2CH2Br + NaOEt -> CH3CH=CH2 + NaBr + H2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Dehydrohalogenation and SN2 Reaction",
+    "latex": "$$CH_3CH=CH_2 + NaBr \\rightarrow CH_3CH_2CH=CH_2 + NaBr$$",
+    "sympy_expr": "CH3CH=CH2 + NaBr -> CH3CH2CH=CH2 + NaBr",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Grignard Reagents and SN2 Reaction",
+    "latex": "$$RMgX + CH_3CH_2Br \\rightarrow CH_3CH_2R + MgBrX$$",
+    "sympy_expr": "RMgX + CH3CH2Br -> CH3CH2R + MgBrX",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Reaction of Grignard Reagents with Aldehydes and Ketones",
+    "latex": "$$\\text{RMgX} + \\text{R'CHO} \\xrightarrow[-\\text{H}_2\text{O}]{} \\text{RCH}_2\text{R'OH}$$",
+    "sympy_expr": "RCH2R'OH",
+    "error": "('unterminated string literal (detected at line 1)', (1, 6))"
+  },
+  {
+    "concept": "Acidity of Alcohols and Phenols",
+    "latex": "$$\\text{Phenol} + \\text{NaOH} \\rightarrow \\text{Sodium Phenoxide} + \\text{H}_2\\text{O}$$",
+    "sympy_expr": "phenol + NaOH -> sodium_phenoxide + H2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Hydrogen Bonding in Alcohols and Phenols",
+    "latex": "$$\\text{Alcohol} \\leftrightarrow \\text{Alcohol} \\cdot \\cdot \\cdot \\text{H}-\\text{O}-\\text{H} \\cdot \\cdot \\cdot \\text{Alcohol}$$",
+    "sympy_expr": "alcohol <-> alcohol * * * H-O-H * * * alcohol",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Acidity of Phenols",
+    "latex": "$$\\text{Phenol} + \\text{NaOH} \\rightarrow \\text{Sodium Phenoxide} + \\text{H}_2\\text{O}$$",
+    "sympy_expr": "phenol + NaOH -> sodium_phenoxide + H2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Electrophilic Aromatic Substitution (EAS) of Phenol",
+    "latex": "$$\\text{Phenol} + \\text{Electrophile} \\rightarrow \\text{Phenoxide ion}$$",
+    "sympy_expr": "Phenol + Electrophile -> Phenoxide ion",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Reimer-Tiemann Reaction",
+    "latex": "$$\\text{Phenol} + \\text{CHCl}_3 + \\text{NaOH} \\rightarrow \\text{Salicylaldehyde}$$",
+    "sympy_expr": "Phenol + CHCl3 + NaOH -> Salicylaldehyde",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Kolbe's Reaction",
+    "latex": "$$\\text{Phenoxide ion} + \\text{CO}_2 \\rightarrow \\text{Ortho-hydroxybenzoic acid}$$",
+    "sympy_expr": "Phenoxide ion + CO2 -> Ortho-hydroxybenzoic acid",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Williamson Synthesis",
+    "latex": "$$\\text{Alkyl halide} + \\text{Sodium alkoxide} \\rightarrow \\text{Ether}$$",
+    "sympy_expr": "Alkyl halide + Sodium alkoxide -> Ether",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Field of a Toroid",
+    "latex": "$$B = \\mu_0 n I$$",
+    "sympy_expr": "B = mu_0 * n * I",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Ampere's Law",
+    "latex": "$$\\oint \\vec{B} \\cdot d\\vec{l} = \\mu_0 I_{enc}$$",
+    "sympy_expr": "Integral(B, (l, (0, 1))) = mu_0 * I_enc",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Flux",
+    "latex": "$$\\Phi_B = \\vec{B} \\cdot vec{A}$$",
+    "sympy_expr": "Phi_B = B * A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Oxidation of primary and secondary alcohols",
+    "latex": "$$\\text{RCH}_2\\text{OH} \\rightarrow \\text{RCHO}$$",
+    "sympy_expr": "RCH2OH -> RCHO",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Oxidation of primary and secondary alcohols",
+    "latex": "$$\\text{RCH}(\text{OH})\text{CH}_3 \\rightarrow \\text{RCOCH}_3$$",
+    "sympy_expr": "RCH(OH)CH3 -> RCOCH3",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Ozonolysis of alkenes",
+    "latex": "$$\\text{RCH} = \text{CHR} + \\text{O}_3 \\rightarrow \\text{RCHO}$$",
+    "sympy_expr": "RCH=CHR + O3 -> RCHO",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Ozonolysis of alkenes",
+    "latex": "$$\\text{RCH} = \text{CHR} + \\text{O}_3 \\rightarrow \\text{RCOCH}_3$$",
+    "sympy_expr": "RCH=CHR + O3 -> RCOCH3",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Hydration of alkynes",
+    "latex": "$$\\text{HC} \\equiv \text{CR} + \\text{H}_2\text{O} \\rightarrow \\text{RCHO}$$",
+    "sympy_expr": "HC==CR + H2O -> RCHO",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Hydration of alkynes",
+    "latex": "$$\\text{HC} \\equiv \text{CR} + \\text{H}_2\text{O} \\rightarrow \\text{RCOCH}_3$$",
+    "sympy_expr": "HC==CR + H2O -> RCOCH3",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Rosenmund reduction",
+    "latex": "$$\\text{RCOCl} + \\text{H}_2 \\rightarrow \\text{RCHO}$$",
+    "sympy_expr": "RCOCl + H2 -> RCHO",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Stephen reaction",
+    "latex": "$$\\text{RCN} + \\text{SnCl}_2 \\rightarrow \\text{RCHO}$$",
+    "sympy_expr": "RCN + SnCl2 -> RCHO",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Friedel-Crafts acylation reaction",
+    "latex": "$$\\text{ArH} + \\text{RCOCl} \\rightarrow \\text{ArCOR}$$",
+    "sympy_expr": "ArH + RCOCl -> ArCOR",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Nucleophilic addition reactions",
+    "latex": "$$\\text{RCHO} + \\text{Nu}^- \\rightarrow \\text{RCHONu}$$",
+    "sympy_expr": "RCHO + Nu^- -> RCHONu",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Nucleophilic addition reactions",
+    "latex": "$$\\text{RCOCH}_3 + \\text{Nu}^- \\rightarrow \\text{RCOCH}_2\text{Nu}$$",
+    "sympy_expr": "RCOCH3 + Nu^- -> RCOCH2Nu",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Nucleophilic Addition Reactions of Aldehydes and Ketones",
+    "latex": "$$\\text{RCHO} + \\text{Nu}^- \\rightarrow \\text{RCH(OH)Nu}$$",
+    "sympy_expr": "RCHO + Nu^- -> RCH(OH)Nu",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Reactivity of Aldehydes and Ketones in Nucleophilic Addition Reactions",
+    "latex": "$$\\text{RCHO} > \\text{R'COCH}_3$$",
+    "sympy_expr": "RCHO > R'COCH3",
+    "error": "('unterminated string literal (detected at line 1)', (1, 8))"
+  },
+  {
+    "concept": "Cyanohydrin Formation",
+    "latex": "$$\\text{RCHO} + \\text{HCN} \\rightarrow \\text{RCH(OH)CN}$$",
+    "sympy_expr": "RCHO + HCN -> RCH(OH)CN",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Reduction of Aldehydes and Ketones",
+    "latex": "$$\\text{RCHO} + \\text{NaBH}_4 \\rightarrow \\text{RCH}_2\text{OH}$$",
+    "sympy_expr": "RCHO + NaBH4 -> RCH2OH",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Oxidation of Aldehydes and Ketones",
+    "latex": "$$\\text{RCHO} + \\text{O}_2 \\rightarrow \\text{RCOOH}$$",
+    "sympy_expr": "RCHO + O2 -> RCOOH",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Aldol Condensation",
+    "latex": "$$\\text{R}_1\\text{CHO} + \\text{R}_2\\text{CHO} \\xrightarrow[-\\text{H}_2\text{O}]{} \\text{R}_1\\text{CH} = \\text{CHCOR}_2$$",
+    "sympy_expr": "R1_CH + R2_CH -> R1_CHEQCHCOR2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Cannizzaro Reaction",
+    "latex": "$$\\text{RCHO} \\xrightarrow[-\\text{H}_2\text{O}]{} \\text{RCH}_2\text{OH} + \\text{RCO}_2\text{Na}$$",
+    "sympy_expr": "R_CH + H2O -> R_CHEQCH2OH + RCO2Na",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Electrophilic Substitution Reaction",
+    "latex": "$$\\text{ArCHO} + \\text{E}^+ \\xrightarrow{} \\text{ArC} = \\text{CH} + \\text{H}^+$$",
+    "sympy_expr": "Ar_CH + E+ -> Ar_CHEQCH + H+",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Nomenclature of Carboxylic Acids",
+    "latex": "$$\\text{RCH}_2\text{CH}_2\text{COOH} \\xrightarrow{} \\text{Butanoic acid}$$",
+    "sympy_expr": "RCH2CH2COOH -> Butanoic acid",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Field of a Toroid",
+    "latex": "$$B = \\mu_0 n I$$",
+    "sympy_expr": "B = mu_0 * n * I",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Effect of Substituents on Acidity",
+    "latex": "$$EWG \\rightarrow \\text{increased acidity}$$",
+    "sympy_expr": "EWG -> increased acidity",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Formation of Anhydride",
+    "latex": "$$RCOOH + H_2SO_4 \\rightarrow RCOOCOR + H_2O + SO_2$$",
+    "sympy_expr": "RCOOH + H_2SO_4 -> RCOOCOR + H_2O + SO_2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Esterification",
+    "latex": "$$RCOOH + R'OH \\rightarrow RCOOR' + H_2O$$",
+    "sympy_expr": "RCOOH + R'OH -> RCOOR' + H_2O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Reduction of Carboxylic Acids",
+    "latex": "$$RCOOH + 2LiAlH_4 \\rightarrow RCH_2OH + LiAlO_2 + H_2$$",
+    "sympy_expr": "RCOOH + 2LiAlH_4 -> RCH_2OH + LiAlO_2 + H_2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Decarboxylation",
+    "latex": "$$RCOO^- \\rightarrow R^- + CO_2$$",
+    "sympy_expr": "RCOO^- -> R^- + CO_2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Halogenation of Carboxylic Acids",
+    "latex": "$$RCOOH + Cl_2 \\rightarrow RCOCl + HCl$$",
+    "sympy_expr": "RCOOH + Cl_2 -> RCOCl + HCl",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Aldehydes and Ketones",
+    "latex": "$$\\text{RCHO}$$",
+    "sympy_expr": "RCHO",
+    "error": "unsupported operand type(s) for *: 'Mul' and 'type'"
+  },
+  {
+    "concept": "Oxidation of Aldehydes to Carboxylic Acids",
+    "latex": "$$\text{RCHO} \\xrightarrow[\text{mild oxidizing agent}]{\text{}} \text{RCOOH}$$",
+    "sympy_expr": "RCHO -> RCOOH",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Aryl Diazonium Salts",
+    "latex": "$$\\text{Aryl Diazonium Salt} + \\text{Nucleophile} \\rightarrow \\text{Product}$$",
+    "sympy_expr": "Aryl Diazonium Salt + Nucleophile -> Product",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Aromatic Amines",
+    "latex": "$$\\text{Aromatic Amine} + \\text{Electrophile} \\rightarrow \\text{Product}$$",
+    "sympy_expr": "Aromatic Amine + Electrophile -> Product",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Aminolysis",
+    "latex": "$$\\text{Amine} + \\text{Ester} \\rightarrow \\text{New Amine} + \\text{Carboxylic Acid}$$",
+    "sympy_expr": "Amine + Ester -> New Amine + Carboxylic Acid",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Acetylation",
+    "latex": "$$\\text{Amine} + \\text{Acetylating Agent} \\rightarrow \\text{New Amine} + \\text{Acetic Acid}$$",
+    "sympy_expr": "Amine + Acetylating Agent -> New Amine + Acetic Acid",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Diazotisation",
+    "latex": "$$\\text{Amine} + \\text{Nitrosating Agent} \\rightarrow \\text{Diazonium Salt}$$",
+    "sympy_expr": "Amine + Nitrosating Agent -> Diazonium Salt",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Hofmann’s Bromamide Reaction",
+    "latex": "$$\\text{Amide} + \\text{Bromine} + \\text{Alkali} \\rightarrow \\text{Primary Amine} + \\text{Carbon Dioxide}$$",
+    "sympy_expr": "Amide + Bromine + Alkali -> Primary Amine + Carbon Dioxide",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Coupling Reaction",
+    "latex": "$$\\text{Aryl Diazonium Salt} + \\text{Aryl Amine} \\rightarrow \\text{Azo Dye}$$",
+    "sympy_expr": "Aryl Diazonium Salt + Aryl Amine -> Azo Dye",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "DNA Structure",
+    "latex": "$$\\text{DNA} = \\text{deoxyribonucleic acid}$$",
+    "sympy_expr": "DNA = deoxyribonucleic acid",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "RNA Structure",
+    "latex": "$$\\text{RNA} = \\text{ribonucleic acid}$$",
+    "sympy_expr": "RNA = ribonucleic acid",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Nucleic Acids",
+    "latex": "$$\\text{nucleic acid} = \\text{polymer of nucleotides}$$",
+    "sympy_expr": "nucleic acid = polymer of nucleotides",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Protein Synthesis",
+    "latex": "$$\\text{protein synthesis} = \\text{translation of mRNA}$$",
+    "sympy_expr": "protein synthesis = translation of mRNA",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Hormones",
+    "latex": "$$\\text{hormone} = \\text{molecule that acts as intercellular messenger}$$",
+    "sympy_expr": "hormone = molecule that acts as intercellular messenger",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Polymerisation",
+    "latex": "$$\\text{Polymerisation: Monomer}\\xrightarrow{\\text{Initiator}}\\text{Polymer}$$",
+    "sympy_expr": "Polymerisation: Monomer -> Polymer",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Addition Polymerisation",
+    "latex": "$$\\text{Monomer}\\xrightarrow{\\text{Free Radical}}\\text{Polymer}$$",
+    "sympy_expr": "Monomer -> Polymer (Free Radical)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Condensation Polymerisation",
+    "latex": "$$\\text{Monomer}_1 + \\text{Monomer}_2 \\xrightarrow{\\text{Heat}} \\text{Polymer} + \\text{Water}$$",
+    "sympy_expr": "Monomer_1 + Monomer_2 -> Polymer + Water",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Homopolymer",
+    "latex": "$$\\text{Monomer}\\xrightarrow{\\text{Initiator}}\\text{Homopolymer}$$",
+    "sympy_expr": "Monomer -> Homopolymer",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Copolymer",
+    "latex": "$$\\text{Monomer}_1 + \\text{Monomer}_2 \\xrightarrow{\\text{Initiator}}\\text{Copolymer}$$",
+    "sympy_expr": "Monomer_1 + Monomer_2 -> Copolymer",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Polythene",
+    "latex": "$$\\text{Ethene}\\xrightarrow{\\text{Initiator}}\\text{Polythene}$$",
+    "sympy_expr": "Ethene -> Polythene",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Teflon",
+    "latex": "$$\\text{Tetrafluoroethene}\\xrightarrow{\\text{Initiator}}\\text{Teflon}$$",
+    "sympy_expr": "Tetrafluoroethene -> Teflon",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Polyamides (Nylons)",
+    "latex": "$$\\text{Nylon 6,6: } \\text{Hexamethylenediamine} + \\text{Adipic acid} \\rightarrow \\text{Nylon 6,6} + \\text{Water}$$",
+    "sympy_expr": "Nylon 6,6: hexamethylenediamine + adipic acid -> Nylon 6,6 + water",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Polyesters (Dacron/Terylene)",
+    "latex": "$$\\text{Dacron/Terylene: } \\text{Ethylene glycol} + \\text{Terephthalic acid} \\rightarrow \\text{Dacron/Terylene} + \\text{Water}$$",
+    "sympy_expr": "Dacron/Terylene: ethylene glycol + terephthalic acid -> Dacron/Terylene + water",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Phenol-Formaldehyde Polymer (Bakelite)",
+    "latex": "$$\\text{Bakelite: } \\text{Phenol} + \\text{Formaldehyde} \\rightarrow \\text{Bakelite} + \\text{Water}$$",
+    "sympy_expr": "Bakelite: phenol + formaldehyde -> Bakelite + water",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Melamine-Formaldehyde Polymer",
+    "latex": "$$\\text{Melamine-Formaldehyde Polymer: } \\text{Melamine} + \\text{Formaldehyde} \\rightarrow \\text{Melamine-Formaldehyde Polymer} + \\text{Water}$$",
+    "sympy_expr": "Melamine-Formaldehyde Polymer: melamine + formaldehyde -> Melamine-Formaldehyde Polymer + water",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Copolymerisation",
+    "latex": "$$\\text{Copolymerisation: } \\text{Monomer 1} + \\text{Monomer 2} \\rightarrow \\text{Copolymer} + \\text{M}$$",
+    "sympy_expr": "Copolymerisation: monomer 1 + monomer 2 -> copolymer + M",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Rubber (Natural and Synthetic)",
+    "latex": "$$\\text{Natural Rubber: } \\text{Isoprene} \\rightarrow \\text{cis-1,4-Polyisoprene}$$",
+    "sympy_expr": "Natural Rubber: isoprene -> cis-1,4-Polyisoprene",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Biodegradable Polymers",
+    "latex": "$$\\text{Biodegradation: } \\text{Polymer} \\rightarrow \\text{CO}_2 + \\text{H}_2\text{O}$$",
+    "sympy_expr": "CO2 + H2O = Polymer",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Polymerisation Mechanisms",
+    "latex": "$$\\text{Free Radical Mechanism: } \\text{Monomer} \\rightarrow \\text{Free Radical} \\rightarrow \\text{Polymer}$$",
+    "sympy_expr": "Polymer = Monomer",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Polymerisation Mechanisms",
+    "latex": "$$\\text{Anionic Mechanism: } \\text{Monomer} \\rightarrow \\text{Anion} \\rightarrow \\text{Polymer}$$",
+    "sympy_expr": "Polymer = Monomer",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Magnetic Field of a Toroid",
+    "latex": "$$B = \\mu_0 n I$$",
+    "sympy_expr": "B = mu_0 * n * I",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Chemical Equation for Sodium Soap Preparation",
+    "latex": "$$\\text{Glyceryl oleate} + \\text{NaOH} \\rightarrow \\text{Sodium soap} + \\text{Glycerol}$$",
+    "sympy_expr": "glyceryl_oleate + NaOH -> sodium_soap + glycerol",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Target Molecules in Medicinal Chemistry",
+    "latex": "$$\\text{Target molecules: carbohydrates, proteins, lipids, and nucleic acids}$$",
+    "sympy_expr": "target_molecules = carbohydrates + proteins + lipids + nucleic_acids",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Synthetic Detergents",
+    "latex": "$$\\text{Synthetic detergents: anionic, cationic, and non-ionic categories}$$",
+    "sympy_expr": "synthetic_detergents = anionic + cationic + non_ionic",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Biodegradable and Non-Biodegradable Detergents",
+    "latex": "$$\\text{Biodegradable and non-biodegradable detergents: environmental impact}$$",
+    "sympy_expr": "biodegradable_detergents = can_be_broken_down_by_microorganisms",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equivalence Relation",
+    "latex": "$$R \text{ is reflexive} \\iff \\forall a \\in A, (a, a) \\in R$$",
+    "sympy_expr": "R.is_reflexive() if and only if all a in A: (a, a) in R",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equivalence Relation",
+    "latex": "$$R \text{ is symmetric} \\iff \\forall a_1, a_2 \\in A, (a_1, a_2) \\in R \\Rightarrow (a_2, a_1) \\in R$$",
+    "sympy_expr": "R.is_symmetric() if and only if all a1, a2 in A: (a1, a2) in R implies (a2, a1) in R",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equivalence Relation",
+    "latex": "$$R \text{ is transitive} \\iff \\forall a_1, a_2, a_3 \\in A, (a_1, a_2) \\in R \\text{ and } (a_2, a_3) \\in R \\Rightarrow (a_1, a_3) \\in R$$",
+    "sympy_expr": "R.is_transitive() if and only if all a1, a2, a3 in A: (a1, a2) in R and (a2, a3) in R implies (a1, a3) in R",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equivalence Class",
+    "latex": "$$[a] = \\{x \\in A \\mid x \\sim a\\}$$",
+    "sympy_expr": "[a] = {x in A | x ~ a}",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Partition of a Set",
+    "latex": "$$\\mathcal{P} = \\{A_1, A_2, \\dots, A_n\\}$$",
+    "sympy_expr": "P = {A1, A2, ..., An}",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equivalence Relation on Integers",
+    "latex": "$$R = \\{(a, b) : a - b \text{ is a multiple of } 4\\}$$",
+    "sympy_expr": "R = {(a, b): a - b is a multiple of 4}",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equivalence Relation on Natural Numbers",
+    "latex": "$$R = \\{(a, b) : a = b - 2, b > 6\\}$$",
+    "sympy_expr": "R = {(a, b): a = b - 2, b > 6}",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equivalence Relation on Real Numbers",
+    "latex": "$$R = \\{(a, b) : a ≤ b^2\\}$$",
+    "sympy_expr": "R = {(a, b): a ≤ b^2}",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "One-One Function",
+    "latex": "$$f(x_1) = f(x_2) \\Rightarrow x_1 = x_2$$",
+    "sympy_expr": "f(x1) = f(x2) => x1 = x2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Onto Function",
+    "latex": "$$\\forall y \\in Y, \\exists x \\in X \\text{ such that } f(x) = y$$",
+    "sympy_expr": "forall y in Y, exists x in X such that f(x) = y",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Bijective Function",
+    "latex": "$$f(x_1) = f(x_2) \\Rightarrow x_1 = x_2 \\text{ and } \\forall y \\in Y, \\exists x \\in X \\text{ such that } f(x) = y$$",
+    "sympy_expr": "f(x1) = f(x2) => x1 = x2 and forall y in Y, exists x in X such that f(x) = y",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Greatest Integer Function",
+    "latex": "$$f(x) = [x] \\text{ is neither one-one nor onto}$$",
+    "sympy_expr": "f(x) = [x] is neither one-one nor onto",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Invertible Functions",
+    "latex": "$$f^{-1}(y) = \\frac{y-3}{4}$$",
+    "sympy_expr": "f_inv(y) = (y - 3) / 4",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Binary Operations",
+    "latex": "$$a ast b = a + 4b^2$$",
+    "sympy_expr": "a_ast_b = a + 4 * b**2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Associative Property of Binary Operations",
+    "latex": "$$\\forall a, b, c \\in A, (a \\ast b) \\ast c = a \\ast (b \\ast c)$$",
+    "sympy_expr": "\\forall a, b, c in A, (a * b) * c = a * (b * c)",
+    "error": "('unexpected character after line continuation character', (1, 48))"
+  },
+  {
+    "concept": "Identity Element of a Binary Operation",
+    "latex": "$$a \\ast e = a = e \\ast a$$",
+    "sympy_expr": "a * e = a = e * a",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Inverse Element of a Binary Operation",
+    "latex": "$$a \\ast b = e = b \\ast a$$",
+    "sympy_expr": "a * b = e = b * a",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Commutative Property of Binary Operations",
+    "latex": "$$a \\ast b = b \\ast a$$",
+    "sympy_expr": "a * b = b * a",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equivalence Relations",
+    "latex": "$$R \text{ is reflexive, symmetric, and transitive}$$",
+    "sympy_expr": "R.is_reflexive() and R.is_symmetric() and R.is_transitive()",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Functions and Relations",
+    "latex": "$$f: A \\to B \text{ is a function}$$",
+    "sympy_expr": "f: A -> B is a function",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Inverse of a Function",
+    "latex": "$$f^{-1}(y) = x \\Leftrightarrow f(x) = y$$",
+    "sympy_expr": "f^(-1)(y) = x <=> f(x) = y",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Binary Operation",
+    "latex": "$$\\ast: A \\times A \\to A$$",
+    "sympy_expr": "*: A × A → A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Identity Element",
+    "latex": "$$a \\ast e = a = e \\ast a \\forall a \\in A$$",
+    "sympy_expr": "a ∗ e = a = e ∗ a ∀ a in A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Inverse Element",
+    "latex": "$$a \\ast b = e = b \\ast a \\text{ where } e \\text{ is the identity element}$$",
+    "sympy_expr": "a ∗ b = e = b ∗ a where e is the identity element",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Commutative Property",
+    "latex": "$$a \\ast b = b \\ast a \\forall a, b \\in A$$",
+    "sympy_expr": "a ∗ b = b ∗ a ∀ a, b in A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Associative Property",
+    "latex": "$$(a \\ast b) \\ast c = a \\ast (b \\ast c) \\forall a, b, c \\in A$$",
+    "sympy_expr": "(a ∗ b) ∗ c = a ∗ (b ∗ c) ∀ a, b, c in A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Definition of a Function",
+    "latex": "$$f: A \\to B$$",
+    "sympy_expr": "f: A -> B",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Domain and Range of a Function",
+    "latex": "$$D(f) = \\{x \\in A \\mid f(x) \\text{ is defined} \\}$$",
+    "sympy_expr": "D(f) = {x in A | f(x) is defined}",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Types of Functions",
+    "latex": "$$f: A \\to B \text{ is one-to-one if } f(x_1) = f(x_2) \\Rightarrow x_1 = x_2$$",
+    "sympy_expr": "f: A -> B is one-to-one if f(x1) = f(x2) => x1 = x2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Principal Value Branch of Inverse Trigonometric Functions",
+    "latex": "$$\\sin^{-1} x = \\frac{1}{2} \\pi - \\cos^{-1} x$$",
+    "sympy_expr": "sin**(-1)*x = (1/2)*pi - cos**(-1)*x",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Properties of Inverse Trigonometric Functions",
+    "latex": "$$\\sin^{-1} (-x) = -\\sin^{-1} x$$",
+    "sympy_expr": "sin**(-1)*(-x) = -sin**(-1)*x",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Properties of Inverse Trigonometric Functions",
+    "latex": "$$\\cos^{-1} (-x) = \\pi - \\cos^{-1} x$$",
+    "sympy_expr": "cos**(-1)*(-x) = pi - cos**(-1)*x",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Range and Domain of Inverse Trigonometric Functions",
+    "latex": "$$\\sin^{-1} x \\in \\left[ -\\frac{\\pi}{2}, \\frac{\\pi}{2} \\right]$$",
+    "sympy_expr": "sin**(-1)*x in [(-pi/2), (pi/2)]",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Range and Domain of Inverse Trigonometric Functions",
+    "latex": "$$\\cos^{-1} x \\in \\left[ 0, \\pi \\right]$$",
+    "sympy_expr": "cos**(-1)*x in [0, pi]",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Inverse Trigonometric Functions of Special Angles",
+    "latex": "$$\\sin^{-1} \\left( \\frac{1}{\\sqrt{2}} \\right) = \\frac{\\pi}{4}$$",
+    "sympy_expr": "sin**(-1)*(1/sqrt(2)) = pi/4",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Relationship between Inverse Trigonometric Functions",
+    "latex": "$$\\sin^{-1} x = \\cos^{-1} \\sqrt{1-x^2}$$",
+    "sympy_expr": "sin**-1**(x) = cos**-1**((1-x**2)**(1/2))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Inverse Trigonometric Functions and Reciprocal Functions",
+    "latex": "$$\\sin^{-1} x \\neq \\frac{1}{\\sin x}$$",
+    "sympy_expr": "sin**-1**(x) != 1/sin(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Historical Development of Trigonometry",
+    "latex": "$$\\sin^{-1} x = \\frac{1}{2} \\pi - \\cos^{-1} x$$",
+    "sympy_expr": "sin**-1**(x) = (1/2)*pi - cos**-1**(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Matrix",
+    "latex": "$$A = [aij]_{m \\times n}$$",
+    "sympy_expr": "A = [aij]_m * n",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Order of a Matrix",
+    "latex": "$$A = [aij]_{m \\times n}$$",
+    "sympy_expr": "A = [aij]_m * n",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Column Matrix",
+    "latex": "$$A = [aij]_{m \\times 1}$$",
+    "sympy_expr": "A = [aij]_m * 1",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Row Matrix",
+    "latex": "$$A = [aij]_{1 \\times n}$$",
+    "sympy_expr": "A = [aij]_1 * n",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Square Matrix",
+    "latex": "$$A = \\begin{bmatrix} a_{11} & a_{12} & \\dots & a_{1n} \\ a_{21} & a_{22} & \\dots & a_{2n} \\vdots & \\vdots & \\ddots & \\vdots \\ a_{n1} & a_{n2} & \\dots & a_{nn} \\end{bmatrix}$$",
+    "sympy_expr": "A = Matrix([[a11, a12, ..., a1n], [a21, a22, ..., a2n], ..., [an1, an2, ..., ann]])",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Diagonal Matrix",
+    "latex": "$$D = \\begin{bmatrix} d_1 & 0 & \\dots & 0 \\ 0 & d_2 & \\dots & 0 \\vdots & \\vdots & \\ddots & \\vdots \\ 0 & 0 & \\dots & d_n \\end{bmatrix}$$",
+    "sympy_expr": "D = Matrix([[d1, 0, ..., 0], [0, d2, ..., 0], ..., [0, 0, ..., dn]])",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Identity Matrix",
+    "latex": "$$I = \\begin{bmatrix} 1 & 0 & \\dots & 0 \\ 0 & 1 & \\dots & 0 \\vdots & \\vdots & \\ddots & \\vdots \\ 0 & 0 & \\dots & 1 \\end{bmatrix}$$",
+    "sympy_expr": "I = Matrix([[1, 0, ..., 0], [0, 1, ..., 0], ..., [0, 0, ..., 1]])",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Zero Matrix",
+    "latex": "$$O = \\begin{bmatrix} 0 & 0 & \\dots & 0 \\ 0 & 0 & \\dots & 0 \\vdots & \\vdots & \\ddots & \\vdots \\ 0 & 0 & \\dots & 0 \\end{bmatrix}$$",
+    "sympy_expr": "O = Matrix([[0, 0, ..., 0], [0, 0, ..., 0], ..., [0, 0, ..., 0]])",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Addition of Matrices",
+    "latex": "$$A + B = \\begin{bmatrix} a_{11} + b_{11} & a_{12} + b_{12} \\ a_{21} + b_{21} & a_{22} + b_{22} \\end{bmatrix}$$",
+    "sympy_expr": "A + B = Matrix([[a11 + b11, a12 + b12], [a21 + b21, a22 + b22]])",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Multiplication of a Matrix by a Scalar",
+    "latex": "$$kA = \\begin{bmatrix} ka_{11} & ka_{12} \\ ka_{21} & ka_{22} \\end{bmatrix}$$",
+    "sympy_expr": "k * A = Matrix([[k * a11, k * a12], [k * a21, k * a22]])",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Matrix Addition",
+    "latex": "$$A + B = [a_{ij}] + [b_{ij}] = [a_{ij} + b_{ij}]$$",
+    "sympy_expr": "A + B = [a_ij] + [b_ij] = [a_ij + b_ij]",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Matrix Multiplication",
+    "latex": "$$AB = [a_{ij}] [b_{jk}] = [c_{ik}]$$",
+    "sympy_expr": "AB = [a_ij] * [b_jk] = [c_ik]",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Additive Identity of Matrix",
+    "latex": "$$A + O = O + A = A$$",
+    "sympy_expr": "A + O = O + A = A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Additive Inverse of Matrix",
+    "latex": "$$A + (-A) = (-A) + A = O$$",
+    "sympy_expr": "A + (-A) = (-A) + A = O",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Properties of Matrix Addition",
+    "latex": "$$A + B = B + A$$",
+    "sympy_expr": "A + B = B + A",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Properties of Scalar Multiplication",
+    "latex": "$$k(A + B) = kA + kB$$",
+    "sympy_expr": "k*(A + B) = k*A + k*B",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Symmetric and Skew-Symmetric Matrices",
+    "latex": "$$A^T = -A Rightarrow A = \begin{bmatrix} 0 & b \\ -b & 0 end{bmatrix}$$",
+    "sympy_expr": "Matrix([[0, b], [-b, 0]]).is_skew_symmetric()",
+    "error": "'MutableDenseMatrix' object has no attribute 'is_skew_symmetric'"
+  },
+  {
+    "concept": "Symmetric and Skew Symmetric Matrices",
+    "latex": "$A = \\frac{1}{2}(A + A^T) + \\frac{1}{2}(A - A^T)$",
+    "sympy_expr": "A = (1/2)*(A + A.T) + (1/2)*(A - A.T)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Inverse of a Matrix",
+    "latex": "$A^{-1}A = AA^{-1} = I$",
+    "sympy_expr": "A_inv * A = A * A_inv = I",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Elementary Row and Column Operations",
+    "latex": "$R_i \\leftrightarrow R_j$",
+    "sympy_expr": "R_i <-> R_j",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Elementary Row and Column Operations",
+    "latex": "$C_i \\leftrightarrow C_j$",
+    "sympy_expr": "C_i <-> C_j",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Determinant of a Matrix",
+    "latex": "$$|A| = \\sum_{i=1}^{n} (-1)^{i+j} a_{ij} M_{ij}$$",
+    "sympy_expr": "|A| = (-1)**(i+j) * a_ij * M_ij",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Determinant of a 3x3 Matrix",
+    "latex": "$$|A| = a_{11} (a_{22} a_{33} - a_{23} a_{32}) - a_{12} (a_{21} a_{33} - a_{31} a_{23}) + a_{13} (a_{21} a_{32} - a_{31} a_{22})$$",
+    "sympy_expr": "|A| = a_11 * (a_22 * a_33 - a_23 * a_32) - a_12 * (a_21 * a_33 - a_31 * a_23) + a_13 * (a_21 * a_32 - a_31 * a_22)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Properties of Determinants",
+    "latex": "$$|kA| = k^n |A|$$",
+    "sympy_expr": "|k*A| = k**n * |A|",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Property 1: Determinant remains unchanged if rows and columns are interchanged",
+    "latex": "$$\\Delta = \\Delta'$$",
+    "sympy_expr": "\\Delta = \\Delta'",
+    "error": "('unexpected character after line continuation character', (1, 17))"
+  },
+  {
+    "concept": "Property 2: Determinant changes sign if rows and columns are interchanged",
+    "latex": "$$\\Delta = -\\Delta'$$",
+    "sympy_expr": "\\Delta = -\\Delta'",
+    "error": "('unexpected character after line continuation character', (1, 18))"
+  },
+  {
+    "concept": "Property 3: Determinant is zero if two rows or columns are identical",
+    "latex": "$$\\Delta = 0$$",
+    "sympy_expr": "\\Delta = 0",
+    "error": "('unexpected character after line continuation character', (1, 11))"
+  },
+  {
+    "concept": "Property 4: Determinant changes value if a row or column is multiplied by a constant",
+    "latex": "$$\\Delta = k\\Delta'$$",
+    "sympy_expr": "\\Delta = k*\\Delta'",
+    "error": "('unexpected character after line continuation character', (1, 19))"
+  },
+  {
+    "concept": "Property 5: Determinant can be expressed as sum of two or more determinants",
+    "latex": "$$\\Delta = \\Delta_1 + \\Delta_2$$",
+    "sympy_expr": "\\Delta = \\Delta_1 + \\Delta_2",
+    "error": "('unexpected character after line continuation character', (1, 29))"
+  },
+  {
+    "concept": "Property 6: Determinant remains unchanged if rows or columns are added",
+    "latex": "$$\\Delta = \\Delta'$$",
+    "sympy_expr": "\\Delta = \\Delta'",
+    "error": "('unexpected character after line continuation character', (1, 17))"
+  },
+  {
+    "concept": "Minors and Cofactors of a Determinant",
+    "latex": "$$M_{ij} = \\begin{vmatrix} a_{11} & a_{12} & \\dots & a_{1,j-1} & a_{1,j+1} & \\dots & a_{1n} \\\\ a_{21} & a_{22} & \\dots & a_{2,j-1} & a_{2,j+1} & \\dots & a_{2n} \\\\ \\vdots & \\vdots & \\ddots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ a_{i1} & a_{i2} & \\dots & a_{i,j-1} & a_{i,j+1} & \\dots & a_{in} \\\\ a_{i+1,1} & a_{i+1,2} & \\dots & a_{i+1,j-1} & a_{i+1,j+1} & \\dots & a_{i+1,n} \\\\ \\vdots & \\vdots & \\ddots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ a_{n1} & a_{n2} & \\dots & a_{n,j-1} & a_{n,j+1} & \\dots & a_{nn} \\\\ end{vmatrix}$$",
+    "sympy_expr": "sympy.Matrix([[a11, a12, ..., a1,j-1, a1,j+1, ..., a1n], [a21, a22, ..., a2,j-1, a2,j+1, ..., a2n], ..., [ai1, ai2, ..., ai,j-1, ai,j+1, ..., ain], [ai+1,1, ai+1,2, ..., ai+1,j-1, ai+1,j+1, ..., ai+1,n], ..., [an1, an2, ..., an,j-1, an,j+1, ..., ann]]).det()",
+    "error": "'Symbol' object has no attribute 'Matrix'"
+  },
+  {
+    "concept": "Adjoint and Inverse of a Matrix",
+    "latex": "$$\\text{adj}(A) = A^T$$",
+    "sympy_expr": "sympy.Matrix(A).T",
+    "error": "'Symbol' object has no attribute 'Matrix'"
+  },
+  {
+    "concept": "Adjoint and Inverse of a Matrix",
+    "latex": "$$A^{-1} = \\frac{1}{|A|} \\text{adj}(A)$$",
+    "sympy_expr": "sympy.Matrix(A).inv()",
+    "error": "'Symbol' object has no attribute 'Matrix'"
+  },
+  {
+    "concept": "Adjoint of a Matrix",
+    "latex": "$$\\text{adj}(A) = [A_{ij}]^T$$",
+    "sympy_expr": "adj(A) = A.T",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Inverse of a Matrix",
+    "latex": "$$A^{-1} = \\frac{1}{|A|} \\text{adj}(A)$$",
+    "sympy_expr": "A_inv = 1 / A.det() * A.adj()",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Singular Matrix",
+    "latex": "$$|A| = 0$$",
+    "sympy_expr": "A.det() == 0",
+    "error": "'Symbol' object has no attribute 'det'"
+  },
+  {
+    "concept": "Nonsingular Matrix",
+    "latex": "$$|A| \\neq 0$$",
+    "sympy_expr": "A.det() != 0",
+    "error": "'Symbol' object has no attribute 'det'"
+  },
+  {
+    "concept": "Matrix Method for Solving System of Linear Equations",
+    "latex": "$$X = A^{-1} B$$",
+    "sympy_expr": "X = A_inv * B",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Definition of Continuity",
+    "latex": "$$\\lim_{x \\to c} f(x) = f(c)$$",
+    "sympy_expr": "limit(f(x), x, c) = f(c)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Types of Discontinuity",
+    "latex": "$$f(c) \\text{ is undefined}$$",
+    "sympy_expr": "f(c) is undefined",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of Basic Functions",
+    "latex": "$$f(x) = k$$",
+    "sympy_expr": "f(x) = k",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of Basic Functions",
+    "latex": "$$f(x) = x$$",
+    "sympy_expr": "f(x) = x",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of Basic Functions",
+    "latex": "$$f(x) = x^n$$",
+    "sympy_expr": "f(x) = x**n",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of Absolute Value Function",
+    "latex": "$$f(x) = \\begin{cases} x & \\text{if } x \\geq 0 \\\\ -x & \\text{if } x < 0 \\end{cases}$$",
+    "sympy_expr": "f(x) = x if x >= 0 else -x",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Right Hand Limit of Reciprocal Function",
+    "latex": "$$\\lim_{x \\to 0^+} \\frac{1}{x} = +\\infty$$",
+    "sympy_expr": "sympy.limit(1/x, x, 0, '+')",
+    "error": "Expr.limit() takes from 3 to 4 positional arguments but 5 were given"
+  },
+  {
+    "concept": "Left Hand Limit of Reciprocal Function",
+    "latex": "$$\\lim_{x \\to 0^-} \\frac{1}{x} = -\\infty$$",
+    "sympy_expr": "sympy.limit(1/x, x, 0, '-')",
+    "error": "Expr.limit() takes from 3 to 4 positional arguments but 5 were given"
+  },
+  {
+    "concept": "Continuity of Piecewise Function",
+    "latex": "$$f(x) = \\begin{cases} x + 2 & \\text{if } x < 1 \\\\ x - 2 & \\text{if } x > 1 \\\\ 3 & \\text{if } x = 1 \\end{cases}$$",
+    "sympy_expr": "f(x) = x + 2 if x < 1 else x - 2 if x > 1 else 3",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Discontinuity of Piecewise Function",
+    "latex": "$$\\lim_{x \\to 1^-} f(x) = 3, \\quad \\lim_{x \\to 1^+} f(x) = -1$$",
+    "sympy_expr": "sympy.limit(f(x), x, 1, '-') if sympy.limit(f(x), x, 1, '+')",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of Domain-Restricted Function",
+    "latex": "$$f(x) = \\begin{cases} x + 2 & \\text{if } x \\in D1 \\\\ -x + 2 & \\text{if } x \\in D2 \\end{cases}$$",
+    "sympy_expr": "f(x) = x + 2 if x in D1 else -x + 2",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of a function at a point",
+    "latex": "$$\\lim_{x \\to c} f(x) = f(c)$$",
+    "sympy_expr": "lim(x, c, f(x)) = f(c)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Algebra of continuous functions",
+    "latex": "$$\\lim_{x \\to c} (f(x) + g(x)) = \\lim_{x \\to c} f(x) + \\lim_{x \\to c} g(x)$$",
+    "sympy_expr": "lim(x, c, f(x) + g(x)) = lim(x, c, f(x)) + lim(x, c, g(x))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Algebra of continuous functions",
+    "latex": "$$\\lim_{x \\to c} (f(x) - g(x)) = \\lim_{x \\to c} f(x) - \\lim_{x \\to c} g(x)$$",
+    "sympy_expr": "lim(x, c, f(x) - g(x)) = lim(x, c, f(x)) - lim(x, c, g(x))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Algebra of continuous functions",
+    "latex": "$$\\lim_{x \\to c} (f(x) \\cdot g(x)) = \\lim_{x \\to c} f(x) \\cdot \\lim_{x \\to c} g(x)$$",
+    "sympy_expr": "lim(x, c, f(x) * g(x)) = lim(x, c, f(x)) * lim(x, c, g(x))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of polynomial functions",
+    "latex": "$$\\lim_{x \\to c} (a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0) = a_n c^n + a_{n-1} c^{n-1} + \\dots + a_1 c + a_0$$",
+    "sympy_expr": "lim(x, c, a_n*x**n + a_(n-1)*x**(n-1) + ... + a_1*x + a_0) = a_n*c**n + a_(n-1)*c**(n-1) + ... + a_1*c + a_0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of rational functions",
+    "latex": "$$\\lim_{x \\to c} \\frac{p(x)}{q(x)} = \\frac{p(c)}{q(c)}$$",
+    "sympy_expr": "lim(x, c, p(x)/q(x)) = p(c)/q(c)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of trigonometric functions",
+    "latex": "$$\\lim_{x \\to c} \\sin(x) = \\sin(c)$$",
+    "sympy_expr": "lim(x, c, sin(x)) = sin(c)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of trigonometric functions",
+    "latex": "$$\\lim_{x \\to c} \\cos(x) = \\cos(c)$$",
+    "sympy_expr": "lim(x, c, cos(x)) = cos(c)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of trigonometric functions",
+    "latex": "$$\\lim_{x \\to c} \\tan(x) = \\tan(c)$$",
+    "sympy_expr": "lim(x, c, tan(x)) = tan(c)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Continuity of composite functions",
+    "latex": "$$\\lim_{x \\to c} (f(g(x))) = f(g(c))$$",
+    "sympy_expr": "lim(x, c, f(g(x))) = f(g(c))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Chain Rule",
+    "latex": "$$\\frac{df}{dx} = \\frac{dv}{du} \\cdot \\frac{du}{dx}$$",
+    "sympy_expr": "(df/dx) = (dv/du) * (du/dx)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Chain Rule for Differentiation",
+    "latex": "$$\\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)$$",
+    "sympy_expr": "diff(f(g(x)), x) = f.diff(g(x)) * g.diff(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Derivative of Composite Functions",
+    "latex": "$$\\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)$$",
+    "sympy_expr": "diff(f(g(x)), x) = f.diff(g(x)) * g.diff(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Implicit Differentiation",
+    "latex": "$$\\frac{d}{dx} (f(x) + g(x)) = \\frac{d}{dx} f(x) + \\frac{d}{dx} g(x)$$",
+    "sympy_expr": "diff(f(x) + g(x), x) = diff(f(x), x) + diff(g(x), x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Derivatives of Inverse Trigonometric Functions",
+    "latex": "$$\\frac{d}{dx} \\sin^{-1} x = \\frac{1}{\\sqrt{1-x^2}}$$",
+    "sympy_expr": "diff(asin(x), x) = 1/sqrt(1-x**2)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Derivatives of Inverse Trigonometric Functions",
+    "latex": "$$\\frac{d}{dx} \\cos^{-1} x = -\\frac{1}{\\sqrt{1-x^2}}$$",
+    "sympy_expr": "diff(acos(x), x) = -1/sqrt(1-x**2)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Rolle's Theorem",
+    "latex": "$$f'(c) = 0$$",
+    "sympy_expr": "f_prime(c) = 0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Mean Value Theorem",
+    "latex": "$$f'(c) = \\frac{f(b) - f(a)}{b - a}$$",
+    "sympy_expr": "f_prime(c) = (f(b) - f(a)) / (b - a)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Second Order Derivatives",
+    "latex": "$$f''(x) = \\frac{d}{dx} f'(x)$$",
+    "sympy_expr": "f_double_prime(x) = diff(f_prime(x), x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Trigonometric Functions",
+    "latex": "$$\\sin^{-1} x = \\frac{1}{2} \\pi + \\arctan \\frac{x}{\\sqrt{1 - x^2}}$$",
+    "sympy_expr": "asin(x) = pi/2 + atan(x/sqrt(1 - x**2))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Differentiation of composite functions",
+    "latex": "$$\\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)$$",
+    "sympy_expr": "diff(f(g(x)), x) = f.diff(g(x)) * g.diff(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Differentiation of trigonometric functions",
+    "latex": "$$\\frac{d}{dx} \\sin x = \\cos x$$",
+    "sympy_expr": "diff(sin(x), x) = cos(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Differentiation of trigonometric functions",
+    "latex": "$$\\frac{d}{dx} \\cos x = -\\sin x$$",
+    "sympy_expr": "diff(cos(x), x) = -sin(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Differentiation of exponential functions",
+    "latex": "$$\\frac{d}{dx} e^x = e^x$$",
+    "sympy_expr": "diff(exp(x), x) = exp(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Rolle’s Theorem",
+    "latex": "$$f'(c) = 0$$",
+    "sympy_expr": "f.diff(x).subs(x, c) = 0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Increasing and Decreasing Functions",
+    "latex": "$$f'(x) > 0$$",
+    "sympy_expr": "f'(x) > 0",
+    "error": "('unterminated f-string literal (detected at line 1)', (1, 1))"
+  },
+  {
+    "concept": "Increasing and Decreasing Functions",
+    "latex": "$$f'(x) < 0$$",
+    "sympy_expr": "f'(x) < 0",
+    "error": "('unterminated f-string literal (detected at line 1)', (1, 1))"
+  },
+  {
+    "concept": "First Derivative Test",
+    "latex": "$$f'(x) > 0$$",
+    "sympy_expr": "f'(x) > 0",
+    "error": "('unterminated f-string literal (detected at line 1)', (1, 1))"
+  },
+  {
+    "concept": "First Derivative Test",
+    "latex": "$$f'(x) < 0$$",
+    "sympy_expr": "f'(x) < 0",
+    "error": "('unterminated f-string literal (detected at line 1)', (1, 1))"
+  },
+  {
+    "concept": "Tangents and Normals",
+    "latex": "$$y - y_0 = f'(x_0)(x - x_0)$$",
+    "sympy_expr": "y - y0 = f_prime(x0)*(x - x0)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Tangents and Normals",
+    "latex": "$$y - y_0 = -\\frac{1}{f'(x_0)}(x - x_0)$$",
+    "sympy_expr": "y - y0 = -1/f_prime(x0)*(x - x0)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Slope of Tangent Line",
+    "latex": "$$\\frac{dy}{dx} = f'(x)$$",
+    "sympy_expr": "dy/dx = f_prime(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equation of Tangent Line",
+    "latex": "$$y - y_0 = f'(x_0)(x - x_0)$$",
+    "sympy_expr": "y - y0 = f_prime(x0)*(x - x0)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equation of a Tangent to a Curve",
+    "latex": "$$y - y_1 = m(x - x_1)$$",
+    "sympy_expr": "y - y1 = m * (x - x1)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Equation of a Normal to a Curve",
+    "latex": "$$y - y_1 = -\\frac{1}{m}(x - x_1)$$",
+    "sympy_expr": "y - y1 = -1/m * (x - x1)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Approximate Change in Volume of a Cube",
+    "latex": "$\\Delta V = \\frac{dV}{dx} \\Delta x$",
+    "sympy_expr": "Delta_V = (dV/dx) * Delta_x",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Approximate Error in Calculating Volume of a Sphere",
+    "latex": "$\\Delta V = 4\\pi r^2 \\Delta r$",
+    "sympy_expr": "Delta_V = 4 * pi * r**2 * Delta_r",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Approximate Change in Surface Area of a Cube",
+    "latex": "$\\Delta A = \\frac{dA}{dx} \\Delta x$",
+    "sympy_expr": "Delta_A = (dA/dx) * Delta_x",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Approximate Error in Calculating Surface Area of a Sphere",
+    "latex": "$\\Delta A = 4\\pi r \\Delta r$",
+    "sympy_expr": "Delta_A = 4 * pi * r * Delta_r",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Finding Maximum and Minimum Values of a Function",
+    "latex": "$f'(x) = 0$",
+    "sympy_expr": "f_prime(x) = 0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Local Maxima and Minima",
+    "latex": "$$f'(x) = 0$$",
+    "sympy_expr": "f_prime(x) = 0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Critical Points",
+    "latex": "$$f'(x) = 0$$",
+    "sympy_expr": "f_prime(x) = 0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Points of Inflection",
+    "latex": "$$f''(x) = 0$$",
+    "sympy_expr": "f_double_prime(x) = 0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Local Maxima and Minima using First Derivative Test",
+    "latex": "$$f'(x) > 0 \\text{ for } x < c \\text{ and } f'(x) < 0 \\text{ for } x > c$$",
+    "sympy_expr": "f_prime(x) > 0 for x < c and f_prime(x) < 0 for x > c",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Second Derivative Test",
+    "latex": "$$f''(c) < 0 \\text{ for local maxima} \\text{ and } f''(c) > 0 \\text{ for local minima}$$",
+    "sympy_expr": "f_double_prime(c) < 0 for local maxima and f_double_prime(c) > 0 for local minima",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Shortest Distance from a Point to a Curve",
+    "latex": "$$D = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$",
+    "sympy_expr": "D = sqrt((x2 - x1)**2 + (y2 - y1)**2)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Area of a Trapezium",
+    "latex": "$$A = \\frac{1}{2}(a + b)h$$",
+    "sympy_expr": "A = (1/2)*(a + b)*h",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Radius of a Right Circular Cylinder",
+    "latex": "$$r = \\frac{1}{2}R$$",
+    "sympy_expr": "r = (1/2)*R",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Absolute Maximum and Minimum Values of a Function in a Closed Interval",
+    "latex": "$$f(x) = \\max\\{f(a), f(b), f(c), \\ldots, f(d)\\}$$",
+    "sympy_expr": "f(x) = max(f(a), f(b), f(c), ..., f(d))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Absolute Maximum and Minimum Values of a Function in a Closed Interval",
+    "latex": "$$f(x) = \\min\\{f(a), f(b), f(c), \\ldots, f(d)\\}$$",
+    "sympy_expr": "f(x) = min(f(a), f(b), f(c), ..., f(d))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Critical Points of a Function",
+    "latex": "$$f'(x) = 0$$",
+    "sympy_expr": "f_prime(x) = 0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Critical Points of a Function",
+    "latex": "$$f'(x) \\text{ is undefined}$$",
+    "sympy_expr": "f_prime(x) is undefined",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Distance between a Point and a Curve",
+    "latex": "$$d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$",
+    "sympy_expr": "d = sqrt((x2 - x1)**2 + (y2 - y1)**2)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Optimization Problems",
+    "latex": "$$L(x, y) = f(x, y) - lambda g(x, y)$$",
+    "sympy_expr": "L(x, y) = f(x, y) - lambda * g(x, y)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Optimization Problems",
+    "latex": "$$\nabla L = 0$$",
+    "sympy_expr": "grad(L) = 0",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Related Rates",
+    "latex": "$$\frac{dy}{dt} = \frac{dy}{dx} cdot \frac{dx}{dt}$$",
+    "sympy_expr": "dy_dt = dy_dx * dx_dt",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Parametric Equations",
+    "latex": "$$x = f(t), y = g(t)$$",
+    "sympy_expr": "x = f(t), y = g(t)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Parametric Equations",
+    "latex": "$$\frac{dy}{dx} = \frac{g'(t)}{f'(t)}$$",
+    "sympy_expr": "dy_dx = g_prime(t) / f_prime(t)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Implicit Differentiation",
+    "latex": "$$y^2 + x^2 = 4$$",
+    "sympy_expr": "y**2 + x**2 = 4",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Implicit Differentiation",
+    "latex": "$$\frac{dy}{dx} = \frac{2x}{2y}$$",
+    "sympy_expr": "dy_dx = 2*x / (2*y)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Chain Rule",
+    "latex": "$$\\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)$$",
+    "sympy_expr": "diff(f(g(x)), x) = f.diff(g(x)) * g.diff(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Tangent and Normal Lines",
+    "latex": "$$y - y_0 = m(x - x_0)$$",
+    "sympy_expr": "y - y0 = m * (x - x0)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Tangent and Normal Lines",
+    "latex": "$$y - y_0 = -\\frac{1}{m}(x - x_0)$$",
+    "sympy_expr": "y - y0 = -1/m * (x - x0)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Absolute Maxima and Minima",
+    "latex": "$$\\text{Find critical points and endpoints}$$",
+    "sympy_expr": "find critical points and endpoints",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Absolute Maxima and Minima",
+    "latex": "$$\\text{Calculate function values at critical points and endpoints}$$",
+    "sympy_expr": "calculate function values at critical points and endpoints",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Integration by Partial Fractions",
+    "latex": "$$\\int \\frac{P(x)}{Q(x)} dx = \\int \\left( \\frac{A}{x-a} + \\frac{B}{x-b} \\right) dx$$",
+    "sympy_expr": "int((A/(x-a) + B/(x-b)), x)",
+    "error": "can't multiply sequence by non-int of type 'Mul'"
+  },
+  {
+    "concept": "Integration by Substitution",
+    "latex": "$$\\int f(g(x)) g'(x) dx = F(g(x)) + C$$",
+    "sympy_expr": "int(f(g(x))*g'(x), x)",
+    "error": "('unterminated string literal (detected at line 1)', (1, 14))"
+  },
+  {
+    "concept": "Improper Rational Functions",
+    "latex": "$$\\frac{P(x)}{Q(x)} = \\frac{T(x)}{Q(x)} + \\frac{R(x)}{Q(x)}$$",
+    "sympy_expr": "(T(x) + R(x))/Q(x)",
+    "error": "unsupported operand type(s) for /: 'Add' and 'AssumptionKeys'"
+  },
+  {
+    "concept": "Definition of Definite Integral as Limit of Sum",
+    "latex": "$$\\int_a^b f(x) dx = \\lim_{n \\to \\infty} \\sum_{r=1}^n f(x_r) \\Delta x$$",
+    "sympy_expr": "Integral(a, b, f(x)) = limit(n -> oo, Sum(f(x_r) * Delta_x, (r, 1, n)))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Area Function",
+    "latex": "$$A(x) = \\int_a^x f(t) dt$$",
+    "sympy_expr": "A(x) = Integral(a, x, f(t))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "First Fundamental Theorem of Integral Calculus",
+    "latex": "$$\\frac{d}{dx} \\int_a^x f(t) dt = f(x)$$",
+    "sympy_expr": "diff(Integral(a, x, f(t)), x) = f(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Second Fundamental Theorem of Integral Calculus",
+    "latex": "$$\\int_a^b f(x) dx = F(b) - F(a)$$",
+    "sympy_expr": "Integral(a, b, f(x)) = F(b) - F(a)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Evaluation of Definite Integrals by Substitution",
+    "latex": "$$\\int f(x) dx = \\int f(u) \\frac{du}{dx} dx$$",
+    "sympy_expr": "Integral(f(x), x) = Integral(f(u) * diff(u, x), x)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Rational Functions",
+    "latex": "$$\\frac{P(x)}{Q(x)} = T(x) + \\frac{P_1(x)}{Q(x)}$$",
+    "sympy_expr": "(P(x) / Q(x)).as_numer_denom()[0] + (P(x) / Q(x)).as_numer_denom()[1]",
+    "error": "unsupported operand type(s) for /: 'Mul' and 'AssumptionKeys'"
+  },
+  {
+    "concept": "Area between two curves",
+    "latex": "$$A = \\int_a^b [f(x) - g(x)] dx$$",
+    "sympy_expr": "A = integrate(f(x) - g(x), (x, a, b))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Area of a region bounded by an ellipse and a line",
+    "latex": "$$A = \\int_a^b [f(x) - g(x)] dx$$",
+    "sympy_expr": "A = integrate(f(x) - g(x), (x, a, b))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Area of a region bounded by a parabola and a line",
+    "latex": "$$A = \\int_a^b [f(x) - g(x)] dx$$",
+    "sympy_expr": "A = integrate(f(x) - g(x), (x, a, b))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Area of a region bounded by a circle and a line",
+    "latex": "$$A = \\int_a^b [f(x) - g(x)] dx$$",
+    "sympy_expr": "A = integrate(f(x) - g(x), (x, a, b))",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Definite Integral",
+    "latex": "$$\\int_a^b f(x) dx = F(b) - F(a)$$",
+    "sympy_expr": "Integral(f(x), (x, a, b)) = F(b) - F(a)",
+    "error": "invalid syntax (<string>, line 1)"
+  },
+  {
+    "concept": "Fundamental Theorem of Calculus",
+    "latex": "$$\\frac{d}{dx} \\int_a^x f(t) dt = f(x)$$",
+    "sympy_expr": "diff(Integral(f(t), (t, a, x)), x) = f(x)",
+    "error": "invalid syntax (<string>, line 1)"
+  }
+]
