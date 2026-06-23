@@ -8,19 +8,19 @@ pymupdf4llm
 # llama-index-core==0.12.0  # Optional — we handle chunking manually
 
 # Concept extraction via Gemini Flash
-google-generativeai==0.8.0
+google-generativeai
 
 # BGE-small embeddings (local, free, 768-dim)
-sentence-transformers==3.0.0
-torch==2.3.0  # CPU-only, no CUDA required for inference
+sentence-transformers
+torch  # CPU-only, no CUDA required for inference
 
 # Math validation
-sympy==1.13.0
+sympy
 
 # Database connectivity
-psycopg2-binary==2.9.9
+psycopg2-binary
 
 # Utilities
-python-dotenv==1.0.0    # Load .env file
-watchdog==4.0.0         # File system watcher
-tqdm==4.66.0            # Progress bars
+python-dotenv    # Load .env file
+watchdog         # File system watcher
+tqdm             # Progress bars
