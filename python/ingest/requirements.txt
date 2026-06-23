@@ -2,8 +2,7 @@
 # Requirements for: marker-pdf, Gemini Flash extraction, SymPy validation,
 #                   BGE-small embeddings, PostgreSQL push
 
-# PDF → Markdown (Marker: superior LaTeX handling vs Tesseract)
-marker-pdf
+pymupdf4llm
 
 # Orchestration (minimal — just for chunking utilities)
 # llama-index-core==0.12.0  # Optional — we handle chunking manually

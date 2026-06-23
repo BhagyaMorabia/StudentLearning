@@ -40,18 +40,10 @@ def convert_pdf(pdf_path: Path) -> Path:
     print(f"  Converting: {pdf_path.name} -> {output_path.name}")
 
     try:
-        from marker.convert import convert_single_pdf
-        from marker.models import load_all_models
+        import pymupdf4llm
 
-        print("  Loading Marker models (first run downloads ~2GB)...")
-        models = load_all_models()
-
-        full_text, images, metadata = convert_single_pdf(
-            str(pdf_path),
-            models,
-            langs=["English"],
-            batch_multiplier=2,
-        )
+        print("  Converting with PyMuPDF4LLM...")
+        full_text = pymupdf4llm.to_markdown(str(pdf_path))
 
         # Write markdown output
         output_path.write_text(full_text, encoding="utf-8")
@@ -60,8 +52,8 @@ def convert_pdf(pdf_path: Path) -> Path:
         return output_path
 
     except ImportError:
-        print("ERROR: marker-pdf not installed.")
-        print("Run: pip install marker-pdf")
+        print("ERROR: pymupdf4llm not installed.")
+        print("Run: pip install pymupdf4llm")
         sys.exit(1)
     except Exception as e:
         print(f"ERROR: Conversion failed: {e}")
