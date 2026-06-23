@@ -103,7 +103,7 @@ def main():
 
         # Save updated JSON (with sympy_verified fields)
         json_path.write_text(json.dumps(updated_concepts, indent=2, ensure_ascii=False))
-        print(f"  ✓ Saved updated: {json_path.name}")
+        print(f"  [OK] Saved updated: {json_path.name}")
 
     # Save all flagged formulas for human review
     if all_flagged:
@@ -112,7 +112,7 @@ def main():
         print(f"\n⚠ {len(all_flagged)} formulas need human review → {flagged_path.name}")
         print("  Review and fix these BEFORE running 05_push_to_db.py")
     else:
-        print("\n✓ All formulas validated successfully!")
+        print("\n[OK] All formulas validated successfully!")
 
     print("\nNext step: python 04_generate_embeddings.py")
 

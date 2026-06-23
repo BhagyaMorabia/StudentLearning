@@ -47,7 +47,7 @@ def run_pipeline(pdf_path: Path, topic_id: str) -> None:
             print("Fix the error and re-run manually.")
             return
 
-    print(f"\n✓ Pipeline complete for {pdf_path.name}")
+    print(f"\n[OK] Pipeline complete for {pdf_path.name}")
 
 
 def main():

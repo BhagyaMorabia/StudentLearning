@@ -179,7 +179,7 @@ def push_prerequisites(
 
     conn.commit()
     cursor.close()
-    print(f"  ✓ Created {edges} prerequisite edges")
+    print(f"  [OK] Created {edges} prerequisite edges")
 
 
 def main():
@@ -199,7 +199,7 @@ def main():
 
     print(f"Connecting to Neon PostgreSQL...")
     conn = get_connection()
-    print("✓ Connected")
+    print("[OK] Connected")
 
     for json_path in json_files:
         if not json_path.exists():
@@ -215,12 +215,12 @@ def main():
 
         print(f"  {len(concepts)} concepts to push...")
         name_to_id = push_concepts(concepts, args.topic_id, conn)
-        print(f"  ✓ Inserted {len(name_to_id)} subtopics")
+        print(f"  [OK] Inserted {len(name_to_id)} subtopics")
 
         push_prerequisites(concepts, name_to_id, conn)
 
     conn.close()
-    print("\n✓ Done! Run your Next.js app and test RAG retrieval.")
+    print("\n[OK] Done! Run your Next.js app and test RAG retrieval.")
     print("  Test: POST /api/ai/teach with a subtopicId from the DB")
 
 

@@ -148,7 +148,7 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                 concepts = json.loads(raw)
                 if isinstance(concepts, list):
                     all_concepts.extend(concepts)
-                    print(f"    ✓ Extracted {len(concepts)} concepts")
+                    print(f"    [OK] Extracted {len(concepts)} concepts")
                 else:
                     print(f"    ⚠ Unexpected response type: {type(concepts)}")
                 
@@ -227,7 +227,7 @@ def main():
         concepts = extract_concepts(text, md_path.stem)
 
         output_path.write_text(json.dumps(concepts, indent=2, ensure_ascii=False))
-        print(f"✓ Saved {len(concepts)} concepts → {output_path.name}")
+        print(f"[OK] Saved {len(concepts)} concepts → {output_path.name}")
 
     print("\nNext step: python 03_validate_math.py")
 

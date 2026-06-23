@@ -68,7 +68,7 @@ def generate_embeddings(concepts: list[dict]) -> list[dict]:
     for concept, embedding in zip(concepts, embeddings):
         concept["embedding"] = embedding.tolist()  # numpy → Python list
 
-    print(f"  ✓ Generated {len(embeddings)} embeddings (dim={embeddings.shape[1]})")
+    print(f"  [OK] Generated {len(embeddings)} embeddings (dim={embeddings.shape[1]})")
     return concepts
 
 
@@ -89,12 +89,12 @@ def main():
 
         # Skip if embeddings already exist
         if all("embedding" in c for c in concepts):
-            print(f"  ✓ Already has embeddings (delete to regenerate)")
+            print(f"  [OK] Already has embeddings (delete to regenerate)")
             continue
 
         updated = generate_embeddings(concepts)
         json_path.write_text(json.dumps(updated, indent=2, ensure_ascii=False))
-        print(f"  ✓ Saved: {json_path.name}")
+        print(f"  [OK] Saved: {json_path.name}")
 
     print("\nNext step: python 05_push_to_db.py")
 

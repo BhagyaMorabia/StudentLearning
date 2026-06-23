@@ -86,7 +86,7 @@ def run_pipeline(pdf_path: Path, topic_id: str) -> bool:
             print(f"ERROR: Step '{label}' failed for {pdf_name}.")
             return False
 
-    print(f"\n✓ Pipeline complete for {pdf_path.name}")
+    print(f"\n[OK] Pipeline complete for {pdf_path.name}")
     return True
 
 def main():

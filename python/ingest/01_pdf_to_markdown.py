@@ -34,7 +34,7 @@ def convert_pdf(pdf_path: Path) -> Path:
     output_path = OUTPUT_DIR / (pdf_path.stem + ".md")
 
     if output_path.exists():
-        print(f"  ✓ Already converted: {output_path.name}")
+        print(f"  [OK] Already converted: {output_path.name}")
         return output_path
 
     print(f"  Converting: {pdf_path.name} -> {output_path.name}")
@@ -48,7 +48,7 @@ def convert_pdf(pdf_path: Path) -> Path:
         # Write markdown output
         output_path.write_text(full_text, encoding="utf-8")
 
-        print(f"  ✓ Converted: {len(full_text):,} characters")
+        print(f"  [OK] Converted: {len(full_text):,} characters")
         return output_path
 
     except ImportError:
@@ -79,7 +79,7 @@ def main():
     for pdf in pdf_files:
         convert_pdf(pdf)
 
-    print(f"\n✓ Done. Markdown files in: {OUTPUT_DIR}")
+    print(f"\n[OK] Done. Markdown files in: {OUTPUT_DIR}")
     print("Next step: python 02_extract_concepts.py")
 
 
