@@ -1,104 +1,96 @@
-"use client";
+'use client';
 
-import React from "react";
-import type { MasteryScore, Subtopic } from "@/lib/types";
-import { Badge, Card, Progress } from "@/components/ui";
-import { getMasteryLabel, cn } from "@/lib/utils";
-import { getChapterMasteryPercentage } from "@/lib/mastery";
-import { CheckCircle2, Clock, TrendingUp } from "lucide-react";
+import { useEffect, useState } from 'react';
+import type { StudentMastery } from '@/lib/db/schema';
 
-interface MasteryHeatmapProps {
-  subtopics: Subtopic[];
-  masteryScores: Record<string, MasteryScore>;
+interface MasteryWithName extends StudentMastery {
+  subtopicName?: string;
 }
 
-export function MasteryHeatmap({ subtopics, masteryScores }: MasteryHeatmapProps) {
-  const subtopicIds = subtopics.map((s) => s.id);
-  const overallPct = getChapterMasteryPercentage(Object.values(masteryScores), subtopicIds);
+export default function MasteryHeatmap() {
+  const [mastery, setMastery] = useState<MasteryWithName[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [stats, setStats] = useState({
+    mastered: 0, needsReview: 0, weak: 0, dueForReview: 0, totalSubtopics: 0,
+  });
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "mastered": return "bg-emerald-400";
-      case "learning": return "bg-amber-400";
-      case "weak": return "bg-red-400";
-      default: return "bg-white/20";
-    }
+  useEffect(() => {
+    fetch('/api/progress')
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.success) {
+          setMastery(d.data.mastery);
+          setStats(d.data.stats);
+        }
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  const colorMap: Record<string, string> = {
+    NOT_STARTED: 'bg-muted',
+    WEAK: 'bg-red-500/60',
+    NEEDS_REVIEW: 'bg-amber-500/60',
+    MASTERED: 'bg-green-500/60',
   };
+
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <div className="grid grid-cols-4 gap-4">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="h-20 rounded-xl bg-muted animate-pulse" />
+          ))}
+        </div>
+        <div className="h-48 rounded-xl bg-muted animate-pulse" />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
-      {/* Overall */}
-      <Card className="!p-8">
-        <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/10 flex items-center justify-center">
-              <TrendingUp className="w-5 h-5 text-indigo-400" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-white">Chapter Mastery</h3>
-              <p className="text-xs text-[var(--text-tertiary)]">{subtopics.length} subtopics total</p>
-            </div>
+      {/* Stats cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          { label: 'Mastered', value: stats.mastered, color: 'text-green-500' },
+          { label: 'Needs Review', value: stats.needsReview, color: 'text-amber-500' },
+          { label: 'Weak', value: stats.weak, color: 'text-red-500' },
+          { label: 'Due for Review', value: stats.dueForReview, color: 'text-blue-500' },
+        ].map((s) => (
+          <div key={s.label} className="rounded-xl border bg-card p-4 text-center">
+            <div className={`text-3xl font-bold ${s.color}`}>{s.value}</div>
+            <div className="text-xs text-muted-foreground mt-1">{s.label}</div>
           </div>
-          <span className="text-4xl font-black gradient-text">{overallPct}%</span>
-        </div>
-        <Progress
-          value={overallPct}
-          variant={overallPct >= 85 ? "success" : overallPct >= 50 ? "warning" : "brand"}
-          size="lg"
-        />
-        <div className="flex items-center gap-6 mt-5 text-xs text-[var(--text-tertiary)]">
-          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-emerald-400" /> Mastered</span>
-          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-amber-400" /> Learning</span>
-          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-400" /> Weak</span>
-          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-white/20" /> Not Started</span>
-        </div>
-      </Card>
-
-      {/* Subtopics */}
-      <div className="grid gap-3">
-        {subtopics.map((st) => {
-          const mastery = masteryScores[st.id];
-          const status = mastery?.masteryStatus || "not_started";
-          const score = mastery?.score || 0;
-
-          return (
-            <div
-              key={st.id}
-              className="p-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className={cn("w-1.5 h-10 rounded-full", getStatusColor(status))} />
-                  <div>
-                    <p className="text-sm font-medium text-white">{st.name}</p>
-                    <p className="text-xs text-[var(--text-tertiary)] mt-0.5 flex items-center gap-3">
-                      {mastery ? (
-                        <>
-                          <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3" />{mastery.correctAttempts}/{mastery.totalAttempts}</span>
-                          <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{mastery.streak} streak</span>
-                        </>
-                      ) : (
-                        "Not attempted"
-                      )}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  {mastery && (
-                    <div className="flex items-center gap-3">
-                      <Progress value={score} variant={status === "mastered" ? "success" : status === "learning" ? "warning" : "danger"} size="sm" className="w-20" />
-                      <span className="text-sm font-mono font-bold text-white w-10 text-right">{Math.round(score)}%</span>
-                    </div>
-                  )}
-                  <Badge variant={status as "mastered" | "learning" | "weak" | "not_started"}>
-                    {getMasteryLabel(status)}
-                  </Badge>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        ))}
       </div>
+
+      {/* Mastery grid */}
+      {mastery.length === 0 ? (
+        <div className="rounded-xl border bg-card p-8 text-center text-muted-foreground">
+          <p className="text-4xl mb-3">📚</p>
+          <p>No mastery data yet. Start learning to track your progress!</p>
+        </div>
+      ) : (
+        <div className="rounded-xl border bg-card p-6 space-y-3">
+          <h2 className="font-semibold">Topic Mastery Overview</h2>
+          <div className="flex flex-wrap gap-2">
+            {mastery.map((m) => (
+              <div
+                key={m.id}
+                className={`h-8 w-8 rounded-md ${colorMap[m.status ?? 'NOT_STARTED']} cursor-pointer hover:scale-110 transition-transform`}
+                title={`Score: ${Math.round(m.masteryScore ?? 0)}% — ${m.status}`}
+              />
+            ))}
+          </div>
+          <div className="flex gap-4 text-xs text-muted-foreground mt-2">
+            {Object.entries(colorMap).map(([status, color]) => (
+              <div key={status} className="flex items-center gap-1">
+                <div className={`h-3 w-3 rounded-sm ${color}`} />
+                <span>{status.replace('_', ' ')}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

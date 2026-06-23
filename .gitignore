@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — NEVER commit real secrets
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,28 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Tesseract / OCR artifacts (old approach — deleted)
+*.traineddata
+
+# Python ingestion pipeline data dirs (generated content, never commit)
+/python/data/input_pdfs/
+/python/data/markdown_output/
+/python/data/concepts_json/
+/python/data/archived/
+/python/__pycache__/
+/python/ingest/__pycache__/
+*.pyc
+review_needed.txt
+
+# Generated output files (old approach — deleted)
+/pdf_images/
+/scratch/
+ocr_output.txt
+pdf_content.txt
+
+# Drizzle migrations (generated — commit these in production)
+# /drizzle/migrations/
+
+# @xenova/transformers model cache (large binary files)
+/.cache/

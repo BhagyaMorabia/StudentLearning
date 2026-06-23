@@ -1,0 +1,27 @@
+# NeuralJEE Python Ingestion Pipeline
+# Requirements for: marker-pdf, Gemini Flash extraction, SymPy validation,
+#                   BGE-small embeddings, PostgreSQL push
+
+# PDF → Markdown (Marker: superior LaTeX handling vs Tesseract)
+marker-pdf==0.4.0
+
+# Orchestration (minimal — just for chunking utilities)
+# llama-index-core==0.12.0  # Optional — we handle chunking manually
+
+# Concept extraction via Gemini Flash
+google-generativeai==0.8.0
+
+# BGE-small embeddings (local, free, 768-dim)
+sentence-transformers==3.0.0
+torch==2.3.0  # CPU-only, no CUDA required for inference
+
+# Math validation
+sympy==1.13.0
+
+# Database connectivity
+psycopg2-binary==2.9.9
+
+# Utilities
+python-dotenv==1.0.0    # Load .env file
+watchdog==4.0.0         # File system watcher
+tqdm==4.66.0            # Progress bars
