@@ -54,7 +54,9 @@ def get_topic_id(subject, class_year, chapter_num):
     # Use shell=True on Windows if npx is not resolved directly, but usually subprocess handles it.
     # To be safe on windows, we can pass shell=True or use 'npx.cmd'.
     use_shell = os.name == 'nt'
-    result = subprocess.run(cmd, cwd=NEXT_APP_DIR, capture_output=True, text=True, shell=use_shell)
+    env = os.environ.copy()
+    env["PYTHONUTF8"] = "1"
+    result = subprocess.run(cmd, cwd=NEXT_APP_DIR, capture_output=True, text=True, shell=use_shell, env=env)
     if result.returncode != 0:
         print(f"Error getting topic ID:\n{result.stderr}")
         return None
@@ -79,9 +81,12 @@ def run_pipeline(pdf_path: Path, topic_id: str) -> bool:
         ([sys.executable, "05_push_to_db.py", "--topic-id", topic_id, "--file", f"{pdf_name}.json"], "Push to DB"),
     ]
 
+    env = os.environ.copy()
+    env["PYTHONUTF8"] = "1"
+
     for cmd, label in steps:
         print(f"\n[{label}]")
-        result = subprocess.run(cmd, cwd=SCRIPT_DIR)
+        result = subprocess.run(cmd, cwd=SCRIPT_DIR, env=env)
         if result.returncode != 0:
             print(f"ERROR: Step '{label}' failed for {pdf_name}.")
             return False
