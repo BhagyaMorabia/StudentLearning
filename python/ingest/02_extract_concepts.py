@@ -135,7 +135,7 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
         for attempt in range(max_retries):
             try:
                 response = model.generate_content(
-                    EXTRACTION_PROMPT.format(content=chunk)
+                    EXTRACTION_PROMPT.replace("{content}", chunk)
                 )
                 raw = response.text.strip()
 
@@ -150,12 +150,12 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                     all_concepts.extend(concepts)
                     print(f"    [OK] Extracted {len(concepts)} concepts")
                 else:
-                    print(f"    ⚠ Unexpected response type: {type(concepts)}")
+                    print(f"    [!] Unexpected response type: {type(concepts)}")
                 
                 break # Success, break out of retry loop
 
             except json.JSONDecodeError as e:
-                print(f"    ⚠ JSON parse error: {e}")
+                print(f"    [!] JSON parse error: {e}")
                 review_needed.append({
                     "source": source_name,
                     "chunk": i + 1,
@@ -164,8 +164,10 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                 })
                 break # Don't retry on JSON errors, move to next chunk
             except Exception as e:
+                import traceback
+                traceback.print_exc()
                 error_str = str(e)
-                print(f"    ⚠ API error: {error_str}")
+                print(f"    [!] API error: {error_str}")
                 if "429" in error_str or "quota" in error_str.lower() or "exhausted" in error_str.lower() or "503" in error_str:
                     if attempt < max_retries - 1:
                         sleep_time = base_delay * (2 ** attempt)
@@ -174,7 +176,7 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                         continue
                 
                 # If not a retriable error or max retries reached
-                print(f"    ⚠ Max retries reached or unrecoverable error.")
+                print(f"    [!] Max retries reached or unrecoverable error.")
                 review_needed.append({"source": source_name, "chunk": i + 1, "error": error_str})
                 break
 
@@ -192,7 +194,7 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
             except Exception:
                 pass
         review_path.write_text(json.dumps(existing + review_needed, indent=2))
-        print(f"  ⚠ {len(review_needed)} chunks flagged for review → review_needed.json")
+        print(f"  [!] {len(review_needed)} chunks flagged for review -> review_needed.json")
 
     return deduplicate_concepts(all_concepts)
 
