@@ -167,11 +167,19 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                 import traceback
                 traceback.print_exc()
                 error_str = str(e)
+                
+                # 1. Catch the Rate Limit FIRST and force a 65-second sleep
+                if "429" in error_str or "quota" in error_str.lower() or "exhausted" in error_str.lower():
+                    print("    [!] API Minute Limit Hit! Sleeping for 65 seconds to safely reset quota...")
+                    time.sleep(65)
+                    continue # Try the exact same chunk again!
+                
+                # 2. Keep existing backoff logic for 503 or other random network errors
                 print(f"    [!] API error: {error_str}")
-                if "429" in error_str or "quota" in error_str.lower() or "exhausted" in error_str.lower() or "503" in error_str:
+                if "503" in error_str:
                     if attempt < max_retries - 1:
                         sleep_time = base_delay * (2 ** attempt)
-                        print(f"      Rate limit hit. Retrying in {sleep_time} seconds (attempt {attempt+1}/{max_retries})...")
+                        print(f"      Server error. Retrying in {sleep_time} seconds (attempt {attempt+1}/{max_retries})...")
                         time.sleep(sleep_time)
                         continue
                 
