@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import MathRenderer from '@/components/learn/MathRenderer';
+import { Card, Button, Input, ErrorState, EmptyState, Skeleton, Progress } from '@/components/ui';
+import { FileQuestion } from 'lucide-react';
 import type { ClientQuestion } from '@/lib/ai/schemas';
 
 interface Props {
@@ -41,6 +43,7 @@ export default function QuizPanel({ subtopicId, onComplete }: Props) {
 
   useEffect(() => {
     fetchQuestions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subtopicId]);
 
   useEffect(() => {
@@ -136,126 +139,162 @@ export default function QuizPanel({ subtopicId, onComplete }: Props) {
 
   if (isLoading) {
     return (
-      <div className="space-y-4">
-        <div className="h-6 w-48 bg-muted animate-pulse rounded" />
-        <div className="rounded-xl border bg-card p-6 space-y-4">
-          <div className="h-20 bg-muted animate-pulse rounded" />
+      <div className="space-y-6">
+        <Skeleton className="h-4 w-48" />
+        <Card className="space-y-4">
+          <Skeleton className="h-20" />
           <div className="space-y-2">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-12 bg-muted animate-pulse rounded-lg" />
+              <Skeleton key={i} className="h-12" />
             ))}
           </div>
-        </div>
+        </Card>
       </div>
     );
   }
 
   if (error) {
+    return <ErrorState message={error} onRetry={fetchQuestions} />;
+  }
+
+  if (questions.length === 0) {
     return (
-      <div className="rounded-xl border border-destructive/50 bg-destructive/10 p-6 text-center">
-        <p className="text-sm text-destructive mb-3">{error}</p>
-        <button onClick={fetchQuestions} className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm">
-          Try Again
-        </button>
-      </div>
+      <Card>
+        <EmptyState
+          icon={FileQuestion}
+          title="No questions available"
+          description="There are no quiz questions ready for this subtopic yet."
+          action={
+            <Button variant="secondary" onClick={fetchQuestions}>
+              Refresh
+            </Button>
+          }
+        />
+      </Card>
     );
   }
 
-  if (questions.length === 0) return null;
-
   const question = questions[currentIndex];
-  const progress = ((currentIndex) / questions.length) * 100;
+  // Calculate difficulty dots
+  const maxDifficulty = 5;
+  const dots = [];
+  for (let i = 0; i < maxDifficulty; i++) {
+    dots.push(
+      <span
+        key={i}
+        className={`inline-block w-1.5 h-1.5 rounded-full ${
+          i < question.difficultyLevel ? 'bg-accent' : 'bg-muted-foreground/30'
+        }`}
+      />
+    );
+  }
 
   return (
     <div className="space-y-6">
-      {/* Progress bar */}
+      {/* Progress header */}
       <div>
-        <div className="flex justify-between text-sm text-muted-foreground mb-2">
-          <span>Question {currentIndex + 1} of {questions.length}</span>
-          <span>{question.questionType}</span>
+        <div className="flex justify-between items-end mb-2">
+          <span className="text-sm font-medium text-foreground">
+            Question {currentIndex + 1} of {questions.length}
+          </span>
+          <span className="text-xs text-muted-foreground font-medium px-2 py-0.5 rounded-[var(--radius-sm)] bg-muted border border-border">
+            {question.questionType}
+          </span>
         </div>
-        <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-          <div
-            className="h-full bg-primary transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+        <Progress value={currentIndex} max={questions.length} />
       </div>
 
       {/* Question card */}
-      <div className="rounded-xl border bg-card p-6 space-y-6">
-        <div className="text-sm font-medium text-muted-foreground">
-          Difficulty: {'★'.repeat(question.difficultyLevel)}{'☆'.repeat(5 - question.difficultyLevel)}
+      <Card className="space-y-6">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mr-1">Difficulty</span>
+          <div className="flex gap-1" aria-label={`Difficulty level ${question.difficultyLevel} out of 5`}>
+            {dots}
+          </div>
         </div>
 
         <MathRenderer content={question.questionText} />
 
         {/* MCQ options */}
         {question.questionType === 'MCQ' && question.options && (
-          <div className="space-y-2">
-            {question.options.map((opt) => (
-              <button
-                key={opt.id}
-                onClick={() => setSelectedAnswer(opt.id)}
-                className={`w-full flex items-center gap-3 p-4 rounded-lg border text-left text-sm transition-colors ${
-                  selectedAnswer === opt.id
-                    ? 'border-primary bg-primary/10 text-foreground'
-                    : 'border-border hover:border-primary/50 hover:bg-muted/50'
-                }`}
-                id={`option-${opt.id}`}
-              >
-                <span className="font-mono font-bold text-primary">{opt.id}</span>
-                <MathRenderer content={opt.text} />
-              </button>
-            ))}
+          <div className="space-y-2" role="radiogroup" aria-label="Multiple choice options">
+            {question.options.map((opt) => {
+              const isSelected = selectedAnswer === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  role="radio"
+                  aria-checked={isSelected}
+                  onClick={() => setSelectedAnswer(opt.id)}
+                  className={`w-full flex items-center gap-3 p-4 rounded-[var(--radius-sm)] border text-left text-sm transition-all duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer ${
+                    isSelected
+                      ? 'border-accent bg-accent/10 text-foreground'
+                      : 'border-border hover:border-accent/50 hover:bg-muted'
+                  }`}
+                  id={`option-${opt.id}`}
+                >
+                  <span className={`font-mono font-bold w-6 h-6 shrink-0 flex items-center justify-center rounded-sm text-xs ${isSelected ? 'bg-accent text-accent-foreground' : 'bg-muted text-muted-foreground'}`}>
+                    {opt.id}
+                  </span>
+                  <MathRenderer content={opt.text} className="flex-1" />
+                </button>
+              );
+            })}
           </div>
         )}
 
         {/* MSQ options */}
         {question.questionType === 'MSQ' && question.options && (
           <div className="space-y-2">
-            <p className="text-xs text-muted-foreground">Select all correct options</p>
-            {question.options.map((opt) => (
-              <label
-                key={opt.id}
-                className={`flex items-center gap-3 p-4 rounded-lg border cursor-pointer text-sm transition-colors ${
-                  selectedMSQ.includes(opt.id)
-                    ? 'border-primary bg-primary/10'
-                    : 'border-border hover:border-primary/50 hover:bg-muted/50'
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  checked={selectedMSQ.includes(opt.id)}
-                  onChange={(e) => {
-                    setSelectedMSQ((prev) =>
-                      e.target.checked
-                        ? [...prev, opt.id]
-                        : prev.filter((id) => id !== opt.id),
-                    );
-                  }}
-                  className="w-4 h-4 accent-primary"
-                  id={`msq-${opt.id}`}
-                />
-                <span className="font-mono font-bold text-primary">{opt.id}</span>
-                <MathRenderer content={opt.text} />
-              </label>
-            ))}
+            <p className="text-xs font-medium text-muted-foreground mb-2">Select all correct options</p>
+            {question.options.map((opt) => {
+              const isSelected = selectedMSQ.includes(opt.id);
+              return (
+                <label
+                  key={opt.id}
+                  className={`flex items-center gap-3 p-4 rounded-[var(--radius-sm)] border cursor-pointer text-sm transition-all duration-150 ease-out focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-card ${
+                    isSelected
+                      ? 'border-accent bg-accent/10 text-foreground'
+                      : 'border-border hover:border-accent/50 hover:bg-muted'
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={(e) => {
+                      setSelectedMSQ((prev) =>
+                        e.target.checked
+                          ? [...prev, opt.id]
+                          : prev.filter((id) => id !== opt.id),
+                      );
+                    }}
+                    className="w-4 h-4 accent-accent"
+                    id={`msq-${opt.id}`}
+                    aria-label={`Option ${opt.id}`}
+                  />
+                  <span className={`font-mono font-bold w-6 h-6 shrink-0 flex items-center justify-center rounded-sm text-xs ${isSelected ? 'bg-accent text-accent-foreground' : 'bg-muted text-muted-foreground'}`}>
+                    {opt.id}
+                  </span>
+                  <MathRenderer content={opt.text} className="flex-1" />
+                </label>
+              );
+            })}
           </div>
         )}
 
         {/* INTEGER input */}
         {question.questionType === 'INTEGER' && (
           <div className="space-y-2">
-            <p className="text-xs text-muted-foreground">Enter an integer answer</p>
-            <input
+            <label htmlFor="integer-input" className="text-xs font-medium text-muted-foreground block">
+              Enter an integer answer
+            </label>
+            <Input
+              id="integer-input"
               type="number"
               step="1"
               value={integerInput}
               onChange={(e) => setIntegerInput(e.target.value)}
               placeholder="Enter integer..."
-              className="w-full p-3 rounded-lg border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              id="integer-input"
             />
           </div>
         )}
@@ -263,26 +302,28 @@ export default function QuizPanel({ subtopicId, onComplete }: Props) {
         {/* NUMERICAL input */}
         {question.questionType === 'NUMERICAL' && (
           <div className="space-y-2">
-            <p className="text-xs text-muted-foreground">Enter numerical answer (decimal allowed)</p>
-            <input
+            <label htmlFor="numerical-input" className="text-xs font-medium text-muted-foreground block">
+              Enter numerical answer (decimal allowed)
+            </label>
+            <Input
+              id="numerical-input"
               type="number"
               step="any"
               value={numericalInput}
               onChange={(e) => setNumericalInput(e.target.value)}
               placeholder="Enter value..."
-              className="w-full p-3 rounded-lg border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              id="numerical-input"
             />
           </div>
         )}
-      </div>
+      </Card>
 
       {/* Next / Submit button */}
       <div className="flex justify-end">
-        <button
+        <Button
+          variant="primary"
+          size="lg"
           onClick={handleNext}
           disabled={!isAnswerProvided() || isSubmitting}
-          className="px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
           id="quiz-next-btn"
         >
           {isSubmitting
@@ -290,7 +331,7 @@ export default function QuizPanel({ subtopicId, onComplete }: Props) {
             : currentIndex < questions.length - 1
             ? 'Next →'
             : 'Submit Quiz'}
-        </button>
+        </Button>
       </div>
     </div>
   );

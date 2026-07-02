@@ -80,7 +80,25 @@ export async function POST(req: NextRequest) {
 
   // ── 7. Build context ─────────────────────────────────────────────────────
   const ragContext = buildTeachingContext(context, weakTopics);
-  const userMessage = `${ragContext}\n\nNow teach me: ${context.targetSubtopic.name}`;
+  
+  // Force Claude to use the rigorous textbook content as the source of truth
+  const userMessage = `
+You are an elite JEE tutor. I am providing you with the exact raw text from the student's textbook below. 
+Using ONLY this rigorous source text, generate a highly detailed Base Theory lesson.
+Structure your response with:
+1. Deep conceptual intuition.
+2. Advanced formulas in LaTeX.
+3. A Mermaid.js flowchart explaining the process/concept.
+
+=== RAW TEXTBOOK CONTENT ===
+${context.targetSubtopic.rawContent || context.targetSubtopic.description}
+============================
+
+Additional System Context:
+${ragContext}
+
+Now teach me: ${context.targetSubtopic.name}
+  `.trim();
 
   // ── 8. Stream Claude response ────────────────────────────────────────────
   return new Response(

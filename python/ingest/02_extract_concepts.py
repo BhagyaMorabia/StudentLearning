@@ -155,6 +155,10 @@ def extract_concepts(markdown_text: str, source_name: str) -> list[dict]:
                 data = json.loads(raw)
                 concepts = data.get("concepts", [])
                 if isinstance(concepts, list):
+                    # --- FIX: Attach the raw markdown chunk to each concept ---
+                    for c in concepts:
+                        c["raw_content"] = chunk
+                    # ----------------------------------------------------------
                     all_concepts.extend(concepts)
                     print(f"    [OK] Extracted {len(concepts)} concepts")
                 else:

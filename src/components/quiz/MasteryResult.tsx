@@ -1,6 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { Card, Button, Badge } from '@/components/ui';
+import { Target, BookOpen, TriangleAlert, Check, X } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 interface QuizResult {
   masteryScore: number;
@@ -22,16 +25,19 @@ interface Props {
 export default function MasteryResult({ result, subtopicId, onRetry }: Props) {
   const scoreColor =
     result.masteryScore >= 85
-      ? 'text-green-500'
+      ? 'text-[var(--mastery-mastered)]'
       : result.masteryScore >= 60
-      ? 'text-amber-500'
-      : 'text-red-500';
+      ? 'text-[var(--mastery-learning)]'
+      : 'text-[var(--mastery-weak)]';
 
-  const statusLabel: Record<string, string> = {
-    MASTERED: '🎯 Mastered',
-    NEEDS_REVIEW: '📖 Needs Review',
-    WEAK: '⚠️ Needs Practice',
+  const statusConfig: Record<string, { label: string; icon: LucideIcon; variant: 'mastered' | 'learning' | 'weak' }> = {
+    MASTERED: { label: 'Mastered', icon: Target, variant: 'mastered' },
+    NEEDS_REVIEW: { label: 'Needs Review', icon: BookOpen, variant: 'learning' },
+    WEAK: { label: 'Needs Practice', icon: TriangleAlert, variant: 'weak' },
   };
+
+  const config = statusConfig[result.status] ?? statusConfig.WEAK;
+  const StatusIcon = config.icon;
 
   const nextReview = result.nextReviewAt
     ? new Date(result.nextReviewAt).toLocaleDateString('en-IN', {
@@ -42,88 +48,87 @@ export default function MasteryResult({ result, subtopicId, onRetry }: Props) {
     : null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-2xl mx-auto">
       {/* Score hero */}
-      <div className="rounded-2xl border bg-card p-8 text-center space-y-4">
-        <div className={`text-7xl font-black ${scoreColor}`}>
-          {result.masteryScore}
+      <Card className="text-center p-8 space-y-4">
+        <div className={`text-4xl font-bold tracking-tight ${scoreColor}`}>
+          {Math.round(result.masteryScore)}
         </div>
-        <div className="text-xl font-semibold">
-          {statusLabel[result.status] ?? result.status}
+        <div className="flex items-center justify-center gap-2">
+          <Badge variant={config.variant} className="px-3 py-1">
+            <StatusIcon className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
+            {config.label}
+          </Badge>
         </div>
-        <div className="flex justify-center gap-8 text-sm text-muted-foreground">
+        <div className="flex justify-center gap-6 text-sm text-muted-foreground mt-4">
           <span>{result.totalCorrect} / {result.totalAttempted} correct</span>
           <span>{Math.round(result.accuracy * 100)}% accuracy</span>
         </div>
-      </div>
+      </Card>
 
       {/* Per-question results */}
-      <div className="rounded-xl border bg-card p-6 space-y-3">
-        <h2 className="font-semibold">Question Results</h2>
+      <Card className="p-5">
+        <h2 className="text-sm font-semibold text-foreground mb-3">Question Results</h2>
         <div className="grid grid-cols-5 gap-2">
           {result.questionResults.map((q, i) => (
             <div
               key={q.questionId}
-              className={`aspect-square rounded-lg flex items-center justify-center text-sm font-bold ${
+              className={`aspect-square rounded-[var(--radius-sm)] flex items-center justify-center text-sm font-bold transition-colors ${
                 q.isCorrect
-                  ? 'bg-green-500/20 text-green-500'
-                  : 'bg-red-500/20 text-red-500'
+                  ? 'bg-mastery-mastered/10 text-mastery-mastered border border-mastery-mastered/20'
+                  : 'bg-mastery-weak/10 text-mastery-weak border border-mastery-weak/20'
               }`}
               title={`Q${i + 1}: ${q.isCorrect ? 'Correct' : 'Wrong'} (${(q.timeSpentMs / 1000).toFixed(0)}s)`}
             >
-              {q.isCorrect ? '✓' : '✗'}
+              {q.isCorrect ? <Check className="w-5 h-5" aria-hidden="true" /> : <X className="w-5 h-5" aria-hidden="true" />}
+              <span className="sr-only">Question {i + 1} {q.isCorrect ? 'Correct' : 'Wrong'}</span>
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Weak concept tags */}
       {result.weakConceptTags.length > 0 && (
-        <div className="rounded-xl border bg-card p-6 space-y-3">
-          <h2 className="font-semibold">Weak Areas Detected</h2>
+        <Card className="p-5">
+          <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+            <TriangleAlert className="w-4 h-4 text-mastery-weak" aria-hidden="true" />
+            Weak Areas Detected
+          </h2>
           <div className="flex flex-wrap gap-2">
             {result.weakConceptTags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs rounded-full bg-destructive/10 text-destructive border border-destructive/20"
+                className="px-2.5 py-1 text-xs rounded-[var(--radius-sm)] bg-mastery-weak/10 text-mastery-weak border border-mastery-weak/20 font-medium"
               >
                 {tag}
               </span>
             ))}
           </div>
-        </div>
+        </Card>
       )}
 
       {/* Next review date */}
       {nextReview && (
-        <div className="rounded-xl border bg-primary/5 border-primary/20 p-4 text-sm text-center">
+        <div className="rounded-[var(--radius-lg)] border bg-accent/5 border-accent/20 p-4 text-sm text-center">
           <span className="text-muted-foreground">Next review scheduled: </span>
-          <span className="font-semibold text-primary">{nextReview}</span>
+          <span className="font-semibold text-foreground">{nextReview}</span>
         </div>
       )}
 
       {/* Actions */}
-      <div className="flex gap-3">
-        <button
-          onClick={onRetry}
-          className="flex-1 py-3 border rounded-xl text-sm font-medium hover:bg-muted transition-colors"
-          id="retry-quiz-btn"
-        >
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Button variant="secondary" onClick={onRetry} className="flex-1" id="retry-quiz-btn">
           Try Again
-        </button>
-        <Link
-          href={`/learn/${subtopicId}`}
-          className="flex-1 py-3 bg-primary text-primary-foreground rounded-xl text-sm font-medium text-center hover:bg-primary/90 transition-colors"
-          id="back-to-learn-btn"
-        >
-          Back to Learning
+        </Button>
+        <Link href={`/learn/${subtopicId}`} className="flex-1" tabIndex={-1}>
+          <Button variant="primary" className="w-full" id="back-to-learn-btn">
+            Back to Learning
+          </Button>
         </Link>
-        <Link
-          href="/review"
-          className="flex-1 py-3 border rounded-xl text-sm font-medium text-center hover:bg-muted transition-colors"
-          id="review-queue-btn"
-        >
-          Review Queue
+        <Link href="/review" className="flex-1" tabIndex={-1}>
+          <Button variant="secondary" className="w-full" id="review-queue-btn">
+            Review Queue
+          </Button>
         </Link>
       </div>
     </div>

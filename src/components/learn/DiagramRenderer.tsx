@@ -31,9 +31,9 @@ export default function DiagramRenderer({ code }: Props) {
           theme: 'dark',
           themeVariables: {
             background: 'transparent',
-            primaryColor: '#6366f1',
-            primaryTextColor: '#f1f5f9',
-            lineColor: '#94a3b8',
+            primaryColor: '#3b6fe0',
+            primaryTextColor: '#f2f2f4',
+            lineColor: '#8c8c95',
           },
         });
 
@@ -53,21 +53,23 @@ export default function DiagramRenderer({ code }: Props) {
 
   if (error) {
     return (
-      <div className="text-xs text-destructive bg-destructive/10 rounded p-2">
+      <div className="text-xs text-destructive bg-destructive/10 rounded-[var(--radius-sm)] p-2">
         {error}
       </div>
     );
   }
 
   if (!svg) {
-    return <div className="h-32 animate-pulse rounded-lg bg-muted" />;
+    return <div className="h-32 animate-pulse rounded-[var(--radius-lg)] bg-muted" />;
   }
 
   return (
     <div
       ref={ref}
-      className="overflow-x-auto rounded-lg bg-muted/30 p-4"
+      className="overflow-x-auto rounded-[var(--radius-lg)] bg-muted p-4 border border-border"
       dangerouslySetInnerHTML={{ __html: svg }}
+      aria-label="Interactive learning diagram"
+      role="img"
     />
   );
 }

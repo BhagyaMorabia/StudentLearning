@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import MathRenderer from './MathRenderer';
 import DiagramRenderer from './DiagramRenderer';
 import type { TeachingResponse } from '@/lib/ai/schemas';
+import { Card, ErrorState } from '@/components/ui';
+import { Lightbulb, FlaskConical, Workflow, PencilLine, TriangleAlert, Target, X, Check } from 'lucide-react';
 
 interface Props {
   subtopicId: string;
@@ -85,7 +87,7 @@ export default function TeachingPanel({ subtopicId, subtopicName }: Props) {
   if (state === 'loading' || state === 'streaming') {
     return (
       <div className="space-y-6">
-        <div className="rounded-xl border bg-card p-6 space-y-4">
+        <Card className="space-y-4">
           <div className="flex items-center gap-3">
             <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
             <span className="text-sm text-muted-foreground">
@@ -93,7 +95,7 @@ export default function TeachingPanel({ subtopicId, subtopicName }: Props) {
             </span>
           </div>
           {state === 'streaming' && rawText && (
-            <div className="font-mono text-xs text-muted-foreground bg-muted rounded p-3 max-h-20 overflow-hidden opacity-50">
+            <div className="font-mono text-xs text-muted-foreground bg-muted rounded-[var(--radius-sm)] p-3 max-h-20 overflow-hidden opacity-50">
               {rawText.slice(-200)}
             </div>
           )}
@@ -102,23 +104,13 @@ export default function TeachingPanel({ subtopicId, subtopicName }: Props) {
               <div key={i} className="h-4 rounded bg-muted animate-pulse" style={{ width: `${70 + (i % 3) * 10}%` }} />
             ))}
           </div>
-        </div>
+        </Card>
       </div>
     );
   }
 
   if (state === 'error') {
-    return (
-      <div className="rounded-xl border border-destructive/50 bg-destructive/10 p-6 text-center">
-        <p className="text-sm text-destructive mb-3">{error}</p>
-        <button
-          onClick={loadContent}
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm hover:bg-primary/90 transition-colors"
-        >
-          Try Again
-        </button>
-      </div>
-    );
+    return <ErrorState message={error ?? 'An error occurred'} onRetry={loadContent} />;
   }
 
   if (!content) return null;
@@ -127,53 +119,53 @@ export default function TeachingPanel({ subtopicId, subtopicName }: Props) {
     <div className="space-y-6">
       {/* Hook */}
       {content.hook && (
-        <div className="rounded-xl border-l-4 border-primary bg-primary/5 p-4">
-          <p className="text-base italic text-foreground/90">&ldquo;{content.hook}&rdquo;</p>
+        <div className="rounded-[var(--radius-lg)] border-l-4 border-accent bg-muted p-5">
+          <p className="text-sm italic text-foreground/90">&ldquo;{content.hook}&rdquo;</p>
         </div>
       )}
 
       {/* Intuition */}
-      <section className="rounded-xl border bg-card p-6 space-y-3">
-        <h2 className="font-semibold text-lg flex items-center gap-2">
-          <span className="text-xl">💡</span> Intuition
+      <Card className="space-y-4">
+        <h2 className="font-semibold text-base flex items-center gap-2.5 text-foreground">
+          <Lightbulb className="w-5 h-5 text-muted-foreground" aria-hidden="true" /> Intuition
         </h2>
         <MathRenderer content={content.intuition} />
-      </section>
+      </Card>
 
       {/* Core Concept */}
-      <section className="rounded-xl border bg-card p-6 space-y-3">
-        <h2 className="font-semibold text-lg flex items-center gap-2">
-          <span className="text-xl">🔬</span> Core Concept
+      <Card className="space-y-4">
+        <h2 className="font-semibold text-base flex items-center gap-2.5 text-foreground">
+          <FlaskConical className="w-5 h-5 text-muted-foreground" aria-hidden="true" /> Core Concept
         </h2>
         <MathRenderer content={content.core_concept} />
-      </section>
+      </Card>
 
       {/* Diagram */}
       {content.diagram_spec?.type && content.diagram_spec.type !== 'null' && content.diagram_spec.mermaid_code && (
-        <section className="rounded-xl border bg-card p-6 space-y-3">
-          <h2 className="font-semibold text-lg flex items-center gap-2">
-            <span className="text-xl">📊</span> {content.diagram_spec.description}
+        <Card className="space-y-4">
+          <h2 className="font-semibold text-base flex items-center gap-2.5 text-foreground">
+            <Workflow className="w-5 h-5 text-muted-foreground" aria-hidden="true" /> {content.diagram_spec.description}
           </h2>
           <DiagramRenderer code={content.diagram_spec.mermaid_code} />
-        </section>
+        </Card>
       )}
 
       {/* Worked Example */}
       {content.worked_example && (
-        <section className="rounded-xl border bg-card p-6 space-y-4">
-          <h2 className="font-semibold text-lg flex items-center gap-2">
-            <span className="text-xl">✏️</span> Worked Example
+        <Card className="space-y-5">
+          <h2 className="font-semibold text-base flex items-center gap-2.5 text-foreground">
+            <PencilLine className="w-5 h-5 text-muted-foreground" aria-hidden="true" /> Worked Example
           </h2>
-          <div className="bg-muted/50 rounded-lg p-4">
+          <div className="bg-muted border border-border rounded-[var(--radius-lg)] p-5">
             <MathRenderer content={content.worked_example.problem} />
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {content.worked_example.solution.map((step) => (
               <div key={step.step} className="flex gap-4">
                 <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 text-primary text-xs flex items-center justify-center font-bold">
                   {step.step}
                 </div>
-                <div className="flex-1 space-y-1">
+                <div className="flex-1 space-y-1 mt-0.5">
                   <p className="text-sm text-muted-foreground">{step.explanation}</p>
                   {step.math && <MathRenderer content={step.math} />}
                 </div>
@@ -181,56 +173,56 @@ export default function TeachingPanel({ subtopicId, subtopicName }: Props) {
             ))}
           </div>
           {content.worked_example.jee_tip && (
-            <div className="mt-3 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
-              <p className="text-sm text-amber-600 dark:text-amber-400">
-                <strong>JEE Tip:</strong> {content.worked_example.jee_tip}
+            <div className="mt-4 p-4 border-l-4 border-mastery-learning bg-mastery-learning/10 rounded-[var(--radius-lg)]">
+              <p className="text-sm text-mastery-learning">
+                <strong className="font-semibold">JEE Tip:</strong> {content.worked_example.jee_tip}
               </p>
             </div>
           )}
-        </section>
+        </Card>
       )}
 
       {/* Common Mistakes */}
       {content.common_mistakes?.length > 0 && (
-        <section className="rounded-xl border bg-card p-6 space-y-3">
-          <h2 className="font-semibold text-lg flex items-center gap-2">
-            <span className="text-xl">⚠️</span> Common Mistakes
+        <Card className="space-y-4">
+          <h2 className="font-semibold text-base flex items-center gap-2.5 text-foreground">
+            <TriangleAlert className="w-5 h-5 text-muted-foreground" aria-hidden="true" /> Common Mistakes
           </h2>
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {content.common_mistakes.map((mistake, i) => (
-              <li key={i} className="flex gap-2 text-sm">
-                <span className="text-destructive mt-0.5">✗</span>
+              <li key={i} className="flex items-start gap-3 text-sm">
+                <X className="w-4 h-4 text-destructive shrink-0 mt-0.5" aria-hidden="true" />
                 <MathRenderer content={mistake} />
               </li>
             ))}
           </ul>
-        </section>
+        </Card>
       )}
 
       {/* Key Takeaways */}
       {content.key_takeaways?.length > 0 && (
-        <section className="rounded-xl border bg-card p-6 space-y-3">
-          <h2 className="font-semibold text-lg flex items-center gap-2">
-            <span className="text-xl">🎯</span> Key Takeaways
+        <Card className="space-y-4">
+          <h2 className="font-semibold text-base flex items-center gap-2.5 text-foreground">
+            <Target className="w-5 h-5 text-muted-foreground" aria-hidden="true" /> Key Takeaways
           </h2>
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {content.key_takeaways.map((point, i) => (
-              <li key={i} className="flex gap-2 text-sm">
-                <span className="text-primary mt-0.5">✓</span>
+              <li key={i} className="flex items-start gap-3 text-sm">
+                <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                 <MathRenderer content={point} />
               </li>
             ))}
           </ul>
-        </section>
+        </Card>
       )}
 
       {/* JEE Context */}
       {content.jee_context && (
-        <section className="rounded-xl border bg-muted/30 p-4">
+        <Card className="bg-muted p-5 border border-border">
           <p className="text-sm text-muted-foreground">
-            <strong className="text-foreground">JEE Context:</strong> {content.jee_context}
+            <strong className="text-foreground font-semibold">JEE Context:</strong> {content.jee_context}
           </p>
-        </section>
+        </Card>
       )}
     </div>
   );

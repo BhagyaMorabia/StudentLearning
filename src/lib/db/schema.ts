@@ -59,6 +59,7 @@ export const contentSourceEnum = pgEnum('content_source', [
 
 export const contentStatusEnum = pgEnum('content_status', [
   'PENDING_REVIEW',
+  'AI_GENERATED',
   'VERIFIED',
   'REJECTED',
   'FLAGGED',

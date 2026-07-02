@@ -89,11 +89,11 @@ def push_concepts(concepts: list[dict], topic_id: str, conn) -> dict[str, str]:
                     INSERT INTO subtopics (
                         id, topic_id, name, description, key_formulas,
                         common_mistakes, pyq_frequency, estimated_minutes,
-                        embedding, content_status, order_index
+                        raw_content, embedding, content_status, order_index
                     ) VALUES (
                         %s, %s, %s, %s, %s::jsonb,
                         %s, %s, %s,
-                        %s::vector, %s, %s
+                        %s, %s::vector, %s, %s
                     )
                     ON CONFLICT (id) DO NOTHING
                     """,
@@ -106,6 +106,7 @@ def push_concepts(concepts: list[dict], topic_id: str, conn) -> dict[str, str]:
                         concept.get("common_mistakes", []),
                         concept.get("jee_frequency", 1),
                         concept.get("estimated_minutes", 15),
+                        concept.get("raw_content"),
                         embedding_str,
                         content_status,
                         0,  # order_index — sort manually later
@@ -118,8 +119,8 @@ def push_concepts(concepts: list[dict], topic_id: str, conn) -> dict[str, str]:
                     INSERT INTO subtopics (
                         id, topic_id, name, description, key_formulas,
                         common_mistakes, pyq_frequency, estimated_minutes,
-                        content_status, order_index
-                    ) VALUES (%s, %s, %s, %s, %s::jsonb, %s, %s, %s, %s, %s)
+                        raw_content, content_status, order_index
+                    ) VALUES (%s, %s, %s, %s, %s::jsonb, %s, %s, %s, %s, %s, %s)
                     ON CONFLICT (id) DO NOTHING
                     """,
                     (
@@ -131,6 +132,7 @@ def push_concepts(concepts: list[dict], topic_id: str, conn) -> dict[str, str]:
                         concept.get("common_mistakes", []),
                         concept.get("jee_frequency", 1),
                         concept.get("estimated_minutes", 15),
+                        concept.get("raw_content"),
                         content_status,
                         0,
                     ),

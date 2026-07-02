@@ -8,10 +8,10 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getMasteryColor(status: string): string {
   switch (status) {
-    case "mastered": return "var(--color-mastered)";
-    case "learning": return "var(--color-learning)";
-    case "weak": return "var(--color-weak)";
-    default: return "var(--color-not-started)";
+    case "mastered": return "var(--mastery-mastered)";
+    case "learning": return "var(--mastery-learning)";
+    case "weak": return "var(--mastery-weak)";
+    default: return "var(--mastery-not-started)";
   }
 }
 
@@ -24,12 +24,12 @@ export function getMasteryLabel(status: string): string {
   }
 }
 
-export function getMasteryBadgeClass(status: string): string {
+export function getMasteryBadgeVariant(status: string): "mastered" | "learning" | "weak" | "not_started" {
   switch (status) {
-    case "mastered": return "badge-mastered";
-    case "learning": return "badge-learning";
-    case "weak": return "badge-weak";
-    default: return "badge-not-started";
+    case "mastered": return "mastered";
+    case "learning": return "learning";
+    case "weak": return "weak";
+    default: return "not_started";
   }
 }
 

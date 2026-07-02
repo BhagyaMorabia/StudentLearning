@@ -292,7 +292,7 @@ export function QuestionCard({
             </Button>
           )}
           {isLast ? (
-            <Button variant="success" size="md" onClick={onSubmitQuiz}>
+            <Button variant="primary" size="md" onClick={onSubmitQuiz}>
               Submit Quiz
             </Button>
           ) : (

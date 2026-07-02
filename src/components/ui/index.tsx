@@ -1,82 +1,97 @@
 import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { TriangleAlert } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 // ==================== BUTTON ====================
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "danger" | "success";
-  size?: "sm" | "md" | "lg";
-}
+const buttonVariants = cva(
+  "inline-flex items-center justify-center font-semibold transition-all duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer active:scale-[0.98]",
+  {
+    variants: {
+      variant: {
+        primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+        secondary: "bg-secondary text-secondary-foreground border border-border hover:bg-muted",
+        ghost: "text-muted-foreground hover:bg-muted hover:text-foreground",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+      },
+      size: {
+        sm: "h-8 px-3 text-xs gap-1.5 rounded-[var(--radius-sm)]",
+        md: "h-10 px-4 text-sm gap-2 rounded-[var(--radius-sm)]",
+        lg: "h-12 px-6 text-sm gap-2.5 rounded-[var(--radius-sm)]",
+      },
+    },
+    defaultVariants: {
+      variant: "primary",
+      size: "md",
+    },
+  }
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {}
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", ...props }, ref) => {
-    const base = "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer";
-    const variants = {
-      primary: "bg-gradient-to-r from-indigo-600 to-indigo-500 text-white hover:from-indigo-500 hover:to-indigo-400 shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/35 hover:-translate-y-0.5 active:translate-y-0",
-      secondary: "bg-white/[0.05] text-[var(--text-primary)] border border-white/[0.08] hover:bg-white/[0.1] hover:border-white/[0.15] hover:-translate-y-0.5",
-      ghost: "text-[var(--text-secondary)] hover:text-white hover:bg-white/[0.06]",
-      danger: "bg-gradient-to-r from-red-600 to-red-500 text-white hover:from-red-500 hover:to-red-400 shadow-lg shadow-red-500/20 hover:shadow-red-500/35 hover:-translate-y-0.5",
-      success: "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-400 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:-translate-y-0.5",
-    };
-    const sizes = {
-      sm: "px-4 py-2 text-sm gap-1.5",
-      md: "px-6 py-2.5 text-sm gap-2",
-      lg: "px-8 py-3.5 text-base gap-2.5",
-    };
+  ({ className, variant, size, ...props }, ref) => {
     return (
-      <button ref={ref} className={cn(base, variants[variant], sizes[size], className)} {...props} />
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ variant, size, className }))}
+        {...props}
+      />
     );
   }
 );
 Button.displayName = "Button";
 
 // ==================== CARD ====================
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  interactive?: boolean;
-  glow?: "brand" | "success" | "warning" | "danger";
-}
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, interactive, glow, ...props }, ref) => {
-    const glowMap = {
-      brand: "hover:shadow-[var(--shadow-glow)]",
-      success: "hover:shadow-[var(--shadow-glow-success)]",
-      warning: "hover:shadow-[var(--shadow-glow-warning)]",
-      danger: "hover:shadow-[var(--shadow-glow-danger)]",
-    };
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "card",
-          interactive && "card-interactive",
-          glow && glowMap[glow],
-          className
-        )}
-        {...props}
-      />
-    );
-  }
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        "bg-card border border-border rounded-[var(--radius-lg)] p-6",
+        className
+      )}
+      {...props}
+    />
+  )
 );
 Card.displayName = "Card";
 
-// ==================== BADGE ====================
-interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: "mastered" | "learning" | "weak" | "not_started" | "default";
+export function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("mb-4", className)} {...props} />;
 }
 
-export function Badge({ variant = "default", className, ...props }: BadgeProps) {
-  const variantMap: Record<string, string> = {
-    mastered: "badge-mastered",
-    learning: "badge-learning",
-    weak: "badge-weak",
-    not_started: "badge-not-started",
-    default: "bg-white/[0.06] text-[var(--text-secondary)] border border-white/[0.08]",
-  };
+export function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
+  return <h3 className={cn("text-base font-semibold text-foreground", className)} {...props} />;
+}
+
+export function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("text-sm text-muted-foreground", className)} {...props} />;
+}
+
+// ==================== BADGE ====================
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  variant?: "mastered" | "learning" | "weak" | "not_started";
+}
+
+const badgeStyles: Record<string, string> = {
+  mastered: "bg-mastery-mastered/12 text-mastery-mastered border-mastery-mastered/20",
+  learning: "bg-mastery-learning/12 text-mastery-learning border-mastery-learning/20",
+  weak: "bg-mastery-weak/12 text-mastery-weak border-mastery-weak/20",
+  not_started: "bg-mastery-not-started/12 text-mastery-not-started border-mastery-not-started/20",
+};
+
+export function Badge({ variant = "not_started", className, ...props }: BadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold tracking-wide",
-        variantMap[variant],
+        "inline-flex items-center px-2 py-0.5 rounded-[var(--radius-sm)] text-xs font-medium border",
+        badgeStyles[variant],
         className
       )}
       {...props}
@@ -85,36 +100,28 @@ export function Badge({ variant = "default", className, ...props }: BadgeProps) 
 }
 
 // ==================== PROGRESS BAR ====================
-interface ProgressProps {
+export interface ProgressProps {
   value: number;
   max?: number;
-  variant?: "brand" | "success" | "warning" | "danger";
-  size?: "sm" | "md" | "lg";
-  showLabel?: boolean;
   className?: string;
 }
 
-export function Progress({ value, max = 100, variant = "brand", size = "md", showLabel, className }: ProgressProps) {
+export function Progress({ value, max = 100, className }: ProgressProps) {
   const pct = Math.min(Math.max((value / max) * 100, 0), 100);
-  const gradients = {
-    brand: "bg-gradient-to-r from-indigo-500 to-indigo-400",
-    success: "bg-gradient-to-r from-emerald-500 to-emerald-400",
-    warning: "bg-gradient-to-r from-amber-500 to-amber-400",
-    danger: "bg-gradient-to-r from-red-500 to-red-400",
-  };
-  const heights = { sm: "h-1", md: "h-2", lg: "h-3" };
-
   return (
     <div className={cn("w-full", className)}>
-      <div className={cn("w-full bg-white/[0.06] rounded-full overflow-hidden", heights[size])} role="progressbar" aria-valuenow={value} aria-valuemin={0} aria-valuemax={max}>
+      <div
+        className="w-full bg-muted rounded-full overflow-hidden h-1.5"
+        role="progressbar"
+        aria-valuenow={value}
+        aria-valuemin={0}
+        aria-valuemax={max}
+      >
         <div
-          className={cn("h-full rounded-full transition-all duration-700 ease-out", gradients[variant])}
+          className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
           style={{ width: `${pct}%` }}
         />
       </div>
-      {showLabel && (
-        <p className="text-xs text-[var(--text-tertiary)] mt-1.5 font-mono">{Math.round(pct)}%</p>
-      )}
     </div>
   );
 }
@@ -122,6 +129,84 @@ export function Progress({ value, max = 100, variant = "brand", size = "md", sho
 // ==================== SKELETON ====================
 export function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("animate-pulse rounded-xl bg-white/[0.06]", className)} {...props} />
+    <div
+      className={cn("animate-pulse rounded-[var(--radius-lg)] bg-muted", className)}
+      {...props}
+    />
+  );
+}
+
+// ==================== INPUT ====================
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, ...props }, ref) => (
+    <input
+      ref={ref}
+      className={cn(
+        "h-10 w-full bg-muted border border-input rounded-[var(--radius-sm)] px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent focus:ring-2 focus:ring-ring/20 disabled:opacity-50 disabled:cursor-not-allowed",
+        className
+      )}
+      {...props}
+    />
+  )
+);
+Input.displayName = "Input";
+
+// ==================== TEXTAREA ====================
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className, ...props }, ref) => (
+    <textarea
+      ref={ref}
+      className={cn(
+        "w-full bg-muted border border-input rounded-[var(--radius-sm)] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent focus:ring-2 focus:ring-ring/20 disabled:opacity-50 disabled:cursor-not-allowed resize-none",
+        className
+      )}
+      {...props}
+    />
+  )
+);
+Textarea.displayName = "Textarea";
+
+// ==================== EMPTY STATE ====================
+export interface EmptyStateProps {
+  icon: LucideIcon;
+  title: string;
+  description?: string;
+  action?: React.ReactNode;
+}
+
+export function EmptyState({ icon: Icon, title, description, action }: EmptyStateProps) {
+  return (
+    <div className="flex flex-col items-center justify-center py-16 text-center">
+      <Icon className="h-8 w-8 text-muted-foreground mb-4" aria-hidden="true" />
+      <p className="text-sm font-medium text-foreground mb-1">{title}</p>
+      {description && (
+        <p className="text-sm text-muted-foreground max-w-sm">{description}</p>
+      )}
+      {action && <div className="mt-4">{action}</div>}
+    </div>
+  );
+}
+
+// ==================== ERROR STATE ====================
+export interface ErrorStateProps {
+  message: string;
+  onRetry?: () => void;
+}
+
+export function ErrorState({ message, onRetry }: ErrorStateProps) {
+  return (
+    <div className="rounded-[var(--radius-lg)] border border-destructive/30 bg-destructive/5 p-6 text-center">
+      <TriangleAlert className="h-6 w-6 text-destructive mx-auto mb-3" aria-hidden="true" />
+      <p className="text-sm text-destructive mb-4">{message}</p>
+      {onRetry && (
+        <Button variant="primary" size="sm" onClick={onRetry}>
+          Try Again
+        </Button>
+      )}
+    </div>
   );
 }

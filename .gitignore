@@ -65,3 +65,6 @@ pdf_content.txt
 
 # @xenova/transformers model cache (large binary files)
 /.cache/
+
+python/ingest/node_modules/
+python/data/concepts_json/

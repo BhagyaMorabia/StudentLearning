@@ -1,16 +1,10 @@
 # NeuralJEE Python Ingestion Pipeline
-# Requirements for: marker-pdf, Gemini Flash extraction, SymPy validation,
-#                   BGE-small embeddings, PostgreSQL push
+# Requirements for: Gemini content generation, BGE embeddings, DB push
 
-pymupdf4llm
+# Gemini API (Google AI)
+google-genai
 
-# Orchestration (minimal — just for chunking utilities)
-# llama-index-core==0.12.0  # Optional — we handle chunking manually
-
-# Concept extraction via Groq (Llama 3 8B)
-groq
-
-# BGE-small embeddings (local, free, 768-dim)
+# BGE-base embeddings (local, free, 768-dim)
 sentence-transformers
 torch  # CPU-only, no CUDA required for inference
 
@@ -22,5 +16,4 @@ psycopg2-binary
 
 # Utilities
 python-dotenv    # Load .env file
-watchdog         # File system watcher
 tqdm             # Progress bars

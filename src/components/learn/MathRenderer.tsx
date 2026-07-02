@@ -24,7 +24,7 @@ export default function MathRenderer({ content, className = '' }: Props) {
   if (!content) return null;
 
   return (
-    <div className={`prose prose-sm dark:prose-invert max-w-none ${className}`}>
+    <div className={`content-markdown ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkMath]}
         rehypePlugins={[rehypeKatex, rehypeRaw]}
