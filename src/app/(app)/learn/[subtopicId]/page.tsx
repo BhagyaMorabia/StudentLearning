@@ -1,6 +1,7 @@
 import { getSubtopic } from '@/lib/db/queries/curriculum';
 import { notFound } from 'next/navigation';
 import TeachingPanel from '@/components/learn/TeachingPanel';
+import StaticContentPanel from '@/components/learn/StaticContentPanel';
 import Link from 'next/link';
 import { Button } from '@/components/ui';
 import { ArrowRight } from 'lucide-react';
@@ -59,7 +60,10 @@ export default async function LearnSubtopicPage({ params }: Props) {
         </Link>
       </div>
 
-      {/* AI Teaching Panel — streams content from /api/ai/teach */}
+      {/* Primary Textbook Content */}
+      <StaticContentPanel subtopic={subtopic} />
+
+      {/* AI Teaching Panel — initially hidden behind a button */}
       <TeachingPanel subtopicId={subtopicId} subtopicName={subtopic.name} />
     </div>
   );

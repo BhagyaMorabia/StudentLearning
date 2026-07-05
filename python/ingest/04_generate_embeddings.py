@@ -81,7 +81,10 @@ def main():
 
     for json_path in json_files:
         print(f"\nGenerating embeddings for: {json_path.name}")
-        concepts = json.loads(json_path.read_text(encoding="utf-8"))
+        try:
+            concepts = json.loads(json_path.read_text(encoding="utf-8"))
+        except UnicodeDecodeError:
+            concepts = json.loads(json_path.read_text(encoding="cp1252"))
 
         if not isinstance(concepts, list):
             print(f"  ⚠ Unexpected format in {json_path.name}")
@@ -97,7 +100,7 @@ def main():
             continue
 
         updated = generate_embeddings(concepts)
-        json_path.write_text(json.dumps(updated, indent=2, ensure_ascii=False))
+        json_path.write_text(json.dumps(updated, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"  [OK] Saved: {json_path.name}")
 
     print("\nNext step: python 05_push_to_db.py")

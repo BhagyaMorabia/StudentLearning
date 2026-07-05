@@ -24,24 +24,22 @@ export default function DiagramRenderer({ code }: Props) {
 
     (async () => {
       try {
-        // Dynamic import — Mermaid is a large library, load on demand
         const mermaid = (await import('mermaid')).default;
         mermaid.initialize({
           startOnLoad: false,
           theme: 'dark',
-          themeVariables: {
-            background: 'transparent',
-            primaryColor: '#3b6fe0',
-            primaryTextColor: '#f2f2f4',
-            lineColor: '#8c8c95',
-          },
+          securityLevel: 'loose',
         });
+
+        // Small delay to ensure DOM is fully ready
+        await new Promise(r => setTimeout(r, 50));
 
         const id = `diagram-${Math.random().toString(36).slice(2)}`;
         const { svg } = await mermaid.render(id, code);
 
         if (!cancelled) setSvg(svg);
       } catch (err) {
+        console.error("Mermaid error:", err);
         if (!cancelled) {
           setError(`Diagram error: ${String(err)}`);
         }

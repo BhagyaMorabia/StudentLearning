@@ -20,10 +20,9 @@ export default function TeachingPanel({ subtopicId, subtopicName }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [rawText, setRawText] = useState('');
 
-  useEffect(() => {
-    loadContent();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subtopicId]);
+  const [showExplanation, setShowExplanation] = useState(false);
+
+  // Removed auto-load effect, now triggered by button click
 
   async function loadContent() {
     setState('loading');
@@ -111,6 +110,23 @@ export default function TeachingPanel({ subtopicId, subtopicName }: Props) {
 
   if (state === 'error') {
     return <ErrorState message={error ?? 'An error occurred'} onRetry={loadContent} />;
+  }
+
+  if (!showExplanation) {
+    return (
+      <div className="flex justify-center mt-12 pt-8 border-t border-border">
+        <button
+          onClick={() => {
+            setShowExplanation(true);
+            loadContent();
+          }}
+          className="px-6 py-3 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors flex items-center gap-2"
+        >
+          <Lightbulb className="w-5 h-5" />
+          Get Personalized AI Explanation
+        </button>
+      </div>
+    );
   }
 
   if (!content) return null;

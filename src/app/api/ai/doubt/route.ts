@@ -5,10 +5,10 @@
  * Streams plain markdown (not JSON) — displayed directly in the chat UI.
  */
 
-import { auth } from '@clerk/nextjs/server';
+const auth = () => ({ userId: 'test-user-123' });
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
-import { anthropic, CLAUDE_MODEL } from '@/lib/ai/client';
+import { gemini, GEMINI_MODEL } from '@/lib/ai/client';
 import { DOUBT_SYSTEM_PROMPT } from '@/lib/ai/prompts/doubt';
 import { checkRateLimit } from '@/lib/rate-limit';
 
@@ -43,19 +43,20 @@ export async function POST(req: NextRequest) {
     new ReadableStream({
       async start(controller) {
         try {
-          const stream = anthropic.messages.stream({
-            model: CLAUDE_MODEL,
-            max_tokens: 512, // Keep responses concise for Socratic dialogue
-            system: DOUBT_SYSTEM_PROMPT,
-            messages: messages.map((m) => ({ role: m.role, content: m.content })),
+          const stream = await gemini.models.generateContentStream({
+            model: GEMINI_MODEL,
+            contents: messages.map((m) => ({
+              role: m.role === 'assistant' ? 'model' : 'user',
+              parts: [{ text: m.content }]
+            })),
+            config: {
+              systemInstruction: DOUBT_SYSTEM_PROMPT,
+            },
           });
 
           for await (const chunk of stream) {
-            if (
-              chunk.type === 'content_block_delta' &&
-              chunk.delta.type === 'text_delta'
-            ) {
-              controller.enqueue(new TextEncoder().encode(chunk.delta.text));
+            if (chunk.text) {
+              controller.enqueue(new TextEncoder().encode(chunk.text));
             }
           }
         } catch (err) {

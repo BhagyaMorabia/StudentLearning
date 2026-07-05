@@ -8,10 +8,10 @@
  * Returns client-safe questions (NO correctAnswer, NO isCorrect on options).
  */
 
-import { auth } from '@clerk/nextjs/server';
+const auth = () => ({ userId: 'test-user-123' });
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
-import { anthropic, CLAUDE_MODEL } from '@/lib/ai/client';
+import { gemini, GEMINI_MODEL } from '@/lib/ai/client';
 import { QUIZ_SYSTEM_PROMPT } from '@/lib/ai/prompts/quiz';
 import { retrieveContextForSubtopic } from '@/lib/rag/retrieve';
 import { buildQuizContext } from '@/lib/rag/context-builder';
@@ -62,21 +62,23 @@ export async function POST(req: NextRequest) {
   const ragContext = buildQuizContext(context);
   const userMessage = `${ragContext}\n\nGenerate 5 JEE-style questions for: ${context.targetSubtopic.name}`;
 
-  const message = await anthropic.messages.create({
-    model: CLAUDE_MODEL,
-    max_tokens: 3000,
-    system: QUIZ_SYSTEM_PROMPT,
-    messages: [{ role: 'user', content: userMessage }],
+  const message = await gemini.models.generateContent({
+    model: GEMINI_MODEL,
+    contents: userMessage,
+    config: {
+      systemInstruction: QUIZ_SYSTEM_PROMPT,
+      responseMimeType: 'application/json',
+    },
   });
 
-  const rawText = message.content[0]?.type === 'text' ? message.content[0].text : '';
+  const rawText = message.text || '';
 
   let generatedQuestions;
   try {
     const parsed = JSON.parse(rawText);
     generatedQuestions = QuizQuestionsSchema.parse(parsed);
   } catch (err) {
-    console.error('[quiz] Failed to parse Claude response:', rawText.slice(0, 300));
+    console.error('[quiz] Failed to parse Gemini response:', rawText.slice(0, 300));
     return Response.json({ error: 'AI generated malformed questions. Please try again.' }, { status: 500 });
   }
 

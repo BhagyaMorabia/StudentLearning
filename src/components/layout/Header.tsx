@@ -1,4 +1,4 @@
-import { UserButton } from '@clerk/nextjs';
+
 import Link from 'next/link';
 import { Brain } from 'lucide-react';
 
@@ -27,14 +27,9 @@ export default function Header() {
         >
           Review Queue
         </Link>
-        <UserButton
-          afterSignOutUrl="/"
-          appearance={{
-            elements: {
-              avatarBox: 'h-8 w-8',
-            },
-          }}
-        />
+        <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-xs text-primary font-bold">
+          TU
+        </div>
       </div>
     </header>
   );

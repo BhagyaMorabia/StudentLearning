@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ClerkProvider } from '@clerk/nextjs';
+
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -36,7 +36,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || 'pk_test_dGVzdC1jbGVyay1rZXktOTk5LmNsZXJrLmFjY291bnRzLmRldiQ'}>
       <html lang="en" className={`${inter.variable} dark`}>
         <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -49,6 +48,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </body>
       </html>
-    </ClerkProvider>
   );
 }

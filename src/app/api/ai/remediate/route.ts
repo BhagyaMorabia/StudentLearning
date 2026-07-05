@@ -6,10 +6,10 @@
  * then asks Claude to diagnose the student's specific mistake.
  */
 
-import { auth } from '@clerk/nextjs/server';
+const auth = () => ({ userId: 'test-user-123' });
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
-import { anthropic, CLAUDE_MODEL } from '@/lib/ai/client';
+import { gemini, GEMINI_MODEL } from '@/lib/ai/client';
 import { REMEDIATE_SYSTEM_PROMPT } from '@/lib/ai/prompts/remediate';
 import { getQuestion } from '@/lib/db/queries/questions';
 import { RemediationResponseSchema } from '@/lib/ai/schemas';
@@ -53,21 +53,19 @@ Please diagnose the student's mistake and explain the correct approach.
     new ReadableStream({
       async start(controller) {
         try {
-          const stream = anthropic.messages.stream({
-            model: CLAUDE_MODEL,
-            max_tokens: 1024,
-            system: REMEDIATE_SYSTEM_PROMPT,
-            messages: [{ role: 'user', content: userMessage }],
+          const stream = await gemini.models.generateContentStream({
+            model: GEMINI_MODEL,
+            contents: userMessage,
+            config: {
+              systemInstruction: REMEDIATE_SYSTEM_PROMPT,
+            },
           });
 
           let fullText = '';
           for await (const chunk of stream) {
-            if (
-              chunk.type === 'content_block_delta' &&
-              chunk.delta.type === 'text_delta'
-            ) {
-              controller.enqueue(new TextEncoder().encode(chunk.delta.text));
-              fullText += chunk.delta.text;
+            if (chunk.text) {
+              controller.enqueue(new TextEncoder().encode(chunk.text));
+              fullText += chunk.text;
             }
           }
 

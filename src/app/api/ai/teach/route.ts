@@ -13,10 +13,10 @@
  * 9. Cache complete response in Redis (24h)
  */
 
-import { auth } from '@clerk/nextjs/server';
+const auth = () => ({ userId: 'test-user-123' });
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
-import { anthropic, CLAUDE_MODEL } from '@/lib/ai/client';
+import { gemini, GEMINI_MODEL } from '@/lib/ai/client';
 import { TEACH_SYSTEM_PROMPT } from '@/lib/ai/prompts/teach';
 import { retrieveContextForSubtopic } from '@/lib/rag/retrieve';
 import { buildTeachingContext } from '@/lib/rag/context-builder';
@@ -107,19 +107,17 @@ Now teach me: ${context.targetSubtopic.name}
         let fullText = '';
 
         try {
-          const stream = anthropic.messages.stream({
-            model: CLAUDE_MODEL,
-            max_tokens: 2048,
-            system: TEACH_SYSTEM_PROMPT,
-            messages: [{ role: 'user', content: userMessage }],
+          const stream = await gemini.models.generateContentStream({
+            model: GEMINI_MODEL,
+            contents: userMessage,
+            config: {
+              systemInstruction: TEACH_SYSTEM_PROMPT,
+            },
           });
 
           for await (const chunk of stream) {
-            if (
-              chunk.type === 'content_block_delta' &&
-              chunk.delta.type === 'text_delta'
-            ) {
-              const text = chunk.delta.text;
+            const text = chunk.text;
+            if (text) {
               controller.enqueue(new TextEncoder().encode(text));
               fullText += text;
             }
@@ -130,8 +128,8 @@ Now teach me: ${context.targetSubtopic.name}
             const parsed = JSON.parse(fullText);
             await setCachedContent(cacheKey, parsed, 86400); // 24h
           } catch {
-            // JSON parse failed — Claude produced malformed output. Log it.
-            console.error('[teach] Failed to parse Claude response as JSON:', fullText.slice(0, 200));
+            // JSON parse failed — Gemini produced malformed output. Log it.
+            console.error('[teach] Failed to parse Gemini response as JSON:', fullText.slice(0, 200));
           }
         } catch (err) {
           const errorMsg = JSON.stringify({ error: 'AI generation failed', detail: String(err) });

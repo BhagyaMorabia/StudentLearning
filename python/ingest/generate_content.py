@@ -42,12 +42,11 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 CHECKPOINT_FILE = OUTPUT_DIR.parent / "generation_checkpoint.json"
 
-# ── Gemini Configuration ─────────────────────────────────────────────────────
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_AI_API_KEY")
-if not GEMINI_API_KEY:
-    print("ERROR: GEMINI_API_KEY not found in .env.local")
-    print("Add: GEMINI_API_KEY=your_key_here")
-    sys.exit(1)
+# ── Gemini Configuration (Vertex AI — uses Google Cloud free credits) ─────────
+# Authentication: uses gcloud Application Default Credentials (ADC).
+# Run `gcloud auth application-default login` once to set up.
+VERTEX_PROJECT = os.getenv("VERTEX_PROJECT", "student-501106")
+VERTEX_LOCATION = os.getenv("VERTEX_LOCATION", "global")
 
 MODEL = "gemini-3.1-pro-preview"
 
@@ -166,9 +165,21 @@ def validate_content(raw_content: str) -> tuple[bool, list[str]]:
 def get_gemini_client():
     try:
         from google import genai
-        return genai.Client(api_key=GEMINI_API_KEY)
+        client = genai.Client(
+            vertexai=True,
+            project=VERTEX_PROJECT,
+            location=VERTEX_LOCATION,
+        )
+        print(f"[OK] Using Vertex AI (project={VERTEX_PROJECT}, location={VERTEX_LOCATION})")
+        print(f"[OK] Billing goes through Google Cloud free credits")
+        return client
     except ImportError:
         print("ERROR: google-genai not installed. Run: pip install google-genai")
+        sys.exit(1)
+    except Exception as e:
+        print(f"ERROR: Vertex AI auth failed: {e}")
+        print("Run: gcloud auth application-default login")
+        print("Then: gcloud config set project student-501106")
         sys.exit(1)
 
 
@@ -185,12 +196,15 @@ def generate_subtopic_content(client, subtopic: dict, subject: str, chapter: str
         patterns="; ".join(subtopic["patterns"]) if subtopic["patterns"] else "General problems",
     )
 
-    max_retries = 3
+    max_validation_retries = 3   # Content/validation failures
+    max_rate_limit_retries = 10  # Rate limit backoffs (don't count against validation retries)
     base_delay = 5
     
     current_prompt = prompt
+    validation_attempt = 0
+    rate_limit_hits = 0
 
-    for attempt in range(max_retries):
+    while validation_attempt < max_validation_retries:
         try:
             response = client.models.generate_content(
                 model=MODEL,
@@ -209,21 +223,21 @@ def generate_subtopic_content(client, subtopic: dict, subject: str, chapter: str
             
             if is_valid:
                 data["_validation_passed"] = True
-                data["_retry_count"] = attempt
+                data["_retry_count"] = validation_attempt
                 data["_validation_errors"] = []
-                # Inject prerequisites from syllabus
                 data["prerequisites"] = subtopic.get("prerequisites", [])
                 return data
                 
             else:
-                print(f"      [!] Validation failed on attempt {attempt+1}: {errors[0][:100]}...")
-                if attempt < max_retries - 1:
+                validation_attempt += 1
+                print(f"      [!] Validation failed on attempt {validation_attempt}: {errors[0][:100]}...")
+                if validation_attempt < max_validation_retries:
                     current_prompt = prompt + f"\n\nYOUR PREVIOUS RESPONSE FAILED VALIDATION:\n{json.dumps(errors)}\nFix the syntax errors."
                     time.sleep(base_delay)
                     continue
                 else:
                     data["_validation_passed"] = False
-                    data["_retry_count"] = attempt
+                    data["_retry_count"] = validation_attempt
                     data["_validation_errors"] = errors
                     data["prerequisites"] = subtopic.get("prerequisites", [])
                     return data
@@ -231,30 +245,38 @@ def generate_subtopic_content(client, subtopic: dict, subject: str, chapter: str
         except Exception as e:
             error_str = str(e)
             if "429" in error_str or "RESOURCE_EXHAUSTED" in error_str:
-                wait_time = min(60 * (attempt + 1), 300)
-                print(f"      [!] Rate limited. Waiting {wait_time}s...")
+                rate_limit_hits += 1
+                if rate_limit_hits > max_rate_limit_retries:
+                    print(f"      [FAIL] Hit rate limit {max_rate_limit_retries} times. Giving up.")
+                    return {
+                        "name": subtopic["name"], "description": "Rate limited",
+                        "raw_content": "", "key_formulas": [], "common_mistakes": [],
+                        "jee_frequency": subtopic["jee_freq"], "estimated_minutes": subtopic["est_min"],
+                        "question_type_analysis": "", "prerequisites": subtopic.get("prerequisites", []),
+                        "_validation_passed": False, "_retry_count": validation_attempt,
+                        "_validation_errors": ["Exhausted rate limit retries"],
+                    }
+                wait_time = min(30 * rate_limit_hits, 300)
+                print(f"      [!] Rate limited ({rate_limit_hits}/{max_rate_limit_retries}). Waiting {wait_time}s...")
                 time.sleep(wait_time)
+                # Do NOT increment validation_attempt — this isn't a content failure
+                continue
             else:
-                print(f"      [!] Generation error: {error_str}")
-                if attempt < max_retries - 1:
+                validation_attempt += 1
+                print(f"      [!] Generation error (attempt {validation_attempt}): {error_str[:150]}")
+                if validation_attempt < max_validation_retries:
                     time.sleep(base_delay)
                 else:
                     return {
-                        "name": subtopic["name"],
-                        "description": "Generation failed",
-                        "raw_content": "",
-                        "key_formulas": [],
-                        "common_mistakes": [],
-                        "jee_frequency": subtopic["jee_freq"],
-                        "estimated_minutes": subtopic["est_min"],
-                        "question_type_analysis": "",
-                        "prerequisites": subtopic.get("prerequisites", []),
-                        "_validation_passed": False,
-                        "_retry_count": attempt,
-                        "_validation_errors": [error_str]
+                        "name": subtopic["name"], "description": "Generation failed",
+                        "raw_content": "", "key_formulas": [], "common_mistakes": [],
+                        "jee_frequency": subtopic["jee_freq"], "estimated_minutes": subtopic["est_min"],
+                        "question_type_analysis": "", "prerequisites": subtopic.get("prerequisites", []),
+                        "_validation_passed": False, "_retry_count": validation_attempt,
+                        "_validation_errors": [error_str],
                     }
 
-    return {"name": subtopic["name"], "_validation_passed": False}
+    return {"name": subtopic["name"], "_validation_passed": False, "_retry_count": validation_attempt}
 
 
 def load_checkpoint() -> dict:

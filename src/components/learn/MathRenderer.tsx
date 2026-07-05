@@ -3,7 +3,6 @@
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import rehypeRaw from 'rehype-raw';
 import 'katex/dist/katex.min.css';
 
 interface Props {
@@ -18,7 +17,6 @@ interface Props {
  * - Block math: $$...$$
  * - Inline math: $...$
  * - Standard markdown (bold, italic, lists, code)
- * - HTML (via rehype-raw — safe for AI output)
  */
 export default function MathRenderer({ content, className = '' }: Props) {
   if (!content) return null;
@@ -27,7 +25,7 @@ export default function MathRenderer({ content, className = '' }: Props) {
     <div className={`content-markdown ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkMath]}
-        rehypePlugins={[rehypeKatex, rehypeRaw]}
+        rehypePlugins={[rehypeKatex]}
       >
         {content}
       </ReactMarkdown>

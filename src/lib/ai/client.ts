@@ -1,12 +1,12 @@
-import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenAI } from '@google/genai';
 
-const apiKey = process.env.ANTHROPIC_API_KEY || 'placeholder_for_build';
+const apiKey = process.env.GEMINI_API_KEY || 'placeholder_for_build';
 
-// Single Anthropic client — used across all API routes.
+// Single Gemini client — used across all API routes.
 // Do NOT create multiple instances; this is the singleton.
-export const anthropic = new Anthropic({
+export const gemini = new GoogleGenAI({
   apiKey: apiKey,
 });
 
 // Current production model. Update here to upgrade everywhere.
-export const CLAUDE_MODEL = 'claude-sonnet-4-20250514';
+export const GEMINI_MODEL = 'gemini-2.5-flash';

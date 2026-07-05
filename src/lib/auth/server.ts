@@ -6,7 +6,8 @@
  * here makes it easy to add logging, error handling, or swap auth providers.
  */
 
-import { auth, currentUser } from '@clerk/nextjs/server';
+const auth = () => ({ userId: 'test-user-123' });
+const currentUser = () => ({ emailAddresses: [{emailAddress: 'test@example.com'}], firstName: 'Test', lastName: 'User' });
 import { db } from '@/lib/db/client';
 import { users } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
