@@ -48,6 +48,7 @@ next-env.d.ts
 /python/data/input_pdfs/
 /python/data/markdown_output/
 /python/data/concepts_json/
+/python/data/content_v2/
 /python/data/archived/
 /python/__pycache__/
 /python/ingest/__pycache__/

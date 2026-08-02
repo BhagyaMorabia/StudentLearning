@@ -18,7 +18,7 @@ export default function DiagramRenderer({ code }: Props) {
   const [svg, setSvg] = useState<string>('');
 
   useEffect(() => {
-    if (!code || !ref.current) return;
+    if (!code) return;
 
     let cancelled = false;
 

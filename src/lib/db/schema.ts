@@ -140,7 +140,13 @@ export const subtopics = pgTable(
     // Expert-curated content
     keyFormulas: jsonb('key_formulas'), // [{latex: string, sympyVerified: bool, description: string}]
     commonMistakes: text('common_mistakes').array(),
-    rawContent: text('raw_content'), // Full text from NCERT/source
+    rawContent: text('raw_content'), // Legacy: single blob (kept for backward compat)
+
+    // V2: 4-page progressive learning content
+    contentFoundation: text('content_foundation'),    // Page 1: Prerequisites, basics, intuition
+    contentDeepConcepts: text('content_deep_concepts'), // Page 2: Rigorous theory, connections
+    contentFormulas: text('content_formulas'),          // Page 3: Formulas, problem-solving methods
+    contentPractice: text('content_practice'),          // Page 4: Worked examples, practice
 
     // JEE metadata
     pyqFrequency: integer('pyq_frequency').default(0), // Times in PYQs
