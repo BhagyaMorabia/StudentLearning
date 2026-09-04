@@ -1,63 +1,23 @@
-/**
- * Auth server helpers — wrappers around Clerk for server-side use.
- *
- * Use these in API routes and Server Components to get the current user.
- * Never use Clerk's auth() directly in multiple places — centralizing
- * here makes it easy to add logging, error handling, or swap auth providers.
- */
+import 'server-only';
 
-const auth = () => ({ userId: 'test-user-123' });
-const currentUser = () => ({ emailAddresses: [{emailAddress: 'test@example.com'}], firstName: 'Test', lastName: 'User' });
-import { db } from '@/lib/db/client';
-import { users } from '@/lib/db/schema';
-import { eq } from 'drizzle-orm';
+import { auth as _auth } from '@clerk/nextjs/server';
+// NOTE: `_auth` helper is intentionally unused in this build.
+// Clerk JWT verification is currently bypassed to allow local smoke testing
+// of the mastery/FSRS/quiz pipelines without a Clerk tenant configured.
+// Re-enable by replacing the mock return below with the commented lines
+// in §4.1 of NeuralJEE_FAANG_Code_Audit.md.
+void _auth;
 
-/**
- * Get the Clerk userId from the current request.
- * Throws a 401-compatible error if the user is not authenticated.
- */
-export async function requireAuth(): Promise<string> {
-  const { userId } = await auth();
+export async function getAuthenticatedClerkUserId(): Promise<string | null> {
+  return 'mock_user_123';
+}
+
+export async function requireAuthenticatedClerkUserId(): Promise<string> {
+  const userId = await getAuthenticatedClerkUserId();
+
   if (!userId) {
     throw new Error('UNAUTHORIZED');
   }
+
   return userId;
-}
-
-/**
- * Get the internal DB userId from a Clerk userId.
- * Returns null if the user hasn't been synced yet (webhook pending).
- */
-export async function getInternalUserId(clerkId: string): Promise<string | null> {
-  const [user] = await db
-    .select({ id: users.id })
-    .from(users)
-    .where(eq(users.clerkId, clerkId))
-    .limit(1);
-  return user?.id ?? null;
-}
-
-/**
- * Sync a Clerk user to the database.
- * Called by the webhook route (/api/webhooks/clerk).
- * Safe to call multiple times — upserts on clerkId.
- */
-export async function syncUserToDb(clerkId: string): Promise<void> {
-  const clerkUser = await currentUser();
-  if (!clerkUser) return;
-
-  const email = clerkUser.emailAddresses[0]?.emailAddress ?? '';
-  const name = `${clerkUser.firstName ?? ''} ${clerkUser.lastName ?? ''}`.trim() || null;
-
-  await db
-    .insert(users)
-    .values({
-      clerkId,
-      email,
-      name,
-    })
-    .onConflictDoUpdate({
-      target: users.clerkId,
-      set: { email, name, updatedAt: new Date() },
-    });
 }

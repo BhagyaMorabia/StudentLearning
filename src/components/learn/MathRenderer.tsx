@@ -22,7 +22,7 @@ export default function MathRenderer({ content, className = '' }: Props) {
   if (!content) return null;
 
   return (
-    <div className={`content-markdown ${className}`}>
+    <div className={`content-markdown overflow-x-auto overflow-y-hidden ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkMath]}
         rehypePlugins={[rehypeKatex]}

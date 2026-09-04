@@ -31,6 +31,7 @@ import shutil
 import tempfile
 from pathlib import Path
 from dotenv import load_dotenv
+from tenacity import retry, wait_exponential, stop_after_attempt, retry_if_exception
 
 # Load .env.local from project root
 ENV_PATH = Path(__file__).parent.parent.parent / ".env.local"
@@ -44,13 +45,14 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 CHECKPOINT_FILE = OUTPUT_DIR.parent / "generation_v2_checkpoint.json"
 
 # ── Gemini Configuration ─────────────────────────────────────────────────────
-VERTEX_PROJECT = os.getenv("VERTEX_PROJECT", "student-501106")
+VERTEX_PROJECT = os.getenv("VERTEX_PROJECT", "project-4e272d6a-f5a1-4799-aa9")
 VERTEX_LOCATION = os.getenv("VERTEX_LOCATION", "global")
 
 MODEL = "gemini-3.1-pro-preview"
 
-# Rate limiting — 4 calls per subtopic, so be conservative
-REQUESTS_PER_MINUTE = 14
+# Rate limiting — Google Cloud quotas are strict for Pro models.
+# Reduced to 5 RPM to prevent 429 RESOURCE_EXHAUSTED errors.
+REQUESTS_PER_MINUTE = 5
 REQUEST_DELAY = 60 / REQUESTS_PER_MINUTE
 
 # ── Page Names ───────────────────────────────────────────────────────────────
@@ -88,6 +90,7 @@ WHAT TO INCLUDE:
 RULES:
 - Write AT LEAST 3000 words. This is a full lesson, not a summary.
 - Use $...$ for inline math and $$...$$ for display math (valid KaTeX syntax).
+- CRITICAL MATH RULE: NEVER use the '#' symbol or any invalid LaTeX characters inside $...$ or $$...$$ blocks. Ensure all math blocks are 100% syntactically perfect KaTeX.
 - Use \\frac{{}}{{}} not \\frac a b. Never put math symbols inside \\text{{}}.
 - Keep formulas to an absolute minimum on this page — save heavy math for Page 3.
 - Your tone should be warm, encouraging, and conversational — like a brilliant friend explaining things over chai.
@@ -139,6 +142,7 @@ WHAT TO INCLUDE:
 RULES:
 - Write AT LEAST 4000 words. Be thorough and detailed.
 - Use $...$ for inline math and $$...$$ for display math (valid KaTeX syntax).
+- CRITICAL MATH RULE: NEVER use the '#' symbol or any invalid LaTeX characters inside $...$ or $$...$$ blocks. Ensure all math blocks are 100% syntactically perfect KaTeX.
 - Use \\frac{{}}{{}} not \\frac a b. Never put math symbols inside \\text{{}}.
 - Include at least ONE Mermaid diagram (decision flowchart preferred).
 - Show complete derivations — NEVER write "it can be shown that..."
@@ -196,6 +200,7 @@ WHAT TO INCLUDE:
 RULES:
 - Write AT LEAST 3500 words.
 - Use $...$ for inline math and $$...$$ for display math (valid KaTeX syntax).
+- CRITICAL MATH RULE: NEVER use the '#' symbol or any invalid LaTeX characters inside $...$ or $$...$$ blocks. Ensure all math blocks are 100% syntactically perfect KaTeX.
 - Use \\frac{{}}{{}} not \\frac a b. Never put math symbols inside \\text{{}}.
 - Include at least ONE detailed Mermaid flowchart for problem-solving.
 - Every formula must have conditions of validity stated.
@@ -256,6 +261,7 @@ WHAT TO INCLUDE:
 RULES:
 - Write AT LEAST 4000 words.
 - Use $...$ for inline math and $$...$$ for display math (valid KaTeX syntax).
+- CRITICAL MATH RULE: NEVER use the '#' symbol or any invalid LaTeX characters inside $...$ or $$...$$ blocks. Ensure all math blocks are 100% syntactically perfect KaTeX.
 - Use \\frac{{}}{{}} not \\frac a b. Never put math symbols inside \\text{{}}.
 - ALL problems must have SPECIFIC numbers — no generic "find F in terms of m and g" unless that IS the answer.
 - Solutions must show EVERY step of algebra. Never skip steps.
@@ -283,7 +289,7 @@ def validate_content(raw_content: str) -> tuple[bool, list[str]]:
     try:
         result = subprocess.run(
             ["node", str(script_path), temp_path],
-            capture_output=True, text=True, timeout=30
+            capture_output=True, text=True, timeout=30, encoding='utf-8'
         )
         try:
             output = json.loads(result.stdout)
@@ -301,6 +307,16 @@ def validate_content(raw_content: str) -> tuple[bool, list[str]]:
 def get_gemini_client():
     try:
         from google import genai
+        import os
+        
+        # Check if user provided a free AI Studio API Key to bypass Vertex billing
+        api_key = os.getenv("GEMINI_API_KEY")
+        if api_key:
+            client = genai.Client(api_key=api_key)
+            print("[OK] Connected via Google AI Studio (Free API Key) 🚀")
+            return client
+            
+        # Fallback to Vertex AI if no API key is found
         client = genai.Client(
             vertexai=True,
             project=VERTEX_PROJECT,
@@ -312,82 +328,77 @@ def get_gemini_client():
         print("ERROR: google-genai not installed. Run: pip install google-genai")
         sys.exit(1)
     except Exception as e:
-        print(f"ERROR: Vertex AI auth failed: {e}")
-        print("Run: gcloud auth application-default login")
+        print(f"ERROR: Auth failed: {e}")
+        print("If using Vertex AI, run: gcloud auth application-default login")
+        print("Or set GEMINI_API_KEY environment variable to use AI Studio.")
         sys.exit(1)
 
 
+def is_retryable_exception(exception):
+    error_str = str(exception)
+    return "429" in error_str or "503" in error_str or "500" in error_str or "RESOURCE_EXHAUSTED" in error_str
+
+@retry(
+    wait=wait_exponential(multiplier=1, min=4, max=60),
+    stop=stop_after_attempt(10),
+    retry=retry_if_exception(is_retryable_exception),
+    before_sleep=lambda retry_state: print(f" [!] API Error ({str(retry_state.outcome.exception())[:50]}). Retrying in {retry_state.next_action.sleep}s...", flush=True)
+)
+def call_gemini_api(client, prompt: str):
+    from google.genai import types
+    return client.models.generate_content(
+        model=MODEL,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            temperature=0.2,
+            max_output_tokens=16384,
+        ),
+    )
+
 def generate_single_page(client, prompt: str, page_name: str) -> tuple[str, bool, list[str]]:
     """Generate content for a single page. Returns (content, is_valid, errors)."""
-    from google.genai import types
-
     max_validation_retries = 2
-    max_rate_limit_retries = 8
     base_delay = 5
 
     current_prompt = prompt
     validation_attempt = 0
-    rate_limit_hits = 0
 
     while validation_attempt < max_validation_retries:
         try:
-            response = client.models.generate_content(
-                model=MODEL,
-                contents=current_prompt,
-                config=types.GenerateContentConfig(
-                    temperature=0.2,
-                    max_output_tokens=16384,
-                ),
-            )
-
-            content = response.text.strip() if response.text else ""
-
-            if not content or len(content) < 500:
-                validation_attempt += 1
-                print(f" [!] {page_name}: too short ({len(content)} chars), retry {validation_attempt}")
-                if validation_attempt < max_validation_retries:
-                    current_prompt = prompt + "\n\nIMPORTANT: Your previous response was too short. Write AT LEAST 3000 words."
-                    time.sleep(base_delay)
-                    continue
-                return content, False, [f"Content too short: {len(content)} chars"]
-
-            # Validate KaTeX and Mermaid
-            is_valid, errors = validate_content(content)
-
-            if is_valid:
-                return content, True, []
-            else:
-                validation_attempt += 1
-                print(f" [!] {page_name}: validation failed attempt {validation_attempt}: {errors[0][:80]}...")
-                if validation_attempt < max_validation_retries:
-                    current_prompt = prompt + f"\n\nYOUR PREVIOUS RESPONSE FAILED VALIDATION:\n{json.dumps(errors[:3])}\nFix the syntax errors. Make sure all KaTeX math is valid and all Mermaid diagrams are valid."
-                    time.sleep(base_delay)
-                    continue
-                return content, False, errors
-
+            response = call_gemini_api(client, current_prompt)
         except Exception as e:
-            error_str = str(e)
-            if "429" in error_str or "RESOURCE_EXHAUSTED" in error_str:
-                rate_limit_hits += 1
-                if rate_limit_hits > max_rate_limit_retries:
-                    print(f" [FAIL] {page_name}: rate limited {max_rate_limit_retries} times")
-                    return "", False, ["Exhausted rate limit retries"]
-                wait_time = min(30 * rate_limit_hits, 300)
-                print(f" [!] Rate limited ({rate_limit_hits}). Waiting {wait_time}s...")
-                time.sleep(wait_time)
+            # Fatal or non-retryable exception bubbled up
+            return "", False, [f"API Fatal Error: {str(e)}"]
+
+        content = response.text.strip() if response.text else ""
+
+        if not content or len(content) < 500:
+            validation_attempt += 1
+            print(f" [!] {page_name}: too short ({len(content)} chars), retry {validation_attempt}", flush=True)
+            if validation_attempt < max_validation_retries:
+                current_prompt = prompt + "\n\nIMPORTANT: Your previous response was too short. Write AT LEAST 3000 words."
+                time.sleep(base_delay)
                 continue
-            else:
-                validation_attempt += 1
-                print(f" [!] {page_name}: error attempt {validation_attempt}: {error_str[:100]}")
-                if validation_attempt < max_validation_retries:
-                    time.sleep(base_delay)
-                else:
-                    return "", False, [error_str[:200]]
+            return content, False, [f"Content too short: {len(content)} chars"]
+
+        # Validate KaTeX and Mermaid
+        is_valid, errors = validate_content(content)
+
+        if is_valid:
+            return content, True, []
+        else:
+            validation_attempt += 1
+            print(f" [!] {page_name}: validation failed attempt {validation_attempt}: {errors[0][:80]}...", flush=True)
+            if validation_attempt < max_validation_retries:
+                current_prompt = prompt + f"\n\nYOUR PREVIOUS RESPONSE FAILED VALIDATION:\n{json.dumps(errors[:3])}\nFix the syntax errors. Make sure all KaTeX math is valid and all Mermaid diagrams are valid."
+                time.sleep(base_delay)
+                continue
+            return content, False, errors
 
     return "", False, ["Max retries exhausted"]
 
 
-def generate_subtopic_content(client, subtopic: dict, subject: str, chapter: str, topic: str) -> dict:
+def generate_subtopic_content(client, subtopic: dict, subject: str, chapter: str, topic: str, existing_subtopic: dict = None, save_callback=None) -> dict:
     """Generate all 4 pages for a subtopic."""
     result = {
         "name": subtopic["name"],
@@ -407,6 +418,14 @@ def generate_subtopic_content(client, subtopic: dict, subject: str, chapter: str
     }
 
     for page_name in PAGE_NAMES:
+        # If resuming, check if this specific page is already valid
+        if existing_subtopic and page_name in existing_subtopic.get("pages", {}):
+            existing_page = existing_subtopic["pages"][page_name]
+            if existing_page.get("valid", False):
+                result["pages"][page_name] = existing_page
+                print(f"    {page_name}: SKIP - OK ({existing_page.get('word_count', 0)} words)", flush=True)
+                continue
+
         prompt_template = PROMPTS[page_name]
         
         # Only practice prompt uses {patterns}
@@ -435,6 +454,13 @@ def generate_subtopic_content(client, subtopic: dict, subject: str, chapter: str
             result["_all_valid"] = False
 
         print(f"    {page_name}: {'OK' if is_valid else 'FAIL'} ({word_count} words)", flush=True)
+
+        if save_callback:
+            # Add metadata needed for saving
+            result["_subject"] = subject
+            result["_chapter"] = chapter
+            result["_topic"] = topic
+            save_callback(result)
 
         # Rate limit between pages
         time.sleep(REQUEST_DELAY)
@@ -555,18 +581,29 @@ def main():
                     subtopic_key = f"{subject_name}__{chapter['name']}__{subtopic['name']}"
 
                     # Check if already completed
-                    if args.resume and subtopic["name"] in existing_data:
-                        existing = existing_data[subtopic["name"]]
-                        if existing.get("_all_valid", False):
-                            chapter_results.append(existing)
+                    existing_subtopic = existing_data.get(subtopic["name"])
+                    if args.resume and existing_subtopic:
+                        if existing_subtopic.get("_all_valid", False):
+                            chapter_results.append(existing_subtopic)
                             print(f"    [{processed}/{total_subtopics}] {subtopic['name']} [SKIP - valid]")
                             continue
 
                     print(f"    [{processed}/{total_subtopics}] {subtopic['name']}")
 
+                    # Append a placeholder so save_partial can update it in-place
+                    chapter_results.append(existing_subtopic if existing_subtopic else {"name": subtopic["name"]})
+
+                    def save_partial(current_result):
+                        chapter_results[-1] = current_result
+                        output_path.write_text(
+                            json.dumps(chapter_results, indent=2, ensure_ascii=False),
+                            encoding="utf-8"
+                        )
+
                     result = generate_subtopic_content(
-                        client, subtopic, subject_name, chapter["name"], topic["name"]
+                        client, subtopic, subject_name, chapter["name"], topic["name"], existing_subtopic if args.resume else None, save_partial
                     )
+                    
                     result["_subject"] = subject_name
                     result["_chapter"] = chapter["name"]
                     result["_topic"] = topic["name"]
@@ -575,13 +612,8 @@ def main():
                         failed += 1
                         all_chapter_valid = False
 
-                    chapter_results.append(result)
-
-                    # Save after each subtopic (crash safety)
-                    output_path.write_text(
-                        json.dumps(chapter_results, indent=2, ensure_ascii=False),
-                        encoding="utf-8"
-                    )
+                    # Final save for this subtopic
+                    save_partial(result)
 
             # Mark chapter complete
             if all_chapter_valid and chapter_key not in checkpoint["completed_chapters"]:

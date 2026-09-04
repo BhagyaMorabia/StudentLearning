@@ -1,8 +1,7 @@
 import { db } from '@/lib/db/client';
-import { studentMastery, users } from '@/lib/db/schema';
-import { eq, and, lte, asc } from 'drizzle-orm';
+import { studentMastery, users, subtopics } from '@/lib/db/schema';
+import { eq, and, asc } from 'drizzle-orm';
 import type { StudentMastery } from '@/lib/db/schema';
-import type { MasteryResult } from '@/lib/mastery/algorithm';
 
 // ── Get internal user ID from Clerk ID ─────────────────────────────────────
 
@@ -58,87 +57,26 @@ export async function getMasteryForSubtopic(
 
 // ── Get full mastery overview for dashboard ────────────────────────────────
 
-export async function getMasteryOverview(clerkId: string): Promise<StudentMastery[]> {
+export type MasteryOverviewRow = StudentMastery & { subtopicName: string | null };
+
+export async function getMasteryOverview(clerkId: string): Promise<MasteryOverviewRow[]> {
   const userId = await getUserId(clerkId);
   if (!userId) return [];
 
-  return db
-    .select()
+  const rows = await db
+    .select({
+      mastery: studentMastery,
+      subtopicName: subtopics.name,
+    })
     .from(studentMastery)
+    .leftJoin(subtopics, eq(studentMastery.subtopicId, subtopics.id))
     .where(eq(studentMastery.userId, userId))
     .orderBy(asc(studentMastery.masteryScore));
+
+  return rows.map((row) => ({
+    ...row.mastery,
+    subtopicName: row.subtopicName,
+  }));
 }
 
-// ── Upsert mastery after quiz submission ──────────────────────────────────
 
-export async function upsertMastery(
-  clerkId: string,
-  subtopicId: string,
-  result: MasteryResult,
-): Promise<void> {
-  const userId = await getUserId(clerkId);
-  if (!userId) throw new Error(`User not found for clerkId: ${clerkId}`);
-
-  const now = new Date();
-
-  // Check if a row exists
-  const existing = await getMasteryForSubtopic(clerkId, subtopicId);
-
-  if (!existing) {
-    // Insert new row
-    await db.insert(studentMastery).values({
-      userId,
-      subtopicId,
-      questionsAttempted: result.totalAttempted,
-      questionsCorrect: result.totalCorrect,
-      masteryScore: result.masteryScore,
-      status: result.status,
-      weakConceptTags: result.weakConceptTags,
-      avgTimePerQuestionMs: result.avgTimeMs,
-      firstAttemptAt: now,
-      lastAttemptAt: now,
-    });
-  } else {
-    // Update existing row
-    await db
-      .update(studentMastery)
-      .set({
-        questionsAttempted:
-          (existing.questionsAttempted ?? 0) + result.totalAttempted,
-        questionsCorrect:
-          (existing.questionsCorrect ?? 0) + result.totalCorrect,
-        masteryScore: result.masteryScore,
-        status: result.status,
-        weakConceptTags: result.weakConceptTags,
-        avgTimePerQuestionMs: result.avgTimeMs,
-        lastAttemptAt: now,
-      })
-      .where(eq(studentMastery.id, existing.id));
-  }
-}
-
-// ── Update SM-2 spaced rep fields ─────────────────────────────────────────
-
-export async function updateSpacedRep(
-  clerkId: string,
-  subtopicId: string,
-  spacedRep: {
-    nextReviewAt: Date;
-    intervalDays: number;
-    easeFactor: number;
-    repetitionCount: number;
-  },
-): Promise<void> {
-  const userId = await getUserId(clerkId);
-  if (!userId) return;
-
-  await db
-    .update(studentMastery)
-    .set(spacedRep)
-    .where(
-      and(
-        eq(studentMastery.userId, userId),
-        eq(studentMastery.subtopicId, subtopicId),
-      ),
-    );
-}

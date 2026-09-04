@@ -1,18 +1,25 @@
-import { neon, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-http';
+import { Pool } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-serverless';
 import * as schema from './schema';
+import 'server-only';
 
-// Enable connection caching for serverless environments.
-// This reuses connections across invocations, which is critical for Vercel/serverless.
-neonConfig.fetchConnectionCache = true;
+const databaseUrl = process.env.DATABASE_URL;
 
-const databaseUrl = process.env.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder';
+if (!databaseUrl) {
+  throw new Error('DATABASE_URL is required for database access');
+}
 
-// Create the Neon HTTP client
-const sql = neon(databaseUrl);
+// Create the Neon Serverless client (WebSocket pool) to support transactions
+const pool = new Pool({ connectionString: databaseUrl });
 
-// Create the Drizzle client with the full schema for type safety
-export const db = drizzle(sql, { schema });
+// Global singleton to prevent hot-reloading connection exhaustion in dev
+const globalForDb = globalThis as unknown as {
+  dbPool: ReturnType<typeof drizzle<typeof schema>> | undefined;
+};
 
-// Export sql for raw queries (needed for pgvector cosine similarity)
-export { sql as neonSql };
+export const db = globalForDb.dbPool ?? drizzle(pool, { schema });
+
+if (process.env.NODE_ENV !== 'production') {
+  globalForDb.dbPool = db;
+}
+

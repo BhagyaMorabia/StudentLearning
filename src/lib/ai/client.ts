@@ -1,12 +1,17 @@
 import { GoogleGenAI } from '@google/genai';
+import 'server-only';
 
-const apiKey = process.env.GEMINI_API_KEY || 'placeholder_for_build';
+let geminiClient: GoogleGenAI | null = null;
 
-// Single Gemini client — used across all API routes.
-// Do NOT create multiple instances; this is the singleton.
-export const gemini = new GoogleGenAI({
-  apiKey: apiKey,
-});
+export function getGeminiClient(): GoogleGenAI {
+  const apiKey = process.env.GEMINI_API_KEY;
 
-// Current production model. Update here to upgrade everywhere.
+  if (!apiKey) {
+    throw new Error('GEMINI_API_KEY is required for AI routes');
+  }
+
+  geminiClient ??= new GoogleGenAI({ apiKey });
+  return geminiClient;
+}
+
 export const GEMINI_MODEL = 'gemini-2.5-flash';

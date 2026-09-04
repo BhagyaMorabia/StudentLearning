@@ -17,3 +17,4 @@ psycopg2-binary
 # Utilities
 python-dotenv    # Load .env file
 tqdm             # Progress bars
+tenacity         # Robust retry logic for API calls

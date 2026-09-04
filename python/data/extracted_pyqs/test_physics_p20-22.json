@@ -1,0 +1,482 @@
+[
+  {
+    "subtopicId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+    "questionText": "Find the dimensional formula of Planck's constant $h$ from the relation $E = h\\nu$, where $E$ is energy and $\\nu$ is frequency.",
+    "solutionText": "Using the relation $E = h\\nu$, we have $h = \\frac{E}{\\nu}$.\n\nTaking dimensions:\n$[h] = \\frac{[E]}{[\\nu]} = \\frac{[M L^2 T^{-2}]}{[T^{-1}]} = [M L^2 T^{-1}]$.",
+    "year": 2013,
+    "examType": "JEE_MAIN",
+    "pageIndex": 0,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$[M L^2 T^{-1}]$",
+        "isCorrect": true,
+        "explanation": "Dividing energy dimensions $[M L^2 T^{-2}]$ by frequency dimensions $[T^{-1}]$ yields $[M L^2 T^{-1}]$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "NONE"
+      },
+      {
+        "id": "B",
+        "text": "$[M L^2 T^{-2}]$",
+        "isCorrect": false,
+        "explanation": "This represents the dimensional formula of energy or torque, not Planck's constant.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "C",
+        "text": "$[M L T^{-1}]$",
+        "isCorrect": false,
+        "explanation": "This represents the dimensional formula of linear momentum.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "D",
+        "text": "$[M L^3 T^{-1}]$",
+        "isCorrect": false,
+        "explanation": "Incorrect power of length.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      }
+    ]
+  },
+  {
+    "subtopicId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+    "questionText": "Given $[X] = [C] = [M^{-1} L^{-2} T^4 Q^2]$ and $[Z] = [B] = [M T^{-1} Q^{-1}]$, find the dimensional formula of $Y$ in the expression $Y = \\frac{X}{3Z^2}$.",
+    "solutionText": "We are given:\n$[X] = [M^{-1} L^{-2} T^4 Q^2]$\n$[Z] = [M T^{-1} Q^{-1}]$\n\nNow, $Y = \\frac{X}{3Z^2}$. Since numerical constants are dimensionless:\n$[Y] = \\frac{[X]}{[Z]^2} = \\frac{[M^{-1} L^{-2} T^4 Q^2]}{[M T^{-1} Q^{-1}]^2} = \\frac{[M^{-1} L^{-2} T^4 Q^2]}{[M^2 T^{-2} Q^{-2}]} = [M^{-3} L^{-2} T^6 Q^4]$.",
+    "year": 2014,
+    "examType": "JEE_MAIN",
+    "pageIndex": 0,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$[M^{-3} L^{-2} T^6 Q^4]$",
+        "isCorrect": true,
+        "explanation": "Correctly applying the powers of dimensions for $[X]/[Z]^2$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "NONE"
+      },
+      {
+        "id": "B",
+        "text": "$[M^{-1} L^{-2} T^2 Q^2]$",
+        "isCorrect": false,
+        "explanation": "Forgot to square the denominator $[Z]$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      },
+      {
+        "id": "C",
+        "text": "$[M^{-2} L^{-2} T^5 Q^3]$",
+        "isCorrect": false,
+        "explanation": "Arithmetic subtraction error in powers of dimensions.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "ARITHMETIC_ERROR"
+      },
+      {
+        "id": "D",
+        "text": "$[M^3 L^2 T^{-6} Q^{-4}]$",
+        "isCorrect": false,
+        "explanation": "Inverted the numerator and denominator.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      }
+    ]
+  },
+  {
+    "subtopicId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+    "questionText": "Find the dimensional formula of electrical conductivity $\\sigma = \\frac{J}{E}$, where $J$ is current density and $E$ is electric field intensity.",
+    "solutionText": "Electrical conductivity is given by $\\sigma = \\frac{J}{E} = \\frac{i/A}{F/q} = \\frac{q i}{F A} = \\frac{i^2 t}{F A}$.\n\nSubstituting dimensional formulas:\n$[i] = [A]$\n$[t] = [T]$\n$[F] = [M L T^{-2}]$\n$[A] = [L^2]$\n\n$[\\sigma] = \\frac{[A^2][T]}{[M L T^{-2}][L^2]} = [M^{-1} L^{-3} T^3 A^2]$.",
+    "year": 2012,
+    "examType": "JEE_MAIN",
+    "pageIndex": 0,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$[M^{-1} L^{-3} T^3 A^2]$",
+        "isCorrect": true,
+        "explanation": "Correct dimensional analysis of electrical conductivity.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "NONE"
+      },
+      {
+        "id": "B",
+        "text": "$[M L^3 T^{-3} A^{-2}]$",
+        "isCorrect": false,
+        "explanation": "This is the dimensional formula of electrical resistivity, which is the reciprocal of conductivity.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "C",
+        "text": "$[M^{-1} L^{-2} T^3 A^2]$",
+        "isCorrect": false,
+        "explanation": "Incorrect power of length $L$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "ARITHMETIC_ERROR"
+      },
+      {
+        "id": "D",
+        "text": "$[M^{-1} L^{-3} T^2 A]$",
+        "isCorrect": false,
+        "explanation": "Incorrect power of current $A$ and time $T$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      }
+    ]
+  },
+  {
+    "subtopicId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+    "questionText": "In the van der Waals equation $\\left(p + \\frac{a}{V^2}\\right)(V - b) = RT$, the dimensional formula of the constant $a$ is:",
+    "solutionText": "According to the principle of homogeneity of dimensions, quantities added to or subtracted from each other must have the same dimensions.\n\nTherefore, $\\left[\\frac{a}{V^2}\\right] = [p]$\n$[a] = [p][V]^2 = [M L^{-1} T^{-2}][L^3]^2 = [M L^{-1} T^{-2}][L^6] = [M L^5 T^{-2}]$.",
+    "year": 2011,
+    "examType": "JEE_MAIN",
+    "pageIndex": 0,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$[M L^5 T^{-2}]$",
+        "isCorrect": true,
+        "explanation": "Multiplying pressure dimensions by volume squared gives $[M L^5 T^{-2}]$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "NONE"
+      },
+      {
+        "id": "B",
+        "text": "$[M L^{-1} T^{-2}]$",
+        "isCorrect": false,
+        "explanation": "This is the dimension of pressure $p$, neglecting $V^2$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "C",
+        "text": "$[M L^2 T^{-2}]$",
+        "isCorrect": false,
+        "explanation": "This is the dimension of work or energy.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "D",
+        "text": "$[M L^3 T^{-2}]$",
+        "isCorrect": false,
+        "explanation": "Incorrectly used $[V]$ instead of $[V^2]$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      }
+    ]
+  },
+  {
+    "subtopicId": "4619443a-bc79-52c6-9751-bdde3bfe1a04",
+    "questionText": "The side of a cube is measured to be $l = 1.2 \\times 10^{-2}\\text{ m}$. The volume of the cube, keeping in mind the rules for significant figures, is:",
+    "solutionText": "Volume of a cube is given by $V = l^3$.\nGiven $l = 1.2 \\times 10^{-2}\\text{ m}$, which has $2$ significant figures.\n\n$V = (1.2 \\times 10^{-2}\\text{ m})^3 = 1.728 \\times 10^{-6}\\text{ m}^3$.\n\nIn multiplication, the result must be rounded off to the least number of significant figures present in any of the original numbers (which is 2).\n\nRounding $1.728$ to 2 significant figures gives $1.7$.\nTherefore, $V = 1.7 \\times 10^{-6}\\text{ m}^3$.",
+    "year": 2003,
+    "examType": "JEE_MAIN",
+    "pageIndex": 0,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$1.7 \\times 10^{-6}\\text{ m}^3$",
+        "isCorrect": true,
+        "explanation": "Correctly rounded to 2 significant figures as per the measurement precision.",
+        "prerequisiteTrapId": "4619443a-bc79-52c6-9751-bdde3bfe1a04",
+        "misconceptionType": "NONE"
+      },
+      {
+        "id": "B",
+        "text": "$1.73 \\times 10^{-6}\\text{ m}^3$",
+        "isCorrect": false,
+        "explanation": "Rounded to 3 significant figures instead of 2.",
+        "prerequisiteTrapId": "4619443a-bc79-52c6-9751-bdde3bfe1a04",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "C",
+        "text": "$1.728 \\times 10^{-6}\\text{ m}^3$",
+        "isCorrect": false,
+        "explanation": "Failed to apply significant figure rules and kept all unrounded digits.",
+        "prerequisiteTrapId": "4619443a-bc79-52c6-9751-bdde3bfe1a04",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "D",
+        "text": "$1.8 \\times 10^{-6}\\text{ m}^3$",
+        "isCorrect": false,
+        "explanation": "Incorrect rounding calculation.",
+        "prerequisiteTrapId": "4619443a-bc79-52c6-9751-bdde3bfe1a04",
+        "misconceptionType": "ARITHMETIC_ERROR"
+      }
+    ]
+  },
+  {
+    "subtopicId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+    "questionText": "The density of a wire is determined by measuring its mass $m$, radius $r$, and length $L$ using the formula $\\rho = \\frac{m}{\\pi r^2 L}$. If $m = (0.3 \\pm 0.003)\\text{ g}$, $r = (0.5 \\pm 0.005)\\text{ mm}$, and $L = (6 \\pm 0.06)\\text{ cm}$, the maximum percentage error in the measurement of density is:",
+    "solutionText": "The density equation is $\\rho = \\frac{m}{\\pi r^2 L}$.\n\nThe maximum percentage error is given by:\n$\\frac{\\Delta \\rho}{\\rho} \\times 100 = \\left( \\frac{\\Delta m}{m} + 2\\frac{\\Delta r}{r} + \\frac{\\Delta L}{L} \\right) \\times 100$\n\nSubstituting values:\n$\\frac{\\Delta m}{m} = \\frac{0.003}{0.3} = 0.01$\n$\\frac{\\Delta r}{r} = \\frac{0.005}{0.5} = 0.01$\n$\\frac{\\Delta L}{L} = \\frac{0.06}{6} = 0.01$\n\n$\\frac{\\Delta \\rho}{\\rho} \\times 100 = (0.01 + 2(0.01) + 0.01) \\times 100 = 4\\%$.",
+    "year": 2004,
+    "examType": "JEE_MAIN",
+    "pageIndex": 1,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$1\\%$",
+        "isCorrect": false,
+        "explanation": "This is only the percentage error of a single variable.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "B",
+        "text": "$2\\%$",
+        "isCorrect": false,
+        "explanation": "Forgot to double the error contribution from radius $r$.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      },
+      {
+        "id": "C",
+        "text": "$3\\%$",
+        "isCorrect": false,
+        "explanation": "Simply added the three individual fractional errors without accounting for exponent of $r$.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      },
+      {
+        "id": "D",
+        "text": "$4\\%$",
+        "isCorrect": true,
+        "explanation": "Correctly computed sum of fractional errors including power factor of 2 for radius.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "NONE"
+      }
+    ]
+  },
+  {
+    "subtopicId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+    "questionText": "A screw gauge has a pitch of $0.5\\text{ mm}$ and $50$ divisions on its circular scale. When used to measure the diameter of a ball, the main scale reading is $2$ divisions ($1.0\\text{ mm}$) and the $25\\text{th}$ division on the circular scale coincides with the reference line. If the instrument has a positive zero error of $5$ divisions, the diameter of the ball is:",
+    "solutionText": "Least count (LC) = $\\frac{\\text{Pitch}}{\\text{Number of circular scale divisions}} = \\frac{0.5\\text{ mm}}{50} = 0.01\\text{ mm}$.\n\nPositive zero error = $5 \\times 0.01\\text{ mm} = 0.05\\text{ mm}$.\n\nMeasured value = Main scale reading + (Circular scale division $\\times$ LC) - Positive zero error\n$= 2 \\times 0.5\\text{ mm} + 25 \\times 0.01\\text{ mm} - 0.05\\text{ mm}$\n$= 1.0\\text{ mm} + 0.25\\text{ mm} - 0.05\\text{ mm} = 1.2\\text{ mm}$.",
+    "year": 2006,
+    "examType": "JEE_MAIN",
+    "pageIndex": 1,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$1.2\\text{ mm}$",
+        "isCorrect": true,
+        "explanation": "Correct calculation subtracting positive zero error.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "NONE"
+      },
+      {
+        "id": "B",
+        "text": "$1.25\\text{ mm}$",
+        "isCorrect": false,
+        "explanation": "Forgot to subtract the zero error.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "C",
+        "text": "$1.30\\text{ mm}$",
+        "isCorrect": false,
+        "explanation": "Added the positive zero error instead of subtracting it.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "D",
+        "text": "$1.15\\text{ mm}$",
+        "isCorrect": false,
+        "explanation": "Incorrect main scale value reading.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "ARITHMETIC_ERROR"
+      }
+    ]
+  },
+  {
+    "subtopicId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+    "questionText": "In a vernier calipers, $20$ divisions of the vernier scale coincide with $16$ main scale divisions. If $1$ main scale division ($1\\text{ MSD}$) equals $1\\text{ mm}$, the least count of the instrument is:",
+    "solutionText": "Given $20\\text{ VSD} = 16\\text{ MSD}$.\nTherefore, $1\\text{ VSD} = \\frac{16}{20}\\text{ MSD} = 0.8\\text{ mm}$.\n\nLeast count (LC) = $1\\text{ MSD} - 1\\text{ VSD} = 1\\text{ mm} - 0.8\\text{ mm} = 0.2\\text{ mm}$.",
+    "year": 2010,
+    "examType": "JEE_MAIN",
+    "pageIndex": 1,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.01\\text{ mm}$",
+        "isCorrect": false,
+        "explanation": "Standard screw gauge least count, not vernier caliper.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "B",
+        "text": "$0.1\\text{ mm}$",
+        "isCorrect": false,
+        "explanation": "Assumed standard 10 VSD = 9 MSD ratio.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      },
+      {
+        "id": "C",
+        "text": "$0.8\\text{ mm}$",
+        "isCorrect": false,
+        "explanation": "This is the value of 1 VSD, not 1 MSD - 1 VSD.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      },
+      {
+        "id": "D",
+        "text": "$0.2\\text{ mm}$",
+        "isCorrect": true,
+        "explanation": "Correct least count obtained from 1 MSD - 1 VSD.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "NONE"
+      }
+    ]
+  },
+  {
+    "subtopicId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+    "questionText": "In an experiment to determine the acceleration due to gravity $g$ using a simple pendulum, the measured values are length $L = (20.0 \\pm 0.1)\\text{ cm}$ and time for $100$ oscillations $t = (90 \\pm 1)\\text{ s}$. The percentage error in the estimation of $g$ is closest to:",
+    "solutionText": "The acceleration due to gravity is $g = \\frac{4\\pi^2 n^2 L}{t^2}$, so $g \\propto \\frac{L}{t^2}$.\n\nThe percentage error in $g$ is:\n$\\frac{\\Delta g}{g} \\times 100 = \\left( \\frac{\\Delta L}{L} + 2 \\frac{\\Delta t}{t} \\right) \\times 100$\n\nGiven $\\frac{\\Delta L}{L} = \\frac{0.1}{20}$ and $\\frac{\\Delta t}{t} = \\frac{1}{90}$.\n\n$\\frac{\\Delta g}{g} \\times 100 = \\left( \\frac{0.1}{20} + 2 \\times \\frac{1}{90} \\right) \\times 100 = (0.5 + 2.22)\\% = 2.72\\% \\approx 3\\%$.",
+    "year": 2015,
+    "examType": "JEE_MAIN",
+    "pageIndex": 1,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$1\\%$",
+        "isCorrect": false,
+        "explanation": "Underestimated percentage error.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "ARITHMETIC_ERROR"
+      },
+      {
+        "id": "B",
+        "text": "$3\\%$",
+        "isCorrect": true,
+        "explanation": "Nearest integer percentage error calculation gives 3%.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "NONE"
+      },
+      {
+        "id": "C",
+        "text": "$5\\%$",
+        "isCorrect": false,
+        "explanation": "Overestimated error addition.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "ARITHMETIC_ERROR"
+      },
+      {
+        "id": "D",
+        "text": "$2\\%$",
+        "isCorrect": false,
+        "explanation": "Forgot to double the time measurement relative error.",
+        "prerequisiteTrapId": "05dafdd2-e5db-5c34-a96b-705ec9aa4536",
+        "misconceptionType": "FORMULA_MISAPPLICATION"
+      }
+    ]
+  },
+  {
+    "subtopicId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+    "questionText": "If electrical resistance $R$ is expressed in terms of permittivity $\\varepsilon_0$ and permeability $\\mu_0$ as $[R] = [\\varepsilon_0]^\\alpha [\\mu_0]^\\beta$, then the values of $\\alpha$ and $\\beta$ are:",
+    "solutionText": "Dimensions of given physical quantities:\n$[R] = [M L^2 T^{-3} A^{-2}]$\n$[\\varepsilon_0] = [M^{-1} L^{-3} T^4 A^2]$\n$[\\mu_0] = [M L T^{-2} A^{-2}]$\n\nEquating dimensions:\n$[M L^2 T^{-3} A^{-2}] = [M^{-\\alpha+\\beta} L^{-3\\alpha+\\beta} T^{4\\alpha-2\\beta} A^{2\\alpha-2\\beta}]$\n\nComparing powers:\n$-\\alpha + \\beta = 1$\n$-3\\alpha + \\beta = 2$\n$4\\alpha - 2\\beta = -3$\n$2\\alpha - 2\\beta = -2$\n\nSolving equations yields $\\alpha = -1/2$ and $\\beta = 1/2$.\nThus, $R = \\sqrt{\\frac{\\mu_0}{\\varepsilon_0}}$.",
+    "year": 2018,
+    "examType": "JEE_ADVANCED",
+    "pageIndex": 2,
+    "diagramBoundingBox": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\alpha = 1/2, \\beta = 1/2$",
+        "isCorrect": false,
+        "explanation": "Incorrect powers resulting in incorrect resistance unit.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "ARITHMETIC_ERROR"
+      },
+      {
+        "id": "B",
+        "text": "$\\alpha = -1/2, \\beta = -1/2$",
+        "isCorrect": false,
+        "explanation": "Incorrect sign balance in simultaneous linear equations.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "ARITHMETIC_ERROR"
+      },
+      {
+        "id": "C",
+        "text": "$\\alpha = -1/2, \\beta = 1/2$",
+        "isCorrect": true,
+        "explanation": "Correctly solved system of equations yields $\\alpha = -1/2$ and $\\beta = 1/2$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "NONE"
+      },
+      {
+        "id": "D",
+        "text": "$\\alpha = 1/2, \\beta = -1/2$",
+        "isCorrect": false,
+        "explanation": "Inverted values of $\\alpha$ and $\\beta$.",
+        "prerequisiteTrapId": "e503f8be-6c81-5de6-927f-c5c4e5a3d28f",
+        "misconceptionType": "CONCEPTUAL_PREREQUISITE"
+      }
+    ]
+  }
+]

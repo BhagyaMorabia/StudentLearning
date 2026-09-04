@@ -2,6 +2,7 @@
   "name": "neuraljee-ingest-validation",
   "version": "1.0.0",
   "description": "Validation scripts for generated content",
+  "type": "module",
   "main": "validate_content.js",
   "dependencies": {
     "katex": "^0.16.10",

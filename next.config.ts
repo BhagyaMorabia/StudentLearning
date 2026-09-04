@@ -1,5 +1,38 @@
 import type { NextConfig } from 'next';
 
+const isDev = process.env.NODE_ENV !== 'production';
+
+const clerkFrontendApi = process.env.NEXT_PUBLIC_CLERK_FRONTEND_API ?? '';
+const clerkIssuer = process.env.NEXT_PUBLIC_CLERK_ISSUER ?? '';
+
+const connectSrc = [
+  "'self'",
+  'https://*.neon.tech',
+  'wss://*.neon.tech',
+  'https://*.upstash.io',
+  'https://generativelanguage.googleapis.com',
+  'https://api.helicone.ai',
+  'https://api.worker.helicone.ai',
+];
+if (clerkFrontendApi) connectSrc.push(`https://${clerkFrontendApi}`);
+if (clerkIssuer) connectSrc.push(clerkIssuer);
+if (isDev) connectSrc.push('https://clerk.*.lcl.dev', 'wss://clerk.*.lcl.dev', 'https://*.clerk.accounts.dev');
+
+const frameSrc = ['https://*.clerk.accounts.dev'];
+if (isDev) frameSrc.push('https://clerk.*.lcl.dev');
+
+const scriptSrc: string[] = [
+  "'self'",
+  'https://cdn.jsdelivr.net',
+];
+if (isDev) {
+  // Next.js dev server (fast-refresh, HMR) still requires unsafe-eval/inline.
+  scriptSrc.push("'unsafe-eval'", "'unsafe-inline'");
+} else {
+  // In production we rely on the hash/nonce of Next's built-in chunks.
+  scriptSrc.push("'strict-dynamic'");
+}
+
 const nextConfig: NextConfig = {
   // ── Security Headers ───────────────────────────────────────────────────────
   async headers() {
@@ -7,32 +40,34 @@ const nextConfig: NextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // Prevent clickjacking
           { key: 'X-Frame-Options', value: 'DENY' },
-          // Prevent MIME sniffing
           { key: 'X-Content-Type-Options', value: 'nosniff' },
-          // Control referrer info
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          // Strict Transport Security (1 year)
           { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains' },
-          // Permissions policy
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          // Content Security Policy
           {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              // Next.js requires unsafe-eval in dev; tighten in prod
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net",
+              `script-src ${scriptSrc.join(' ')}`,
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: https:",
               "font-src 'self' https://fonts.gstatic.com",
-              // Clerk, Anthropic, Neon, Upstash
-              "connect-src 'self' https://api.anthropic.com https://*.neon.tech https://*.upstash.io https://clerk.*.lcl.dev https://*.clerk.accounts.dev wss://clerk.*.lcl.dev",
-              "frame-src https://clerk.*.lcl.dev https://*.clerk.accounts.dev",
+              `connect-src ${connectSrc.join(' ')}`,
+              `frame-src ${frameSrc.join(' ')}`,
               "worker-src 'self' blob:",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
             ].join('; '),
           },
+        ],
+      },
+      {
+        source: '/diagrams/:path*',
+        headers: [
+          // Diagram filenames are UUID-suffixed (immutable); long cache TTL.
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
     ];

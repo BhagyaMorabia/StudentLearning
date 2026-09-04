@@ -1,13 +1,6 @@
 import type { Metadata } from 'next';
 
-import { Inter } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: {
@@ -36,17 +29,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-      <html lang="en" className={`${inter.variable} dark`}>
+    <html lang="en" className="dark" suppressHydrationWarning>
         <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          {/* eslint-disable-next-line @next/next/no-page-custom-font -- root layout global stylesheet is correct in App Router; next/font cannot handle Material Symbols variable icon font axes (FILL/wght) from CDN */}
+          <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet" />
+          {/* eslint-disable-next-line @next/next/no-page-custom-font -- Material Symbols requires CDN for variable FILL/wght axes; next/font lacks icon-font axis support */}
+          <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
         </head>
-        <body className="antialiased font-sans">
-          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-background focus:text-foreground">
+        <body className="antialiased bg-surface-base text-text-primary min-h-screen" suppressHydrationWarning>
+          <a href="#main-content" className="skip-link">
             Skip to main content
           </a>
           {children}
         </body>
-      </html>
+    </html>
   );
 }

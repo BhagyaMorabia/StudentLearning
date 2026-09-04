@@ -1,0 +1,247 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NeuralJEE - Active Quiz Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;900&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- MathJax for rendering LaTeX -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d8e2ff",
+                        "on-primary-container": "#00285d",
+                        "text-primary": "#FFFFFF",
+                        "on-tertiary-container": "#461f00",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary": "#002e6a",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#00311f",
+                        "secondary-container": "#00a572",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#4edea3",
+                        "error-container": "#93000a",
+                        "surface-base": "#0A0A0A",
+                        "primary-container": "#4d8eff",
+                        "on-tertiary-fixed": "#311400",
+                        "tertiary-fixed": "#ffdcc6",
+                        "tertiary": "#ffb786",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#10131a",
+                        "surface-variant": "#32353c",
+                        "surface-container-low": "#191b23",
+                        "on-secondary": "#003824",
+                        "surface-container-lowest": "#0b0e15",
+                        "surface-container-highest": "#32353c",
+                        "on-primary-fixed": "#001a42",
+                        "outline": "#8c909f",
+                        "primary": "#adc6ff",
+                        "surface-container-high": "#272a31",
+                        "status-weak": "#EF4444",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "surface-elevated": "#141414",
+                        "background": "#10131a",
+                        "inverse-primary": "#005ac2",
+                        "surface-bright": "#363941",
+                        "inverse-on-surface": "#2e3038",
+                        "text-secondary": "#A3A3A3",
+                        "surface-container": "#1d2027",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-dim": "#10131a",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-background": "#e1e2ec",
+                        "inverse-surface": "#e1e2ec",
+                        "status-mastered": "#10B981",
+                        "on-primary-fixed-variant": "#004395",
+                        "status-review": "#F59E0B",
+                        "on-tertiary": "#502400",
+                        "tertiary-container": "#df7412",
+                        "surface-tint": "#adc6ff",
+                        "surface-stroke": "#262626",
+                        "outline-variant": "#424754",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-surface": "#e1e2ec"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-margin": "24px",
+                        "data-gap": "8px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "reading-width": "720px"
+                    },
+                    "fontFamily": {
+                        "data-numeric": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "data-numeric": ["14px", { "lineHeight": "14px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-base text-text-primary antialiased min-h-screen flex flex-col items-center justify-start pt-8 pb-16">
+<!-- Top Navigation / Progress Indicator -->
+<header class="w-full max-w-[reading-width] px-container-margin md:px-0 mb-8 flex flex-col gap-4">
+<div class="flex justify-between items-center w-full">
+<div class="flex items-center gap-2">
+<button class="text-text-secondary hover:text-text-primary transition-colors p-2 -ml-2 rounded flex items-center justify-center hover:bg-surface-elevated focus:outline-none focus:ring-2 focus:ring-primary">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm font-bold text-text-primary">Physics Practice</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-elevated border border-surface-stroke px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="timer">timer</span>
+<span class="font-data-numeric text-data-numeric text-primary" id="question-timer">02:45</span>
+</div>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full flex flex-col gap-2">
+<div class="flex justify-between items-center text-text-secondary font-label-mono text-label-mono">
+<span>Question 2 of 5</span>
+<span>40%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-stroke rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[40%] rounded-full transition-all duration-500 ease-in-out"></div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-[reading-width] px-container-margin md:px-0 flex-1 flex flex-col relative z-10">
+<!-- Question Header Meta -->
+<div class="flex items-center gap-3 mb-6">
+<span class="bg-surface-elevated border border-surface-stroke text-text-secondary font-label-mono text-label-mono px-2 py-1 rounded">MCQ</span>
+<div class="flex items-center gap-1 text-text-secondary">
+<span class="font-label-mono text-label-mono">Difficulty:</span>
+<div class="flex items-center">
+<span class="material-symbols-outlined filled text-status-review text-[16px]">star</span>
+<span class="material-symbols-outlined filled text-status-review text-[16px]">star</span>
+<span class="material-symbols-outlined filled text-status-review text-[16px]">star</span>
+<span class="material-symbols-outlined text-surface-stroke text-[16px]">star</span>
+<span class="material-symbols-outlined text-surface-stroke text-[16px]">star</span>
+</div>
+</div>
+</div>
+<!-- Question Body -->
+<div class="bg-surface-elevated border border-surface-stroke rounded-lg p-6 mb-8 shadow-sm">
+<p class="font-body-lg text-body-lg text-text-primary leading-relaxed">
+                A particle is projected at an angle \( \theta \) with the horizontal with a velocity \( u \). What is the maximum height attained by the particle during its trajectory? Assume standard gravitational acceleration \( g \) and ignore air resistance.
+            </p>
+</div>
+<!-- Options Grid -->
+<div class="flex flex-col gap-4 mb-8">
+<!-- Option A -->
+<label class="group relative flex items-center p-4 border border-surface-stroke bg-surface-base hover:bg-surface-elevated hover:border-primary/50 rounded-lg cursor-pointer transition-all duration-200">
+<input class="sr-only peer" name="question_2" type="radio" value="A">
+<div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-primary pointer-events-none transition-colors"></div>
+<div class="flex items-center justify-center w-8 h-8 rounded border border-surface-stroke bg-surface-elevated text-text-secondary font-label-mono text-label-mono mr-4 peer-checked:bg-primary peer-checked:text-on-primary-container peer-checked:border-primary transition-colors">
+                    A
+                </div>
+<div class="font-body-lg text-body-lg text-text-primary peer-checked:text-primary">
+                    \( \frac{u^2 \sin \theta}{g} \)
+                </div>
+</label>
+<!-- Option B -->
+<label class="group relative flex items-center p-4 border border-surface-stroke bg-surface-base hover:bg-surface-elevated hover:border-primary/50 rounded-lg cursor-pointer transition-all duration-200">
+<input class="sr-only peer" name="question_2" type="radio" value="B">
+<div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-primary pointer-events-none transition-colors"></div>
+<div class="flex items-center justify-center w-8 h-8 rounded border border-surface-stroke bg-surface-elevated text-text-secondary font-label-mono text-label-mono mr-4 peer-checked:bg-primary peer-checked:text-on-primary-container peer-checked:border-primary transition-colors">
+                    B
+                </div>
+<div class="font-body-lg text-body-lg text-text-primary peer-checked:text-primary">
+                    \( \frac{u^2 \sin^2 \theta}{2g} \)
+                </div>
+</label>
+<!-- Option C -->
+<label class="group relative flex items-center p-4 border border-surface-stroke bg-surface-base hover:bg-surface-elevated hover:border-primary/50 rounded-lg cursor-pointer transition-all duration-200">
+<input class="sr-only peer" name="question_2" type="radio" value="C">
+<div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-primary pointer-events-none transition-colors"></div>
+<div class="flex items-center justify-center w-8 h-8 rounded border border-surface-stroke bg-surface-elevated text-text-secondary font-label-mono text-label-mono mr-4 peer-checked:bg-primary peer-checked:text-on-primary-container peer-checked:border-primary transition-colors">
+                    C
+                </div>
+<div class="font-body-lg text-body-lg text-text-primary peer-checked:text-primary">
+                    \( \frac{u^2 \sin 2\theta}{g} \)
+                </div>
+</label>
+<!-- Option D -->
+<label class="group relative flex items-center p-4 border border-surface-stroke bg-surface-base hover:bg-surface-elevated hover:border-primary/50 rounded-lg cursor-pointer transition-all duration-200">
+<input class="sr-only peer" name="question_2" type="radio" value="D">
+<div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-primary pointer-events-none transition-colors"></div>
+<div class="flex items-center justify-center w-8 h-8 rounded border border-surface-stroke bg-surface-elevated text-text-secondary font-label-mono text-label-mono mr-4 peer-checked:bg-primary peer-checked:text-on-primary-container peer-checked:border-primary transition-colors">
+                    D
+                </div>
+<div class="font-body-lg text-body-lg text-text-primary peer-checked:text-primary">
+                    \( \frac{u \sin \theta}{g} \)
+                </div>
+</label>
+</div>
+<!-- Action Footer -->
+<div class="flex justify-end mt-auto pt-8 border-t border-surface-stroke">
+<button class="bg-[#3B82F6] hover:bg-blue-600 text-white font-headline-sm text-headline-sm py-3 px-8 rounded flex items-center gap-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2 focus:ring-offset-surface-base shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                Next Question
+                <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+<script>
+        // Simple timer logic for visual effect
+        let timeRemaining = 165; // 2:45 in seconds
+        const timerElement = document.getElementById('question-timer');
+
+        setInterval(() => {
+            if (timeRemaining > 0) {
+                timeRemaining--;
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                // Add urgency styling when time is low
+                if(timeRemaining < 30) {
+                    timerElement.classList.remove('text-primary');
+                    timerElement.classList.add('text-status-weak');
+                    timerElement.previousElementSibling.classList.remove('text-primary');
+                    timerElement.previousElementSibling.classList.add('text-status-weak');
+                }
+            }
+        }, 1000);
+    </script>
+</body></html>

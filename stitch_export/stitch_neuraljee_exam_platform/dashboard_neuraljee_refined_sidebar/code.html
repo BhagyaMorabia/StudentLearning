@@ -1,0 +1,447 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NeuralJEE - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-surface": "#e1e2ec",
+                "on-secondary-fixed-variant": "#005236",
+                "on-primary-fixed": "#001a42",
+                "surface-container-lowest": "#0b0e15",
+                "status-mastered": "#10B981",
+                "tertiary-container": "#df7412",
+                "on-tertiary-container": "#461f00",
+                "secondary-container": "#00a572",
+                "surface-container": "#1d2027",
+                "secondary": "#4edea3",
+                "on-surface-variant": "#c2c6d6",
+                "surface-container-highest": "#32353c",
+                "on-surface": "#e1e2ec",
+                "surface-base": "#0A0A0A",
+                "on-error": "#690005",
+                "secondary-fixed-dim": "#4edea3",
+                "inverse-primary": "#005ac2",
+                "background": "#10131a",
+                "surface-stroke": "#262626",
+                "text-secondary": "#A3A3A3",
+                "on-tertiary-fixed": "#311400",
+                "surface": "#10131a",
+                "outline-variant": "#424754",
+                "primary-container": "#4d8eff",
+                "tertiary-fixed-dim": "#ffb786",
+                "surface-tint": "#adc6ff",
+                "tertiary-fixed": "#ffdcc6",
+                "secondary-fixed": "#6ffbbe",
+                "status-weak": "#EF4444",
+                "surface-variant": "#32353c",
+                "inverse-on-surface": "#2e3038",
+                "on-tertiary": "#502400",
+                "text-primary": "#FFFFFF",
+                "tertiary": "#ffb786",
+                "primary-fixed": "#d8e2ff",
+                "on-tertiary-fixed-variant": "#723600",
+                "error": "#ffb4ab",
+                "on-background": "#e1e2ec",
+                "on-primary": "#002e6a",
+                "surface-bright": "#363941",
+                "surface-elevated": "#141414",
+                "error-container": "#93000a",
+                "surface-dim": "#10131a",
+                "status-review": "#F59E0B",
+                "surface-container-low": "#191b23",
+                "on-secondary": "#003824",
+                "outline": "#8c909f",
+                "primary-fixed-dim": "#adc6ff",
+                "on-primary-container": "#00285d",
+                "surface-container-high": "#272a31",
+                "on-primary-fixed-variant": "#004395",
+                "on-secondary-container": "#00311f",
+                "primary": "#a855f7", /* Updated to match reference images (purple) */
+                "on-secondary-fixed": "#002113",
+                "on-error-container": "#ffdad6"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "unit": "4px",
+                "data-gap": "8px",
+                "container-margin": "24px",
+                "reading-width": "720px",
+                "gutter": "16px"
+        },
+        "fontFamily": {
+                "headline-sm": [
+                        "Geist"
+                ],
+                "display-lg": [
+                        "Geist"
+                ],
+                "label-mono": [
+                        "JetBrains Mono"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "data-numeric": [
+                        "JetBrains Mono"
+                ],
+                "headline-md": [
+                        "Geist"
+                ],
+                "body-md": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-sm": [
+                        "18px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-mono": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "data-numeric": [
+                        "14px",
+                        {
+                                "lineHeight": "14px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+  body { background-color: #0A0A0A; color: #FFFFFF; font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+  .heatmap-grid { display: grid; grid-template-columns: repeat(20, 12px); gap: 4px; }
+  .heatmap-cell { width: 12px; height: 12px; border-radius: 2px; position: relative; cursor: pointer; transition: transform 0.1s; }
+  .heatmap-cell:hover { transform: scale(1.2); z-index: 10; }
+  .heatmap-cell:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%; left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: #1C1C1C; color: #FFFFFF;
+    padding: 4px 8px; border-radius: 4px;
+    font-size: 12px; font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap; pointer-events: none;
+    border: 1px solid #262626; z-index: 20;
+  }
+  /* Status Colors */
+  .cell-mastered { background-color: #10B981; }
+  .cell-review { background-color: #F59E0B; }
+  .cell-weak { background-color: #EF4444; }
+  .cell-not-started { background-color: #262626; }
+</style>
+</head>
+<body class="bg-surface-base text-text-primary antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="w-[300px] h-screen fixed left-0 top-0 hidden md:flex flex-col border-r border-[#2d1b4e] bg-surface-base py-8 px-6 z-50">
+<div class="mb-10 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-size: 20px;">science</span>
+</div>
+<div>
+<h1 class="font-headline-md text-[20px] font-bold text-text-primary tracking-tight">NeuralJEE</h1>
+</div>
+</div>
+<div class="mb-8">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-surface-stroke text-text-primary hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span class="font-headline-sm text-[14px]">Blogs</span>
+</a>
+</div>
+<div class="mb-4">
+<h2 class="font-headline-sm text-[16px] font-bold text-text-primary mb-4">Table of Content:</h2>
+</div>
+<div class="flex flex-col gap-4 flex-grow relative pl-2">
+<div class="absolute left-[-2px] top-2 bottom-0 w-[2px] bg-surface-stroke"></div>
+<!-- Active indicator line -->
+<div class="absolute left-[-2px] top-2 w-[2px] h-6 bg-primary rounded-full"></div>
+<a class="flex items-start gap-3 text-primary transition-colors duration-200" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+<span class="font-headline-sm text-[15px] font-bold">Dashboard</span>
+</a>
+<a class="flex items-start gap-3 text-on-surface-variant hover:text-text-primary transition-colors duration-200" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant mt-2 flex-shrink-0"></span>
+<span class="font-headline-sm text-[15px] leading-snug">Learn</span>
+</a>
+<a class="flex items-start gap-3 text-on-surface-variant hover:text-text-primary transition-colors duration-200" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant mt-2 flex-shrink-0"></span>
+<span class="font-headline-sm text-[15px] leading-snug">Review</span>
+</a>
+<a class="flex items-start gap-3 text-on-surface-variant hover:text-text-primary transition-colors duration-200" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant mt-2 flex-shrink-0"></span>
+<span class="font-headline-sm text-[15px] leading-snug">Doubt Solver</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-4 mb-6 relative pl-2">
+<a class="flex items-start gap-3 text-on-surface-variant hover:text-text-primary transition-colors duration-200" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant mt-2 flex-shrink-0"></span>
+<span class="font-headline-sm text-[15px] leading-snug">Settings</span>
+</a>
+<a class="flex items-start gap-3 text-on-surface-variant hover:text-text-primary transition-colors duration-200" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant mt-2 flex-shrink-0"></span>
+<span class="font-headline-sm text-[15px] leading-snug">Support</span>
+</a>
+</div>
+<button class="w-full py-2.5 border border-primary text-primary font-headline-sm text-[14px] rounded-lg transition-colors hover:bg-primary/10 flex items-center justify-center gap-2">
+      Start Review Queue
+    </button>
+</nav>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden border-t border-surface-stroke bg-surface-container-lowest flex justify-around items-center h-16 px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-primary scale-95 transition-transform active:bg-surface-container-high p-2 rounded" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-mono text-label-mono mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-mono text-label-mono mt-1">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-mono text-label-mono mt-1">Review</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded" href="#">
+<span class="material-symbols-outlined">psychology_alt</span>
+<span class="font-label-mono text-label-mono mt-1">Solver</span>
+</a>
+</nav>
+<!-- Main Content -->
+<div class="flex-1 md:ml-[300px] pb-20 md:pb-0 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-40 bg-surface-base/80 backdrop-blur-md border-b border-surface-stroke flex justify-between items-center h-14 px-container-margin">
+<div class="flex-1 flex justify-end md:justify-between items-center">
+<div class="hidden md:flex items-center gap-2 text-text-secondary">
+<span class="font-label-mono text-label-mono">Physics</span>
+<span class="text-surface-stroke">/</span>
+<span class="font-label-mono text-label-mono text-text-primary">Mechanics Overview</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 p-container-margin flex flex-col gap-6 max-w-[1200px] w-full mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-surface-stroke pb-6">
+<div>
+<h2 class="font-display-lg text-display-lg font-bold text-text-primary tracking-tight">System Status</h2>
+<p class="font-body-md text-body-md text-text-secondary mt-2 max-w-2xl">Real-time analysis of your JEE preparation telemetry. Prioritize 'Due for Review' nodes to maintain structural integrity of core concepts.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 border border-surface-stroke text-text-primary bg-transparent rounded font-label-mono text-label-mono hover:bg-surface-container-low transition-colors">
+            Generate Report
+          </button>
+<button class="px-4 py-2 bg-[#3B82F6] text-white rounded font-label-mono text-label-mono hover:opacity-90 transition-opacity">
+            Sync Data
+          </button>
+</div>
+</div>
+<!-- Summary Stats Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Mastered -->
+<div class="bg-surface-elevated border border-surface-stroke p-4 rounded-DEFAULT flex flex-col justify-between h-32 hover:border-[#10B981] transition-colors group">
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-text-secondary group-hover:text-[#10B981] transition-colors">MASTERED</span>
+<span class="material-symbols-outlined text-[#10B981]" style="font-size: 16px;">verified</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-[#10B981]">12</span>
+<span class="font-body-md text-body-md text-text-secondary">nodes</span>
+</div>
+</div>
+<!-- Needs Review -->
+<div class="bg-surface-elevated border border-surface-stroke p-4 rounded-DEFAULT flex flex-col justify-between h-32 hover:border-[#F59E0B] transition-colors group">
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-text-secondary group-hover:text-[#F59E0B] transition-colors">NEEDS REVIEW</span>
+<span class="material-symbols-outlined text-[#F59E0B]" style="font-size: 16px;">warning</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-[#F59E0B]">8</span>
+<span class="font-body-md text-body-md text-text-secondary">nodes</span>
+</div>
+</div>
+<!-- Weak -->
+<div class="bg-surface-elevated border border-surface-stroke p-4 rounded-DEFAULT flex flex-col justify-between h-32 hover:border-[#EF4444] transition-colors group">
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-text-secondary group-hover:text-[#EF4444] transition-colors">WEAK</span>
+<span class="material-symbols-outlined text-[#EF4444]" style="font-size: 16px;">error</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-[#EF4444]">3</span>
+<span class="font-body-md text-body-md text-text-secondary">nodes</span>
+</div>
+</div>
+<!-- Due for Review -->
+<div class="bg-surface-elevated border border-surface-stroke p-4 rounded-DEFAULT flex flex-col justify-between h-32 hover:border-[#3B82F6] transition-colors group">
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-text-secondary group-hover:text-[#3B82F6] transition-colors">DUE NOW</span>
+<span class="material-symbols-outlined text-[#3B82F6]" style="font-size: 16px;">schedule</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-[#3B82F6]">5</span>
+<span class="font-body-md text-body-md text-text-secondary">tasks</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-2">
+<!-- Mastery Heatmap (Span 8) -->
+<div class="lg:col-span-8 bg-surface-elevated border border-surface-stroke p-6 rounded-DEFAULT flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Mastery Topography</h3>
+<div class="flex gap-4 font-label-mono text-label-mono text-text-secondary text-[10px]">
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-[#262626]"></span> Null</div>
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-[#EF4444]"></span> Weak</div>
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-[#F59E0B]"></span> Review</div>
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-[#10B981]"></span> Mastered</div>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-center py-4 overflow-x-auto">
+<div class="heatmap-grid" id="heatmapGrid">
+<!-- Javascript will populate this -->
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-surface-stroke flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-text-secondary">Physics &gt; Mechanics</span>
+<span class="font-data-numeric text-data-numeric text-primary">Global Readiness: 47%</span>
+</div>
+</div>
+<!-- Action Items / Command Center (Span 4) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-elevated border border-surface-stroke p-5 rounded-DEFAULT flex-1">
+<h3 class="font-headline-sm text-headline-sm text-text-primary mb-4 border-b border-surface-stroke pb-2">Active Priorities</h3>
+<ul class="flex flex-col gap-3">
+<li class="flex items-center gap-3 p-3 border border-surface-stroke rounded hover:border-[#EF4444] transition-colors cursor-pointer group">
+<div class="w-2 h-2 rounded-full bg-[#EF4444]"></div>
+<div class="flex-1">
+<p class="font-label-mono text-label-mono text-text-primary">Rotational Dynamics</p>
+<p class="font-body-md text-body-md text-text-secondary text-xs">Accuracy drop detected.</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary text-sm">arrow_forward</span>
+</li>
+<li class="flex items-center gap-3 p-3 border border-surface-stroke rounded hover:border-[#F59E0B] transition-colors cursor-pointer group">
+<div class="w-2 h-2 rounded-full bg-[#F59E0B]"></div>
+<div class="flex-1">
+<p class="font-label-mono text-label-mono text-text-primary">Center of Mass</p>
+<p class="font-body-md text-body-md text-text-secondary text-xs">Spaced repetition due.</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary text-sm">arrow_forward</span>
+</li>
+<li class="flex items-center gap-3 p-3 border border-surface-stroke rounded hover:border-[#3B82F6] transition-colors cursor-pointer group">
+<div class="w-2 h-2 rounded-full bg-[#3B82F6]"></div>
+<div class="flex-1">
+<p class="font-label-mono text-label-mono text-text-primary">Work Energy Theorem</p>
+<p class="font-body-md text-body-md text-text-secondary text-xs">New problem set available.</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary text-sm">arrow_forward</span>
+</li>
+</ul>
+</div>
+<!-- Mini Stats Card -->
+<div class="bg-surface-elevated border border-surface-stroke p-5 rounded-DEFAULT">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-mono text-label-mono text-text-secondary">STUDY VELOCITY</span>
+<span class="font-data-numeric text-data-numeric text-[#10B981]">+14%</span>
+</div>
+<div class="w-full h-1 bg-surface-stroke mt-4 relative">
+<div class="absolute left-0 top-0 h-full bg-[#3B82F6] w-[65%]"></div>
+</div>
+<div class="flex justify-between mt-2 font-label-mono text-label-mono text-[10px] text-text-secondary">
+<span>0h</span>
+<span>Current: 3.2h/day</span>
+<span>Target: 5h</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    // Generate mock data for heatmap
+    const grid = document.getElementById('heatmapGrid');
+    const topics = ["Projectile Motion", "Newton's Laws", "Friction", "Work & Energy", "Center of Mass", "Rotational Kinematics", "Gravitation", "Fluid Mechanics", "Thermodynamics", "Oscillations"];
+    
+    // Create 100 cells
+    for(let i=0; i<100; i++) {
+      const cell = document.createElement('div');
+      
+      // Assign random status based on weights to match roughly the prompt stats
+      const rand = Math.random();
+      let statusClass = 'cell-not-started';
+      let score = 0;
+      
+      if(rand > 0.85) { statusClass = 'cell-mastered'; score = Math.floor(Math.random() * 10) + 90; }
+      else if(rand > 0.75) { statusClass = 'cell-review'; score = Math.floor(Math.random() * 20) + 70; }
+      else if(rand > 0.70) { statusClass = 'cell-weak'; score = Math.floor(Math.random() * 30) + 30; }
+      else { score = 0; }
+      
+      cell.className = `heatmap-cell ${statusClass}`;
+      
+      const topicName = topics[i % topics.length];
+      const detailStr = score > 0 ? `${topicName}: ${score}%` : `${topicName}: Unmapped`;
+      cell.setAttribute('data-tooltip', detailStr);
+      
+      grid.appendChild(cell);
+    }
+  </script>
+</body></html>

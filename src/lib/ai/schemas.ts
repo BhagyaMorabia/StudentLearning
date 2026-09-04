@@ -8,72 +8,12 @@
 
 import { z } from 'zod';
 
-// ── Teaching Response ──────────────────────────────────────────────────────
-
 const SolutionStepSchema = z.object({
   step: z.number(),
   explanation: z.string(),
   math: z.string().optional(),
 });
 
-const WorkedExampleSchema = z.object({
-  problem: z.string(),
-  solution: z.array(SolutionStepSchema),
-  jee_tip: z.string(),
-});
-
-const DiagramSpecSchema = z.object({
-  type: z.enum([
-    'force_diagram', 'energy_diagram', 'flowchart', 'graph',
-    'circuit', 'orbital', 'wave', 'null',
-  ]).nullable(),
-  mermaid_code: z.string().nullable(),
-  description: z.string(),
-});
-
-export const TeachingResponseSchema = z.object({
-  hook: z.string(),
-  intuition: z.string(),
-  core_concept: z.string(),
-  worked_example: WorkedExampleSchema,
-  diagram_spec: DiagramSpecSchema,
-  common_mistakes: z.array(z.string()),
-  jee_context: z.string(),
-  key_takeaways: z.array(z.string()),
-  content_warning: z.boolean().default(false),
-});
-
-export type TeachingResponse = z.infer<typeof TeachingResponseSchema>;
-
-// ── Quiz Question ──────────────────────────────────────────────────────────
-
-const QuestionOptionSchema = z.object({
-  id: z.string(),
-  text: z.string(),
-  isCorrect: z.boolean().optional(), // Only present server-side
-});
-
-const CorrectAnswerSchema = z.object({
-  value: z.string().nullable(),
-  values: z.array(z.string()).nullable().optional(),
-  tolerance: z.number().nullable().optional(),
-});
-
-export const QuizQuestionSchema = z.object({
-  questionText: z.string(),
-  questionType: z.enum(['MCQ', 'MSQ', 'INTEGER', 'NUMERICAL']),
-  options: z.array(QuestionOptionSchema).nullable(),
-  correctAnswer: CorrectAnswerSchema,
-  solutionSteps: z.array(SolutionStepSchema).optional(),
-  difficultyLevel: z.number().int().min(1).max(5).default(3),
-  expectedTimeSeconds: z.number().int().default(120),
-  conceptsTested: z.array(z.string()).default([]),
-});
-
-export const QuizQuestionsSchema = z.array(QuizQuestionSchema);
-
-export type QuizQuestion = z.infer<typeof QuizQuestionSchema>;
-export type QuestionOption = z.infer<typeof QuestionOptionSchema>;
 
 // ── Remediation Response ────────────────────────────────────────────────────
 
@@ -104,3 +44,27 @@ export const ClientQuestionSchema = z.object({
 });
 
 export type ClientQuestion = z.infer<typeof ClientQuestionSchema>;
+
+// ── Teach Response ──────────────────────────────────────────────────────────
+
+export const TeachResponseSchema = z.object({
+  hook: z.string(),
+  intuition: z.string(),
+  core_concept: z.string(),
+  worked_example: z.object({
+    problem: z.string(),
+    solution: z.array(SolutionStepSchema),
+    jee_tip: z.string(),
+  }),
+  diagram_spec: z.object({
+    type: z.enum(['force_diagram', 'energy_diagram', 'flowchart', 'graph', 'circuit', 'orbital', 'wave', 'null']).nullable(),
+    mermaid_code: z.string().nullable(),
+    description: z.string().nullable(),
+  }),
+  common_mistakes: z.array(z.string()),
+  jee_context: z.string(),
+  key_takeaways: z.array(z.string()),
+  content_warning: z.boolean(),
+});
+
+export type TeachResponse = z.infer<typeof TeachResponseSchema>;

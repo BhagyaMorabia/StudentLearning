@@ -1,0 +1,324 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NeuralJEE - Doubt Solver</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d8e2ff",
+                        "on-primary-container": "#00285d",
+                        "text-primary": "#FFFFFF",
+                        "on-tertiary-container": "#461f00",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary": "#002e6a",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#00311f",
+                        "secondary-container": "#00a572",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#4edea3",
+                        "error-container": "#93000a",
+                        "surface-base": "#0A0A0A",
+                        "primary-container": "#4d8eff",
+                        "on-tertiary-fixed": "#311400",
+                        "tertiary-fixed": "#ffdcc6",
+                        "tertiary": "#ffb786",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#10131a",
+                        "surface-variant": "#32353c",
+                        "surface-container-low": "#191b23",
+                        "on-secondary": "#003824",
+                        "surface-container-lowest": "#0b0e15",
+                        "surface-container-highest": "#32353c",
+                        "on-primary-fixed": "#001a42",
+                        "outline": "#8c909f",
+                        "primary": "#adc6ff",
+                        "surface-container-high": "#272a31",
+                        "status-weak": "#EF4444",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "surface-elevated": "#141414",
+                        "background": "#10131a",
+                        "inverse-primary": "#005ac2",
+                        "surface-bright": "#363941",
+                        "inverse-on-surface": "#2e3038",
+                        "text-secondary": "#A3A3A3",
+                        "surface-container": "#1d2027",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-dim": "#10131a",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-background": "#e1e2ec",
+                        "inverse-surface": "#e1e2ec",
+                        "status-mastered": "#10B981",
+                        "on-primary-fixed-variant": "#004395",
+                        "status-review": "#F59E0B",
+                        "on-tertiary": "#502400",
+                        "tertiary-container": "#df7412",
+                        "surface-tint": "#adc6ff",
+                        "surface-stroke": "#262626",
+                        "outline-variant": "#424754",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-surface": "#e1e2ec"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-margin": "24px",
+                        "data-gap": "8px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "reading-width": "720px"
+                    },
+                    "fontFamily": {
+                        "data-numeric": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "data-numeric": ["14px", { "lineHeight": "14px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark technical aesthetic */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: theme('colors.surface-stroke'); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline-variant'); }
+        
+        /* Math/Code block styling */
+        .math-block { display: block; padding: 12px; background: theme('colors.surface-base'); border: 1px solid theme('colors.surface-stroke'); border-radius: 4px; margin: 8px 0; font-family: 'JetBrains Mono', monospace; color: theme('colors.primary'); }
+        .inline-code { background: theme('colors.surface-base'); border: 1px solid theme('colors.surface-stroke'); padding: 2px 4px; border-radius: 2px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+        
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .animate-blink { animation: blink 1s step-end infinite; }
+    </style>
+</head>
+<body class="bg-surface-base text-on-surface flex flex-col md:flex-row h-screen overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- DESKTOP SIDENAV (From Shared Components) -->
+<nav class="w-60 h-screen fixed left-0 top-0 hidden md:flex flex-col border-r border-surface-stroke bg-surface-base z-50">
+<!-- Header -->
+<div class="flex items-center gap-3 px-6 py-6 border-b border-surface-stroke/50">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center text-on-primary-container font-headline-sm">
+                N
+            </div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">NeuralJEE</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Elite Rank Track</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col h-full py-6 px-4 gap-1 overflow-y-auto">
+<!-- Inactive Tab -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-body-md text-body-md font-medium">Dashboard</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">school</span>
+<span class="font-body-md text-body-md font-medium">Learn</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">history_edu</span>
+<span class="font-body-md text-body-md font-medium">Review</span>
+</a>
+<!-- ACTIVE TAB: Doubt Solver -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary border-r-2 border-primary bg-surface-container-low opacity-90 transition-all duration-150 relative" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">psychology_alt</span>
+<span class="font-body-md text-body-md font-medium">Doubt Solver</span>
+<!-- Subtle ambient glow for active state -->
+<div class="absolute inset-0 bg-primary/5 rounded-lg -z-10 blur-sm pointer-events-none"></div>
+</a>
+</div>
+<!-- CTA & Footer -->
+<div class="px-4 pb-6 mt-auto flex flex-col gap-4">
+<button class="w-full py-2 px-4 rounded bg-[#3B82F6] hover:bg-[#2563EB] text-white font-body-md text-body-md font-medium transition-colors shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                Start Review Queue
+            </button>
+<div class="border-t border-surface-stroke pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- MAIN CONTENT AREA -->
+<main class="flex-1 flex flex-col w-full min-w-0 md:ml-60 relative h-screen">
+<!-- TOP APP BAR -->
+<header class="sticky top-0 w-full z-40 border-b border-surface-stroke bg-surface-base/80 backdrop-blur-md flex justify-between items-center h-14 px-container-margin">
+<!-- Mobile Brand (Hidden on Desktop) -->
+<div class="md:hidden flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-black text-primary">NeuralJEE</span>
+</div>
+<!-- Context Title (Desktop) -->
+<div class="hidden md:flex items-center gap-2 text-on-surface-variant font-label-mono text-label-mono">
+<span>Modules</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary">Socratic Solver Instance</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant ml-auto">
+<button class="hover:text-primary transition-colors hover:opacity-80">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="hover:text-primary transition-colors hover:opacity-80">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</header>
+<!-- CHAT CANVAS -->
+<div class="flex-1 overflow-y-auto pb-32 pt-8 flex flex-col items-center w-full px-4 scroll-smooth">
+<div class="w-full max-w-[720px] flex flex-col gap-8">
+<!-- Initial System Message -->
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded bg-surface-elevated border border-surface-stroke flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-primary">psychology</span>
+</div>
+<div class="flex-1 pt-1">
+<div class="font-headline-sm text-headline-sm mb-2">Neural Solver Initialized</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            I use the Socratic method to guide you through complex Physics, Chemistry, and Math problems. Provide your doubt, and I will help you derive the solution step-by-step.
+                        </p>
+<!-- Example Prompts (Empty State Integration) -->
+<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+<button class="flex flex-col items-start p-3 bg-surface-elevated border border-surface-stroke rounded-lg hover:border-primary/50 hover:bg-surface-container-low transition-all text-left group">
+<span class="font-label-mono text-label-mono text-primary mb-1 group-hover:text-primary-container">Physics • Mechanics</span>
+<span class="font-body-md text-body-md text-on-surface text-sm">How to resolve tension in a two-block pulley system?</span>
+</button>
+<button class="flex flex-col items-start p-3 bg-surface-elevated border border-surface-stroke rounded-lg hover:border-primary/50 hover:bg-surface-container-low transition-all text-left group">
+<span class="font-label-mono text-label-mono text-secondary mb-1 group-hover:text-secondary-fixed">Math • Calculus</span>
+<span class="font-body-md text-body-md text-on-surface text-sm">Explain integration by parts conceptually.</span>
+</button>
+</div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex gap-4 justify-end">
+<div class="bg-surface-elevated border border-surface-stroke rounded-2xl rounded-tr-sm p-4 max-w-[85%]">
+<p class="font-body-md text-body-md text-on-surface">
+                            I'm stuck on a Rotational Dynamics problem. A solid cylinder is rolling down an inclined plane with angle <span class="inline-code">\theta</span>. How do I find its linear acceleration? I keep getting the friction wrong.
+                        </p>
+</div>
+</div>
+<!-- AI Response (Streaming State) -->
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded bg-primary-container/10 border border-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">psychology_alt</span>
+</div>
+<div class="flex-1 pt-1 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p class="mb-4">
+                            Let's break this down from first principles rather than jumping to the formula. Rotational dynamics involves both translational and rotational equilibrium conditions.
+                        </p>
+<p class="mb-4">
+                            First, what are all the forces acting on the solid cylinder as it rolls down the incline? Think about gravity, contact forces, and what causes the rotation.
+                        </p>
+<div class="bg-surface-container-lowest border-l-2 border-primary/50 pl-4 py-2 my-4">
+<span class="font-label-mono text-label-mono text-primary/70 mb-1 block">Hint</span>
+                            Draw the Free Body Diagram (FBD). Where exactly does the friction force act, and in which direction?
+                        </div>
+<p class="inline">
+                            Write down your translational equation (<span class="inline-code">F_{net} = ma</span>) and your rotational equation (<span class="inline-code">\tau_{net} = I\alpha</span>). What is the moment of inertia <span class="inline-code">I</span> for a solid cylinder?
+                        </p>
+<!-- Streaming Cursor -->
+<span class="inline-block w-[8px] h-[16px] bg-primary align-middle ml-1 animate-blink"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- FIXED INPUT AREA (Raycast/Command Palette Style) -->
+<div class="absolute bottom-6 left-0 w-full px-4 flex justify-center z-30 pointer-events-none md:pb-0 pb-safe">
+<div class="w-full max-w-[720px] pointer-events-auto">
+<div class="bg-surface-elevated/95 backdrop-blur-xl border border-surface-stroke rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.5)] p-2 flex items-end gap-2 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20 transition-all duration-200">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors shrink-0 mb-0.5">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<textarea class="w-full bg-transparent border-none focus:ring-0 resize-none font-label-mono text-label-mono text-on-surface placeholder:text-on-surface-variant/50 max-h-32 py-2.5 px-2" placeholder="Ask any JEE doubt... (Supports LaTeX $...$)" rows="1"></textarea>
+<button class="p-2 bg-primary/10 text-primary hover:bg-primary/20 hover:text-primary-fixed rounded-lg transition-colors shrink-0 mb-0.5 group">
+<span class="material-symbols-outlined text-[20px] transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<!-- Micro-copy/Shortcuts -->
+<div class="flex justify-between items-center px-2 mt-2">
+<div class="flex gap-3 font-label-mono text-[10px] text-on-surface-variant/50">
+<span class="flex items-center gap-1"><kbd class="bg-surface-stroke px-1 rounded">⌘</kbd> + <kbd class="bg-surface-stroke px-1 rounded">↵</kbd> Send</span>
+<span>LaTeX: <kbd class="bg-surface-stroke px-1 rounded">$$</kbd></span>
+</div>
+<div class="font-label-mono text-[10px] text-primary/50 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                        Neural Engine Ready
+                    </div>
+</div>
+</div>
+</div>
+</main>
+<!-- MOBILE BOTTOM NAV BAR (From Shared Components) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden border-t border-surface-stroke bg-surface-container-lowest flex justify-around items-center h-16 px-2 pb-safe">
+<!-- Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high w-16 h-full rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="font-label-mono text-[10px] mt-1">Dashboard</span>
+</a>
+<!-- Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high w-16 h-full rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">school</span>
+<span class="font-label-mono text-[10px] mt-1">Learn</span>
+</a>
+<!-- Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high w-16 h-full rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">history_edu</span>
+<span class="font-label-mono text-[10px] mt-1">Review</span>
+</a>
+<!-- ACTIVE -->
+<a class="flex flex-col items-center justify-center text-primary active:bg-surface-container-high w-16 h-full rounded-lg scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">psychology_alt</span>
+<span class="font-label-mono text-[10px] mt-1 font-bold">Solver</span>
+</a>
+</nav>
+<script>
+        // Auto-resize textarea logic (vanilla js for micro-interaction)
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if (this.value === '') {
+                this.style.height = 'auto'; // Reset when empty
+            }
+        });
+    </script>
+</body></html>

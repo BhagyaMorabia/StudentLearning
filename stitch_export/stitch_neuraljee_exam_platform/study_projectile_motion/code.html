@@ -1,0 +1,335 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NeuralJEE - Projectile Motion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "primary-fixed": "#d8e2ff",
+                            "on-primary-container": "#00285d",
+                            "text-primary": "#FFFFFF",
+                            "on-tertiary-container": "#461f00",
+                            "secondary-fixed": "#6ffbbe",
+                            "on-secondary-fixed-variant": "#005236",
+                            "on-primary": "#002e6a",
+                            "error": "#ffb4ab",
+                            "on-secondary-container": "#00311f",
+                            "secondary-container": "#00a572",
+                            "on-secondary-fixed": "#002113",
+                            "secondary": "#4edea3",
+                            "error-container": "#93000a",
+                            "surface-base": "#0A0A0A",
+                            "primary-container": "#4d8eff",
+                            "on-tertiary-fixed": "#311400",
+                            "tertiary-fixed": "#ffdcc6",
+                            "tertiary": "#ffb786",
+                            "secondary-fixed-dim": "#4edea3",
+                            "on-error": "#690005",
+                            "on-error-container": "#ffdad6",
+                            "surface": "#10131a",
+                            "surface-variant": "#32353c",
+                            "surface-container-low": "#191b23",
+                            "on-secondary": "#003824",
+                            "surface-container-lowest": "#0b0e15",
+                            "surface-container-highest": "#32353c",
+                            "on-primary-fixed": "#001a42",
+                            "outline": "#8c909f",
+                            "primary": "#adc6ff",
+                            "surface-container-high": "#272a31",
+                            "status-weak": "#EF4444",
+                            "on-tertiary-fixed-variant": "#723600",
+                            "surface-elevated": "#141414",
+                            "background": "#10131a",
+                            "inverse-primary": "#005ac2",
+                            "surface-bright": "#363941",
+                            "inverse-on-surface": "#2e3038",
+                            "text-secondary": "#A3A3A3",
+                            "surface-container": "#1d2027",
+                            "on-surface-variant": "#c2c6d6",
+                            "surface-dim": "#10131a",
+                            "primary-fixed-dim": "#adc6ff",
+                            "on-background": "#e1e2ec",
+                            "inverse-surface": "#e1e2ec",
+                            "status-mastered": "#10B981",
+                            "on-primary-fixed-variant": "#004395",
+                            "status-review": "#F59E0B",
+                            "on-tertiary": "#502400",
+                            "tertiary-container": "#df7412",
+                            "surface-tint": "#adc6ff",
+                            "surface-stroke": "#262626",
+                            "outline-variant": "#424754",
+                            "tertiary-fixed-dim": "#ffb786",
+                            "on-surface": "#e1e2ec"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "container-margin": "24px",
+                            "data-gap": "8px",
+                            "gutter": "16px",
+                            "unit": "4px",
+                            "reading-width": "720px"
+                    },
+                    "fontFamily": {
+                            "data-numeric": [
+                                    "JetBrains Mono"
+                            ],
+                            "body-md": [
+                                    "Inter"
+                            ],
+                            "body-lg": [
+                                    "Inter"
+                            ],
+                            "headline-sm": [
+                                    "Geist"
+                            ],
+                            "headline-md": [
+                                    "Geist"
+                            ],
+                            "label-mono": [
+                                    "JetBrains Mono"
+                            ],
+                            "display-lg": [
+                                    "Geist"
+                            ]
+                    },
+                    "fontSize": {
+                            "data-numeric": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "14px",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "body-md": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "24px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "28px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-sm": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "24px",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "headline-md": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "32px",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "label-mono": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "16px",
+                                            "letterSpacing": "0.05em",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "display-lg": [
+                                    "48px",
+                                    {
+                                            "lineHeight": "56px",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "700"
+                                    }
+                            ]
+                    }
+            },
+                },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0A0A0A; color: #e1e2ec; }
+        .math-block { background-color: #141414; border: 1px solid #262626; padding: 16px; border-radius: 0.125rem; margin-bottom: 24px; overflow-x: auto; }
+        .prose p { margin-bottom: 24px; }
+        .prose h2 { font-family: 'Geist', sans-serif; font-size: 24px; font-weight: 600; margin-top: 48px; margin-bottom: 24px; color: #FFFFFF; }
+        .prose h3 { font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 600; margin-top: 32px; margin-bottom: 16px; color: #FFFFFF; }
+        .prose ul { margin-bottom: 24px; padding-left: 24px; list-style-type: disc; }
+        .prose li { margin-bottom: 8px; }
+    </style>
+</head>
+<body class="bg-surface-base text-on-surface antialiased min-h-screen flex">
+<!-- SideNavBar (Desktop) -->
+<nav class="w-60 h-screen fixed left-0 top-0 hidden md:flex flex-col border-r border-surface-stroke bg-surface-base">
+<div class="flex flex-col h-full py-6 px-4">
+<!-- Brand -->
+<div class="mb-10 px-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">neurology</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">NeuralJEE</h1>
+<p class="font-label-mono text-label-mono text-text-secondary mt-1">Elite Rank Track</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-primary border-r-2 border-primary bg-surface-container-low transition-colors duration-200 opacity-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md font-semibold">Learn</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-body-md text-body-md">Review</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">psychology_alt</span>
+<span class="font-body-md text-body-md">Doubt Solver</span>
+</a>
+</div>
+<!-- CTA -->
+<div class="mt-auto mb-6 px-2">
+<button class="w-full py-2 bg-primary text-on-primary-container font-label-mono text-label-mono rounded hover:bg-primary-container transition-colors font-bold">Start Review Queue</button>
+</div>
+<!-- Footer Tabs -->
+<div class="border-t border-surface-stroke pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 md:ml-60 flex flex-col items-center pb-24 md:pb-12 w-full">
+<!-- Header Section -->
+<header class="w-full max-w-[reading-width] px-6 pt-12 pb-8 border-b border-surface-stroke">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 font-label-mono text-label-mono text-text-secondary mb-6">
+<a class="hover:text-primary transition-colors" href="#">Learn</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Physics</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Kinematics</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-on-surface">Projectile Motion</span>
+</div>
+<!-- Title & Meta -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
+<div>
+<h1 class="font-display-lg text-display-lg text-text-primary mb-3">Projectile Motion</h1>
+<div class="flex items-center gap-4 font-label-mono text-label-mono">
+<span class="flex items-center gap-1.5 text-text-secondary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                            ~15 min read
+                        </span>
+<span class="flex items-center gap-1.5 text-secondary px-2 py-1 bg-secondary-fixed/10 border border-secondary/20 rounded">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+                            4 PYQ questions
+                        </span>
+</div>
+</div>
+<button class="bg-[#3B82F6] hover:bg-blue-400 text-white font-body-md text-body-md px-6 py-2.5 rounded transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">quiz</span>
+                    Take Quiz
+                </button>
+</div>
+<!-- Content Tabs -->
+<div class="flex gap-1 border-b border-surface-stroke w-full overflow-x-auto">
+<button class="px-4 py-3 font-label-mono text-label-mono text-primary border-b-2 border-primary bg-surface-container-low transition-colors whitespace-nowrap">Foundation</button>
+<button class="px-4 py-3 font-label-mono text-label-mono text-text-secondary hover:text-on-surface hover:bg-surface-container-lowest transition-colors whitespace-nowrap">Concepts</button>
+<button class="px-4 py-3 font-label-mono text-label-mono text-text-secondary hover:text-on-surface hover:bg-surface-container-lowest transition-colors whitespace-nowrap">Formulas</button>
+<button class="px-4 py-3 font-label-mono text-label-mono text-text-secondary hover:text-on-surface hover:bg-surface-container-lowest transition-colors whitespace-nowrap">Practice</button>
+</div>
+</header>
+<!-- Reading Canvas -->
+<article class="w-full max-w-[reading-width] px-6 py-12 prose font-body-lg text-body-lg text-on-surface-variant">
+<p>Projectile motion is a form of motion experienced by an object or particle (a projectile) that is projected near the Earth's surface and moves along a curved path under the action of gravity only. This curved path was shown by Galileo to be a parabola.</p>
+<h2>Key Principles</h2>
+<p>The key to understanding projectile motion lies in the independence of horizontal and vertical motion. Once the projectile is launched, the only force acting upon it is gravity (assuming air resistance is negligible).</p>
+<ul>
+<li><strong>Horizontal Motion:</strong> Velocity remains constant ($a_x = 0$) because there are no horizontal forces acting on the object.</li>
+<li><strong>Vertical Motion:</strong> Experiences constant acceleration due to gravity ($a_y = -g$).</li>
+</ul>
+<div class="bg-surface-elevated border border-surface-stroke rounded p-6 my-8 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<h3 class="!mt-0 !mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">tips_and_updates</span>
+                    Pro Tip for JEE
+                </h3>
+<p class="!mb-0 font-body-md text-body-md">Always resolve the initial velocity $u$ into horizontal and vertical components immediately: $u_x = u \cos\theta$ and $u_y = u \sin\theta$. Treat these as two entirely separate 1D kinematic problems linked only by time $t$.</p>
+</div>
+<h2>Important Formulas</h2>
+<p>For a projectile launched with initial velocity $u$ at an angle $\theta$ to the horizontal:</p>
+<h3>1. Equation of Trajectory</h3>
+<div class="math-block">
+                $$ y = x \tan\theta - \frac{gx^2}{2u^2 \cos^2\theta} $$
+            </div>
+<p class="font-body-md text-body-md text-text-secondary mt-[-16px]">This proves the path is parabolic, as it is a quadratic equation in terms of $x$.</p>
+<h3>2. Time of Flight ($T$)</h3>
+<div class="math-block">
+                $$ T = \frac{2u \sin\theta}{g} $$
+            </div>
+<h3>3. Maximum Height ($H$)</h3>
+<div class="math-block">
+                $$ H = \frac{u^2 \sin^2\theta}{2g} $$
+            </div>
+<h3>4. Horizontal Range ($R$)</h3>
+<div class="math-block">
+                $$ R = \frac{u^2 \sin 2\theta}{g} $$
+            </div>
+<div class="mt-16 pt-8 border-t border-surface-stroke flex justify-between items-center">
+<button class="flex items-center gap-2 text-text-secondary hover:text-primary transition-colors font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                    Previous: Motion in 1D
+                </button>
+<button class="flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-mono text-label-mono">
+                    Next: Relative Motion
+                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</article>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden border-t border-surface-stroke bg-surface-container-lowest">
+<div class="flex justify-around items-center h-16 px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high transition-colors w-full h-full" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-mono text-label-mono mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary active:bg-surface-container-high transition-colors scale-95 transition-transform w-full h-full" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-label-mono text-label-mono mt-1 font-bold">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high transition-colors w-full h-full" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-mono text-label-mono mt-1">Review</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high transition-colors w-full h-full" href="#">
+<span class="material-symbols-outlined">psychology_alt</span>
+<span class="font-label-mono text-label-mono mt-1">Solver</span>
+</a>
+</div>
+</nav>
+</body></html>

@@ -10,11 +10,38 @@
  * Both results feed into context-builder.ts which formats the final Claude prompt.
  */
 
-import { db, neonSql } from '@/lib/db/client';
+import { db } from '@/lib/db/client';
 import { subtopics } from '@/lib/db/schema';
 import { eq, sql } from 'drizzle-orm';
 import { embed } from './embed';
-import type { Subtopic } from '@/lib/db/schema';
+import type { ContentChunk, Subtopic } from '@/lib/db/schema';
+
+function mapToSubtopic(row: Record<string, unknown>): Subtopic {
+  return {
+    id: row.id as Subtopic['id'],
+    topicId: row.topic_id as Subtopic['topicId'],
+    name: row.name as Subtopic['name'],
+    description: row.description as Subtopic['description'],
+    keyFormulas: row.key_formulas as Subtopic['keyFormulas'],
+    commonMistakes: row.common_mistakes as Subtopic['commonMistakes'],
+    rawContent: row.raw_content as Subtopic['rawContent'],
+    contentFoundation: row.content_foundation as Subtopic['contentFoundation'],
+    contentDeepConcepts: row.content_deep_concepts as Subtopic['contentDeepConcepts'],
+    contentFormulas: row.content_formulas as Subtopic['contentFormulas'],
+    contentPractice: row.content_practice as Subtopic['contentPractice'],
+    pyqFrequency: row.pyq_frequency as Subtopic['pyqFrequency'],
+    estimatedMinutes: row.estimated_minutes as Subtopic['estimatedMinutes'],
+    orderIndex: row.order_index as Subtopic['orderIndex'],
+    contentStatus: row.content_status as Subtopic['contentStatus'],
+    createdAt: row.created_at as Subtopic['createdAt'],
+    embedding: (row.embedding ?? null) as unknown as Subtopic['embedding'],
+  };
+}
+
+export interface RetrievedChunk
+  extends Pick<ContentChunk, 'id' | 'subtopicId' | 'pageType' | 'chunkIndex' | 'content' | 'wordCount'> {
+  similarity: number;
+}
 
 export interface RetrievedContext {
   /** The exact subtopic the student is learning */
@@ -23,6 +50,8 @@ export interface RetrievedContext {
   prerequisites: Subtopic[];
   /** Semantically similar subtopics from vector search */
   similarSubtopics: Subtopic[];
+  /** Most relevant verified page chunks from chunk-level vector search */
+  relevantChunks: RetrievedChunk[];
 }
 
 /**
@@ -73,16 +102,40 @@ export async function retrieveContextForSubtopic(
     ORDER BY s.name
   `);
 
-  const prerequisites = prereqResult.rows as Subtopic[];
+  const prerequisites = prereqResult.rows.map(mapToSubtopic);
 
   // ── 3. Vector retrieval — semantic similarity search ────────────────────
   let similarSubtopics: Subtopic[] = [];
+  let relevantChunks: RetrievedChunk[] = [];
 
-  if (queryText) {
+  const semanticQuery = queryText ?? [target.name, target.description].filter(Boolean).join('\n');
+
+  if (semanticQuery) {
     try {
-      const queryEmbedding = await embed(queryText);
+      const queryEmbedding = await embed(semanticQuery);
+      if (queryEmbedding.length !== 768) {
+        throw new Error(`Expected 768-dimensional embedding, received ${queryEmbedding.length}`);
+      }
       // Format as pgvector literal: [0.1,0.2,...,0.768]
       const embeddingLiteral = `[${queryEmbedding.join(',')}]`;
+
+      const chunkResult = await db.execute(sql`
+        SELECT id,
+               subtopic_id AS "subtopicId",
+               page_type AS "pageType",
+               chunk_index AS "chunkIndex",
+               content,
+               word_count AS "wordCount",
+               1 - (embedding <=> ${embeddingLiteral}::vector) AS similarity
+        FROM content_chunks
+        WHERE subtopic_id = ${subtopicId}::uuid
+          AND content_status IN ('AI_GENERATED', 'VERIFIED')
+          AND embedding IS NOT NULL
+        ORDER BY embedding <=> ${embeddingLiteral}::vector
+        LIMIT 8
+      `);
+
+      relevantChunks = chunkResult.rows as unknown as RetrievedChunk[];
 
       const similarResult = await db.execute(sql`
         SELECT *,
@@ -95,7 +148,7 @@ export async function retrieveContextForSubtopic(
         LIMIT 3
       `);
 
-      similarSubtopics = similarResult.rows as Subtopic[];
+      similarSubtopics = similarResult.rows.map(mapToSubtopic);
     } catch (err) {
       // Don't fail the whole request if vector search fails (e.g., no embeddings yet)
       console.warn('[RAG] Vector search failed, falling back to graph-only:', err);
@@ -106,5 +159,6 @@ export async function retrieveContextForSubtopic(
     targetSubtopic: target,
     prerequisites,
     similarSubtopics,
+    relevantChunks,
   };
 }

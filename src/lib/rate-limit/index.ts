@@ -2,7 +2,8 @@
  * rate-limit/index.ts — Per-route rate limiting via Upstash Ratelimit
  *
  * Limits are per authenticated user (Clerk userId as the key).
- * Falls back gracefully (allows request) if Redis is not configured.
+ * Development falls back open if Redis is not configured.
+ * Production fails closed to protect AI spend and abuse surfaces.
  *
  * Configured limits (sliding window):
  *   teach:  30 requests per hour    — AI teaching, expensive
@@ -65,7 +66,7 @@ export interface RateLimitResult {
  * @param userId  Clerk userId to scope the limit per user
  */
 export async function checkRateLimit(
-  type: 'teach' | 'quiz' | 'doubt' | 'submit',
+  type: 'teach' | 'quiz' | 'doubt' | 'submit' | 'remediate',
   userId: string,
 ): Promise<RateLimitResult> {
   const limitConfig: Record<string, [number, `${number} ${'ms' | 's' | 'm' | 'h' | 'd'}`]> = {
@@ -73,13 +74,16 @@ export async function checkRateLimit(
     quiz:   [5,  '1 m'],
     doubt:  [20, '1 h'],
     submit: [60, '1 m'],
+    remediate: [60, '1 h'],
   };
 
   const [limit, window] = limitConfig[type];
   const limiter = getLimiter(type, limit, window);
 
-  // Graceful fallback: no Redis = no rate limiting (dev/test)
   if (!limiter) {
+    if (process.env.NODE_ENV === 'production') {
+      return { success: false, remaining: 0, reset: 0 };
+    }
     return { success: true, remaining: 999, reset: 0 };
   }
 
@@ -91,7 +95,10 @@ export async function checkRateLimit(
       reset: result.reset,
     };
   } catch (err) {
-    console.warn('[RateLimit] Check failed, allowing request:', err);
+    console.warn('[RateLimit] Check failed:', err);
+    if (process.env.NODE_ENV === 'production') {
+      return { success: false, remaining: 0, reset: 0 };
+    }
     return { success: true, remaining: 999, reset: 0 };
   }
 }

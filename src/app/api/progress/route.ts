@@ -3,7 +3,6 @@
  * POST /api/progress — Log a learning event
  */
 
-const auth = () => ({ userId: 'test-user-123' });
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { getMasteryOverview } from '@/lib/db/queries/mastery';
@@ -11,9 +10,10 @@ import { getDueReviews } from '@/lib/db/queries/review';
 import { db } from '@/lib/db/client';
 import { learningEvents } from '@/lib/db/schema';
 import { getUserId } from '@/lib/db/queries/mastery';
+import { getAuthenticatedClerkUserId } from '@/lib/auth/server';
 
 export async function GET() {
-  const { userId } = await auth();
+  const userId = await getAuthenticatedClerkUserId();
   if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const [mastery, dueReviews] = await Promise.all([
@@ -49,7 +49,7 @@ const EventSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthenticatedClerkUserId();
   if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   let event: z.infer<typeof EventSchema>;

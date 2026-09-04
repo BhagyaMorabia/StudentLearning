@@ -80,14 +80,18 @@ def load_generated_content() -> dict:
 def get_deterministic_id(path_str: str) -> str:
     return str(uuid.uuid5(uuid.NAMESPACE_URL, f"neuraljee://{path_str}"))
 
+def load_prerequisite_edges() -> list:
+    edges_file = Path(__file__).parent.parent / "data" / "prerequisite_edges.json"
+    if edges_file.exists():
+        try:
+            return json.loads(edges_file.read_text(encoding="utf-8"))
+        except Exception as e:
+            print(f"Error loading {edges_file}: {e}")
+    return []
+
 
 def seed_curriculum(conn, content_map: dict):
     cur = conn.cursor()
-
-    # Track all subtopic IDs by name for prerequisites
-    # Key: lowercase_subtopic_name, Value: deterministic_uuid
-    all_subtopic_ids = {}
-    prereq_edges = [] 
 
     total_upserts = 0
 
@@ -123,12 +127,7 @@ def seed_curriculum(conn, content_map: dict):
                     subtopic_name = subtopic_def["name"]
                     subtopic_id = get_deterministic_id(f"{subject_name}/{chapter['name']}/{topic['name']}/{subtopic_name}")
                     
-                    # Store ID for prerequisite wiring
-                    all_subtopic_ids[subtopic_name.lower().strip()] = subtopic_id
-                    
-                    # Store prerequisite edges from SYLLABUS, not from AI output
-                    for prereq in subtopic_def.get("prerequisites", []):
-                        prereq_edges.append((prereq.lower().strip(), subtopic_id))
+                    # Legacy string-matching prerequisites removed in favor of UUID knowledge graph
 
                     content_key = (subject_name, chapter["name"], subtopic_name.lower().strip())
                     gen = content_map.get(content_key, {})
@@ -192,19 +191,18 @@ def seed_curriculum(conn, content_map: dict):
 
     # ── Wire up prerequisites ───────────────────────────────────────────────
     print(f"\n{'='*50}")
-    print("  Wiring Prerequisites (From Python Syllabus)")
+    print("  Wiring Prerequisites (From Knowledge Graph JSON)")
     print(f"{'='*50}")
 
+    edges = load_prerequisite_edges()
     prereqs_added = 0
-    for from_name, to_id in prereq_edges:
-        from_id = all_subtopic_ids.get(from_name)
-        if not from_id:
-            print(f"  [!] Prerequisite '{from_name}' not found in syllabus.")
+    for edge in edges:
+        from_id = edge.get("from_id")
+        to_id = edge.get("to_id")
+        if not from_id or not to_id:
             continue
             
         try:
-            # We don't have a unique constraint on (from_id, to_id) except PK maybe? 
-            # Prerequisites uses a composite PK (from_subtopic_id, to_subtopic_id)
             cur.execute("""
                 INSERT INTO prerequisites (from_subtopic_id, to_subtopic_id, strength) 
                 VALUES (%s, %s, 2) 
@@ -212,7 +210,7 @@ def seed_curriculum(conn, content_map: dict):
             """, (from_id, to_id))
             prereqs_added += 1
         except Exception as e:
-            print(f"  ERROR linking {from_name}: {e}")
+            print(f"  ERROR linking {from_id} -> {to_id}: {e}")
             conn.rollback()
 
     conn.commit()

@@ -1,8 +1,8 @@
-const auth = () => ({ userId: 'test-user-123' });
 import { getFullCurriculum } from '@/lib/db/queries/curriculum';
+import { getAuthenticatedClerkUserId } from '@/lib/auth/server';
 
 export async function GET() {
-  const { userId } = await auth();
+  const userId = await getAuthenticatedClerkUserId();
   if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const curriculum = await getFullCurriculum();

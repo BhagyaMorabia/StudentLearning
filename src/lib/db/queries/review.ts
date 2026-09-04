@@ -11,6 +11,10 @@ export interface DueReview {
   intervalDays: number;
 }
 
+type FsrsReviewState = {
+  scheduled_days?: number;
+};
+
 // ── Get subtopics due for spaced repetition review ─────────────────────────
 
 export async function getDueReviews(
@@ -28,7 +32,7 @@ export async function getDueReviews(
       subtopicName: subtopics.name,
       masteryScore: studentMastery.masteryScore,
       nextReviewAt: studentMastery.nextReviewAt,
-      intervalDays: studentMastery.intervalDays,
+      fsrsState: studentMastery.fsrsState,
     })
     .from(studentMastery)
     .innerJoin(subtopics, eq(studentMastery.subtopicId, subtopics.id))
@@ -47,6 +51,12 @@ export async function getDueReviews(
     subtopicName: r.subtopicName,
     masteryScore: r.masteryScore ?? 0,
     nextReviewAt: r.nextReviewAt!,
-    intervalDays: r.intervalDays ?? 1,
+    intervalDays: getScheduledDays(r.fsrsState),
   }));
+}
+
+function getScheduledDays(fsrsState: unknown): number {
+  if (!fsrsState || typeof fsrsState !== 'object') return 1;
+  const scheduledDays = (fsrsState as FsrsReviewState).scheduled_days;
+  return typeof scheduledDays === 'number' ? scheduledDays : 1;
 }

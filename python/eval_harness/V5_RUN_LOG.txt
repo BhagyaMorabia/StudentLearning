@@ -1,0 +1,14 @@
+================================================================================
+NEURALJEE MASTERY ALGORITHM EVALUATION - V4 (Bayesian Score Engine)
+================================================================================
+Timestamp : 2026-09-03T11:11:54.633928+00:00
+N questions/profile : 100
+Random seed : 42
+Loaded 7 profiles: ['MODE_6_GUESSING', 'MODE_5_CARELESS', 'MODE_3_PROCEDURAL', 'MODE_1_PREREQUISITE', 'MODE_4_FORMULA', 'MODE_2_CONCEPTUAL', 'MODE_7_FORGETTING']
+Fetched 100 MCQ questions from DB.
+
+[OK] Student-agent blindness contract verified (rigged-leak caught AND clean-prose false-positive check passed).
+
+--- Profile student_guessing          (MODE_6_GUESSING) ---
+WARNING:root:REST async clients requires async credentials set using aiplatform.initializer._set_async_rest_credentials().
+Falling back to grpc since no async rest credentials were detected.

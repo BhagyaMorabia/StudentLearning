@@ -10,6 +10,7 @@ import {
   pgEnum,
   index,
   uniqueIndex,
+  primaryKey,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 // NOTE: pgvector integration — requires `CREATE EXTENSION IF NOT EXISTS vector;`
@@ -163,12 +164,38 @@ export const subtopics = pgTable(
   (t) => [
     index('subtopics_topic_idx').on(t.topicId),
     index('subtopics_status_idx').on(t.contentStatus),
+    index('subtopics_embedding_hnsw_idx').using('hnsw', t.embedding.op('vector_cosine_ops')),
   ],
 );
 
 // Prerequisite graph — adjacency table (replaces Neo4j)
 // One row = one prerequisite relationship.
 // Traverse with recursive CTE in retrieve.ts.
+export const contentChunks = pgTable(
+  'content_chunks',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    subtopicId: uuid('subtopic_id')
+      .notNull()
+      .references(() => subtopics.id, { onDelete: 'cascade' }),
+    pageType: text('page_type').notNull(),
+    chunkIndex: integer('chunk_index').notNull(),
+    content: text('content').notNull(),
+    wordCount: integer('word_count').notNull(),
+    sourceHash: text('source_hash').notNull(),
+    embedding: vector('embedding', { dimensions: 768 }),
+    contentStatus: contentStatusEnum('content_status').default('AI_GENERATED'),
+    createdAt: timestamp('created_at').defaultNow(),
+    updatedAt: timestamp('updated_at').defaultNow(),
+  },
+  (t) => [
+    uniqueIndex('content_chunks_subtopic_page_chunk_idx').on(t.subtopicId, t.pageType, t.chunkIndex),
+    index('content_chunks_subtopic_idx').on(t.subtopicId),
+    index('content_chunks_status_idx').on(t.contentStatus),
+    index('content_chunks_embedding_hnsw_idx').using('hnsw', t.embedding.op('vector_cosine_ops')),
+  ],
+);
+
 export const prerequisites = pgTable(
   'prerequisites',
   {
@@ -181,6 +208,7 @@ export const prerequisites = pgTable(
     strength: integer('strength').default(1), // 1=helpful, 2=important, 3=required
   },
   (t) => [
+    primaryKey({ columns: [t.fromSubtopicId, t.toSubtopicId] }),
     index('prereq_to_idx').on(t.toSubtopicId),
     index('prereq_from_idx').on(t.fromSubtopicId),
   ],
@@ -199,7 +227,7 @@ export const questions = pgTable(
     questionText: text('question_text').notNull(), // LaTeX supported via $$...$$
     questionType: questionTypeEnum('question_type').notNull(),
 
-    // For MCQ/MSQ: [{id: string, text: string, isCorrect?: boolean}]
+    // For MCQ/MSQ: [{id: string, text: string | null, optionBoundingBox?: number[], isCorrect: boolean, explanation: string, prerequisiteTrapId: string | null, misconceptionType: string}]
     // isCorrect is intentionally NOT exposed to client via API
     options: jsonb('options'),
 
@@ -229,6 +257,7 @@ export const questions = pgTable(
     index('questions_subtopic_idx').on(t.subtopicId),
     index('questions_status_idx').on(t.status),
     index('questions_type_idx').on(t.questionType),
+    index('questions_embedding_hnsw_idx').using('hnsw', t.embedding.op('vector_cosine_ops')),
   ],
 );
 
@@ -277,11 +306,9 @@ export const studentMastery = pgTable(
     weakConceptTags: text('weak_concept_tags').array().default([]),
     avgTimePerQuestionMs: integer('avg_time_per_question_ms'),
 
-    // SM-2 spaced repetition fields
+    // FSRS (Free Spaced Repetition Scheduler) state
     nextReviewAt: timestamp('next_review_at'),
-    intervalDays: real('interval_days').default(1),
-    easeFactor: real('ease_factor').default(2.5),
-    repetitionCount: integer('repetition_count').default(0),
+    fsrsState: jsonb('fsrs_state'), // Stores the full ts-fsrs Card object
 
     lastAttemptAt: timestamp('last_attempt_at'),
     firstAttemptAt: timestamp('first_attempt_at'),
@@ -313,6 +340,13 @@ export const questionAttempts = pgTable(
     selectedAnswer: jsonb('selected_answer'), // What student chose (raw, not validated here)
     isCorrect: boolean('is_correct').notNull(),
     timeSpentMs: integer('time_spent_ms'),
+    
+    // Cognitive Diagnostic Telemetry
+    optionSwitchCount: integer('option_switch_count').default(0),
+    detectedFailureMode: text('detected_failure_mode'), // e.g. 'MODE_1_PREREQUISITE', 'MODE_6_GUESSING'
+    activatedMisconceptionId: text('activated_misconception_id'), // maps to prerequisiteTrapId in questions table
+    remediationTriggered: boolean('remediation_triggered').default(false),
+    nearTransferPassed: boolean('near_transfer_passed'),
 
     createdAt: timestamp('created_at').defaultNow(),
   },
@@ -325,6 +359,30 @@ export const questionAttempts = pgTable(
 
 // ── Learning Events (analytics event log) ─────────────────────────────────
 // Append-only. Never update rows. Use for drop-off analysis, time-on-task, etc.
+
+export const quizSubmissions = pgTable(
+  'quiz_submissions',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    userId: uuid('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    subtopicId: uuid('subtopic_id').references(() => subtopics.id, { onDelete: 'cascade' }),
+    chapterId: uuid('chapter_id').references(() => chapters.id, { onDelete: 'cascade' }),
+    idempotencyKey: text('idempotency_key').notNull(),
+    status: text('status').notNull().default('PENDING_MASTERY'),
+    result: jsonb('result').notNull(),
+    error: text('error'),
+    processingAttempts: integer('processing_attempts').default(0),
+    createdAt: timestamp('created_at').defaultNow(),
+    processedAt: timestamp('processed_at'),
+  },
+  (t) => [
+    uniqueIndex('quiz_submissions_user_idempotency_idx').on(t.userId, t.idempotencyKey),
+    index('quiz_submissions_user_created_idx').on(t.userId, t.createdAt),
+    index('quiz_submissions_status_created_idx').on(t.status, t.createdAt),
+  ],
+);
 
 export const learningEvents = pgTable(
   'learning_events',
@@ -366,6 +424,7 @@ export const topicsRelations = relations(topics, ({ one, many }) => ({
 
 export const subtopicsRelations = relations(subtopics, ({ one, many }) => ({
   topic: one(topics, { fields: [subtopics.topicId], references: [topics.id] }),
+  chunks: many(contentChunks),
   questions: many(questions),
   mastery: many(studentMastery),
   prerequisitesFrom: many(prerequisites, { relationName: 'fromSubtopic' }),
@@ -375,6 +434,7 @@ export const subtopicsRelations = relations(subtopics, ({ one, many }) => ({
 export const usersRelations = relations(users, ({ many }) => ({
   mastery: many(studentMastery),
   attempts: many(questionAttempts),
+  submissions: many(quizSubmissions),
   events: many(learningEvents),
 }));
 
@@ -387,7 +447,9 @@ export type Subject = typeof subjects.$inferSelect;
 export type Chapter = typeof chapters.$inferSelect;
 export type Topic = typeof topics.$inferSelect;
 export type Subtopic = typeof subtopics.$inferSelect;
+export type ContentChunk = typeof contentChunks.$inferSelect;
 export type Question = typeof questions.$inferSelect;
 export type StudentMastery = typeof studentMastery.$inferSelect;
 export type QuestionAttempt = typeof questionAttempts.$inferSelect;
+export type QuizSubmission = typeof quizSubmissions.$inferSelect;
 export type LearningEvent = typeof learningEvents.$inferSelect;
